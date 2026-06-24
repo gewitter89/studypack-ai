@@ -50,3 +50,4 @@ class PackRequest(BaseModel):
     style: str = "print_bw"
     child_name: Optional[str] = ""
     output_dir: str = "output"
+    offline_mode: bool = False

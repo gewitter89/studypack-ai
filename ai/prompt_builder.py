@@ -1,21 +1,19 @@
 import os
 from typing import Dict, Any
 
+from core.paths import prompts_dir
+
 
 def load_prompt_template(path: str = None) -> str:
     if path is None:
-        path = os.path.join(
-            os.path.dirname(__file__), "..", "prompts", "generate_pack.md"
-        )
+        path = os.path.join(prompts_dir(), "generate_pack.md")
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
 
 def load_repair_template(path: str = None) -> str:
     if path is None:
-        path = os.path.join(
-            os.path.dirname(__file__), "..", "prompts", "repair_json.md"
-        )
+        path = os.path.join(prompts_dir(), "repair_json.md")
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 

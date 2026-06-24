@@ -11,10 +11,9 @@ from app.gui import StudyPackGUI
 
 
 def setup_logging():
-    log_dir = os.path.join(os.path.dirname(__file__), "logs")
-    os.makedirs(log_dir, exist_ok=True)
-
-    log_file = os.path.join(log_dir, "app.log")
+    from core.paths import logs_dir, ensure_dirs
+    ensure_dirs()
+    log_file = os.path.join(logs_dir(), "app.log")
 
     logging.basicConfig(
         level=logging.INFO,

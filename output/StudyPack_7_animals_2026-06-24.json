@@ -1,0 +1,459 @@
+{
+  "title": "Математика",
+  "subtitle": "Приклади для дітей 7 років",
+  "language": "uk",
+  "age": 7,
+  "grade": "Дошкольник",
+  "topic": "animals",
+  "pack_type": "math",
+  "difficulty": "auto",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання. Відповіді — тільки для перевірки дорослим.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Приклади 1",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 16 кубиков, вычитание 14. Сколько стало? 16 - 14 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "Было 28 мячей, вычитание 2. Сколько стало? 28 - 2 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "26"
+        },
+        {
+          "type": "math",
+          "question": "Было 20 монет, сложение 9. Сколько стало? 20 + 9 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "29"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Приклади 2",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 30 конфет, сложение 3. Сколько стало? 30 + 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "33"
+        },
+        {
+          "type": "math",
+          "question": "Было 1 книг, вычитание 1. Сколько стало? 1 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "Было 8 монет, вычитание 7. Сколько стало? 8 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Приклади 3",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 17 кубиков, сложение 25. Сколько стало? 17 + 25 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "42"
+        },
+        {
+          "type": "math",
+          "question": "Было 6 книг, вычитание 3. Сколько стало? 6 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math",
+          "question": "Было 10 яблок, вычитание 4. Сколько стало? 10 - 4 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Приклади 4",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 19 карандашей, сложение 24. Сколько стало? 19 + 24 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "43"
+        },
+        {
+          "type": "math",
+          "question": "Было 11 книг, сложение 11. Сколько стало? 11 + 11 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        },
+        {
+          "type": "math",
+          "question": "Было 30 яблок, вычитание 17. Сколько стало? 30 - 17 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Приклади 5",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 6 конфет, сложение 1. Сколько стало? 6 + 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math",
+          "question": "Было 23 монет, сложение 12. Сколько стало? 23 + 12 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "35"
+        },
+        {
+          "type": "math",
+          "question": "Было 12 динозавров, сложение 16. Сколько стало? 12 + 16 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "28"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Приклади 6",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 29 мячей, сложение 16. Сколько стало? 29 + 16 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "45"
+        },
+        {
+          "type": "math",
+          "question": "Было 5 мячей, сложение 29. Сколько стало? 5 + 29 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "34"
+        },
+        {
+          "type": "math",
+          "question": "Было 27 машинок, сложение 21. Сколько стало? 27 + 21 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "48"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Приклади 7",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 7 книг, сложение 12. Сколько стало? 7 + 12 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "19"
+        },
+        {
+          "type": "math",
+          "question": "Было 3 динозавров, вычитание 3. Сколько стало? 3 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "Было 7 монет, вычитание 3. Сколько стало? 7 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Приклади 8",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 2 конфет, вычитание 2. Сколько стало? 2 - 2 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "Было 8 мячей, вычитание 7. Сколько стало? 8 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math",
+          "question": "Было 2 кубиков, сложение 24. Сколько стало? 2 + 24 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "26"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "exercise",
+      "title": "Приклади 9",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 5 конфет, вычитание 4. Сколько стало? 5 - 4 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math",
+          "question": "Было 26 монет, сложение 9. Сколько стало? 26 + 9 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "35"
+        },
+        {
+          "type": "math",
+          "question": "Было 23 карандашей, вычитание 2. Сколько стало? 23 - 2 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "21"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "exercise",
+      "title": "Приклади 10",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 9 монет, вычитание 7. Сколько стало? 9 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "Было 9 книг, сложение 8. Сколько стало? 9 + 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "17"
+        },
+        {
+          "type": "math",
+          "question": "Было 2 яблок, сложение 8. Сколько стало? 2 + 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "page_type": "exercise",
+      "title": "Приклади 11",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 14 карандашей, вычитание 2. Сколько стало? 14 - 2 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        },
+        {
+          "type": "math",
+          "question": "Было 13 карандашей, сложение 5. Сколько стало? 13 + 5 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "18"
+        },
+        {
+          "type": "math",
+          "question": "Было 11 машинок, вычитание 8. Сколько стало? 11 - 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "page_type": "exercise",
+      "title": "Приклади 12",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Было 6 книг, вычитание 1. Сколько стало? 6 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        },
+        {
+          "type": "math",
+          "question": "Было 1 динозавров, вычитание 1. Сколько стало? 1 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "Было 10 яблок, вычитание 3. Сколько стало? 10 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "2",
+        "26",
+        "29"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "33",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "42",
+        "3",
+        "6"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "43",
+        "22",
+        "13"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "7",
+        "35",
+        "28"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "45",
+        "34",
+        "48"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "19",
+        "0",
+        "4"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "0",
+        "1",
+        "26"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "1",
+        "35",
+        "21"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "2",
+        "17",
+        "10"
+      ]
+    },
+    {
+      "page_number": 11,
+      "answers": [
+        "12",
+        "18",
+        "3"
+      ]
+    },
+    {
+      "page_number": 12,
+      "answers": [
+        "5",
+        "0",
+        "7"
+      ]
+    }
+  ]
+}
