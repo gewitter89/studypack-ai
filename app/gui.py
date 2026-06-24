@@ -160,13 +160,15 @@ class StudyPackGUI:
         btn_frame2 = Frame(main_frame)
         btn_frame2.pack(fill="x", pady=2)
 
-        Button(btn_frame2, text="Собрать PDF из JSON", width=18,
+        Button(btn_frame2, text="Собрать PDF из JSON", width=16,
                command=self._on_build_from_json).pack(side="left", padx=2)
-        Button(btn_frame2, text="Открыть папку", width=13,
+        Button(btn_frame2, text="Открыть папку", width=11,
                command=self._open_output).pack(side="left", padx=2)
-        Button(btn_frame2, text="Последний PDF", width=13,
+        Button(btn_frame2, text="Примеры", width=11,
+               command=self._open_examples).pack(side="left", padx=2)
+        Button(btn_frame2, text="Последний PDF", width=11,
                command=self._open_last_pdf).pack(side="left", padx=2)
-        Button(btn_frame2, text="Настройки API", width=13,
+        Button(btn_frame2, text="Настройки API", width=11,
                command=self._show_api_settings).pack(side="left", padx=2)
 
         self.status_var = StringVar(value="Готов к работе")
@@ -211,6 +213,13 @@ class StudyPackGUI:
             os.startfile(self.last_pdf_path)
         else:
             messagebox.showinfo("StudyPack AI", "PDF ещё не создан или файл не найден.")
+
+    def _open_examples(self):
+        examples_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "examples")
+        if os.path.isdir(examples_path):
+            os.startfile(examples_path)
+        else:
+            messagebox.showinfo("StudyPack AI", "Папка examples не найдена.")
 
     def _show_api_settings(self):
         win = Toplevel(self.root)
@@ -451,20 +460,32 @@ class StudyPackGUI:
                 if self.last_pack_data:
                     math_issues = verify_math_in_pack(self.last_pack_data)
 
-                msg = f"PDF создан:\n{result.pdf_path}"
+                checklist = []
+                checklist.append(f"[✓] PDF создан: {os.path.basename(result.pdf_path)}")
+                checklist.append(f"[✓] JSON сохранён: {os.path.basename(result.json_path)}")
+                checklist.append(f"[✓] Путь: {result.pdf_path}")
+
+                brand_check = "пройдена" if not result.warnings else "есть предупреждения"
+                checklist.append(f"[{ '✓' if not result.warnings else '!' }] Проверка брендов: {brand_check}")
+
                 if math_issues:
-                    msg += f"\n\n⚠ Найдено {len(math_issues)} ошибок в математике:"
+                    checklist.append(f"[!] Математика: {len(math_issues)} ошибок")
                     for iss in math_issues[:5]:
-                        msg += f"\n  Стр.{iss['page']}: {iss['question']}"
+                        checklist.append(f"     Стр.{iss['page']}: {iss['question']} -> '{iss['given_answer']}'")
+                else:
+                    checklist.append("[✓] Математика: проверена, ошибок нет")
+
+                if result.warnings:
+                    checklist.append(f"[!] Предупреждения:")
+                    for w in result.warnings[:5]:
+                        checklist.append(f"     {w}")
+
+                msg = "\n".join(checklist)
 
                 self.root.after(0, lambda: self.status_var.set(
                     f"Готово! PDF: {os.path.basename(result.pdf_path)}"
                 ))
-                self.root.after(0, lambda: messagebox.showinfo("StudyPack AI", msg))
-                if result.warnings:
-                    self.root.after(0, lambda: messagebox.showwarning(
-                        "Предупреждения", "\n".join(result.warnings)
-                    ))
+                self.root.after(0, lambda: messagebox.showinfo("StudyPack AI — результат", msg))
             else:
                 self.root.after(0, lambda: self.status_var.set(
                     f"Ошибка: {result.error[:60]}..."

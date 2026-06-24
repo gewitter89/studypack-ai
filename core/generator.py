@@ -244,9 +244,17 @@ class StudyPackGenerator:
         logger.info(f"JSON saved: {json_path}")
         result.json_path = json_path
 
+        is_commercial = getattr(request, 'commercial_mode', False)
+        brand_name = getattr(request, 'brand_name', "")
+
         try:
             pdf_path = os.path.join(output_dir, f"{base_name}.pdf")
-            render_pdf(pack_data, pdf_path)
+            render_pdf(
+                pack_data, pdf_path,
+                watermark="" if is_commercial else "Демо-набір StudyPack AI",
+                is_commercial=is_commercial,
+                brand=brand_name,
+            )
             result.pdf_path = pdf_path
             result.success = True
         except Exception as e:

@@ -51,3 +51,5 @@ class PackRequest(BaseModel):
     child_name: Optional[str] = ""
     output_dir: str = "output"
     offline_mode: bool = False
+    commercial_mode: bool = False
+    brand_name: Optional[str] = ""

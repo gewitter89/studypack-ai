@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate 3 demo PDFs for the examples/ folder using offline templates."""
+"""Generate 5 commercial demo PDFs for examples/ using offline templates."""
 
 import os
 import sys
@@ -10,12 +10,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from core.models import PackRequest
 from core.templates import generate_offline
 from pdf.renderer import render_pdf
-from core.paths import output_dir
 
 EXAMPLES_DIR = os.path.join(os.path.dirname(__file__), "examples")
 
 
-def make_example(name, request_data):
+def make_example(name, request_data, watermark="Демо-набір StudyPack AI",
+                 is_commercial=False, brand=""):
     print(f"Generating: {name}...")
     req = PackRequest(**request_data)
     data = generate_offline(req)
@@ -28,7 +28,8 @@ def make_example(name, request_data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     pdf_path = os.path.join(EXAMPLES_DIR, f"{name}.pdf")
-    render_pdf(data, pdf_path)
+    render_pdf(data, pdf_path, watermark=watermark,
+               is_commercial=is_commercial, brand=brand)
     size = os.path.getsize(pdf_path)
     print(f"  PDF: {pdf_path} ({size} bytes)")
     print(f"  JSON: {json_path}")
@@ -39,7 +40,25 @@ def main():
 
     examples = [
         {
+            "name": "6_uk_preschool_animals",
+            "desc": "6 лет, украинский, подготовка к школе, животные",
+            "request": {
+                "age": 6,
+                "grade": "Дошкольник",
+                "language": "uk",
+                "pack_type": "preschool",
+                "topic": "animals",
+                "pages_count": 8,
+                "difficulty": "easy",
+                "include_answers": True,
+                "include_parent_instruction": True,
+                "style": "print_bw",
+                "output_dir": EXAMPLES_DIR,
+            }
+        },
+        {
             "name": "7_uk_dinosaurs_mixed",
+            "desc": "7 лет, украинский, математика + логика, динозавры",
             "request": {
                 "age": 7,
                 "grade": "1 класс",
@@ -56,6 +75,7 @@ def main():
         },
         {
             "name": "6_ru_space_logic",
+            "desc": "6 лет, русский, логика, космос",
             "request": {
                 "age": 6,
                 "grade": "Дошкольник",
@@ -71,15 +91,33 @@ def main():
             }
         },
         {
-            "name": "8_uk_animals_math",
+            "name": "8_uk_reading_underwater",
+            "desc": "8 лет, украинский, чтение, подводный мир",
             "request": {
                 "age": 8,
                 "grade": "2 класс",
                 "language": "uk",
-                "pack_type": "math",
-                "topic": "animals",
-                "pages_count": 12,
+                "pack_type": "reading",
+                "topic": "underwater",
+                "pages_count": 8,
                 "difficulty": "medium",
+                "include_answers": True,
+                "include_parent_instruction": True,
+                "style": "print_bw",
+                "output_dir": EXAMPLES_DIR,
+            }
+        },
+        {
+            "name": "7_uk_en_farm",
+            "desc": "7 лет, украинский + английский, ферма",
+            "request": {
+                "age": 7,
+                "grade": "1 класс",
+                "language": "uk+en",
+                "pack_type": "mixed_week",
+                "topic": "farm",
+                "pages_count": 8,
+                "difficulty": "easy",
                 "include_answers": True,
                 "include_parent_instruction": True,
                 "style": "print_bw",
@@ -89,9 +127,10 @@ def main():
     ]
 
     for ex in examples:
+        print(f"\n--- {ex['desc']} ---")
         make_example(ex["name"], ex["request"])
 
-    print(f"\nAll examples in: {EXAMPLES_DIR}")
+    print(f"\nВсе 5 демо PDF в: {EXAMPLES_DIR}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,24 @@
+{
+  "topics": [
+    {"id": "dinosaurs", "name_ru": "Динозавры", "name_uk": "Динозаври", "name_en": "Dinosaurs"},
+    {"id": "space", "name_ru": "Космос", "name_uk": "Космос", "name_en": "Space"},
+    {"id": "animals", "name_ru": "Животные", "name_uk": "Тварини", "name_en": "Animals"},
+    {"id": "cats", "name_ru": "Котики", "name_uk": "Котики", "name_en": "Cats"},
+    {"id": "dogs", "name_ru": "Собачки", "name_uk": "Собачки", "name_en": "Dogs"},
+    {"id": "cars", "name_ru": "Машинки", "name_uk": "Машинки", "name_en": "Cars"},
+    {"id": "football", "name_ru": "Футбол", "name_uk": "Футбол", "name_en": "Football"},
+    {"id": "princesses", "name_ru": "Принцессы", "name_uk": "Принцеси", "name_en": "Princesses"},
+    {"id": "pirates", "name_ru": "Пираты", "name_uk": "Пірати", "name_en": "Pirates"},
+    {"id": "superheroes", "name_ru": "Супергерои", "name_uk": "Супергерої", "name_en": "Superheroes"},
+    {"id": "pixel_world", "name_ru": "Пиксельный мир", "name_uk": "Піксельний світ", "name_en": "Pixel World"},
+    {"id": "underwater", "name_ru": "Подводный мир", "name_uk": "Підводний світ", "name_en": "Underwater World"},
+    {"id": "travel", "name_ru": "Путешествия", "name_uk": "Подорожі", "name_en": "Travel"},
+    {"id": "robots", "name_ru": "Роботы", "name_uk": "Роботи", "name_en": "Robots"},
+    {"id": "magic_forest", "name_ru": "Волшебный лес", "name_uk": "Чарівний ліс", "name_en": "Magic Forest"},
+    {"id": "sports", "name_ru": "Спорт", "name_uk": "Спорт", "name_en": "Sports"},
+    {"id": "cooking", "name_ru": "Кулинария", "name_uk": "Кулінарія", "name_en": "Cooking"},
+    {"id": "farm", "name_ru": "Ферма", "name_uk": "Ферма", "name_en": "Farm"},
+    {"id": "zoo", "name_ru": "Зоопарк", "name_uk": "Зоопарк", "name_en": "Zoo"},
+    {"id": "custom", "name_ru": "Своя тема", "name_uk": "Своя тема", "name_en": "Custom"}
+  ]
+}
