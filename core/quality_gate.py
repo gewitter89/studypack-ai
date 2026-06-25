@@ -1,3 +1,7 @@
+"""
+Quality gate: validates pack_data before PDF rendering.
+HARD FAIL = don't render. COMMERCIAL FAIL = won't sell. WARNING = log only.
+"""
 import logging
 import re
 from typing import Dict, Any, List, Tuple
@@ -31,6 +35,19 @@ AI_TONE_PHRASES = [
     "стимулирует", "стимулює",
 ]
 
+# ─── HARD FAIL: placeholder words must never appear in task text ─────────────
+PLACEHOLDER_WORDS = [
+    # English generic placeholders
+    r"\bword\b", r"\bline\b", r"\bshape\b", r"\bdigit\b",
+    r"\bobject\b", r"\bpicture\b", r"\bnumber\b", r"\bsign\b",
+    r"\btopic_word\b", r"\bplaceholder\b", r"\btodo\b",
+    # Repeated-char garbage (3+ same chars)
+    r"ssss+", r"cccc+", r"dddd+", r"aaaa+", r"xxxx+",
+    r"gggg+", r"ffff+", r"zzzz+",
+    # Template variable leakage
+    r"\{topic_word\}", r"\{word\}", r"\{object\}", r"\{topic\}",
+]
+
 _TOPIC_THRESHOLDS: Dict[str, float] = {
     "mixed_week": 0.7,
     "preschool": 0.7,
@@ -56,6 +73,27 @@ def _get_pack_type(data: Dict[str, Any]) -> str:
 def _get_topic_threshold(data: Dict[str, Any]) -> float:
     pack_type = _get_pack_type(data)
     return _TOPIC_THRESHOLDS.get(pack_type, 0.6)
+
+
+def check_placeholder_words(data: Dict[str, Any]) -> List[str]:
+    """HARD FAIL if any placeholder/garbage word appears in task questions or answers."""
+    issues = []
+    pages = data.get("pages", [])
+    for i, page in enumerate(pages):
+        for j, task in enumerate(page.get("tasks", [])):
+            text_to_check = " ".join([
+                str(task.get("question", "")),
+                str(task.get("answer", "")),
+                " ".join(str(o) for o in task.get("options", [])),
+            ]).lower()
+            for pattern in PLACEHOLDER_WORDS:
+                if re.search(pattern, text_to_check, re.IGNORECASE):
+                    issues.append(
+                        f"HARD FAIL: Placeholder '{pattern}' in page {i+1} task {j+1}: "
+                        f"'{task.get('question', '')[:60]}'"
+                    )
+                    break  # one issue per task is enough
+    return issues
 
 
 def check_technical_words(data: Dict[str, Any]) -> List[str]:
@@ -121,6 +159,27 @@ def check_empty_pages(data: Dict[str, Any]) -> List[str]:
     return issues
 
 
+def check_empty_answers(data: Dict[str, Any]) -> List[str]:
+    """Flag if any answer block has blank strings (creative tasks excluded)."""
+    issues = []
+    creative_types = {"creative", "coloring", "drawing", "maze", "labyrinth"}
+    for block in data.get("answers", []):
+        pn = block.get("page_number", "?")
+        for k, ans in enumerate(block.get("answers", [])):
+            if ans == "" or ans is None:
+                # Check if the corresponding task is creative type
+                page = next(
+                    (p for p in data.get("pages", []) if p.get("page_number") == pn),
+                    None
+                )
+                task_type = ""
+                if page and k < len(page.get("tasks", [])):
+                    task_type = page["tasks"][k].get("type", "")
+                if task_type not in creative_types:
+                    issues.append(f"COMMERCIAL FAIL: Empty answer on page {pn}, answer {k+1}")
+    return issues
+
+
 def check_answer_count(data: Dict[str, Any]) -> List[str]:
     issues = []
     total_tasks = sum(len(p.get("tasks", [])) for p in data.get("pages", []))
@@ -158,10 +217,14 @@ def check_language_mismatch(data: Dict[str, Any]) -> List[str]:
     if lang in ("ru+en", "uk+en", "en"):
         return issues
     text_lower = str(data).lower()
+    # Russian words that must not appear in Ukrainian PDF
     ru_words = ["посчитай", "найди", "соедини", "реши", "ответь",
-                "нарисуй", "раскрась", "пожалуйста", "какой", "какая"]
+                "нарисуй", "раскрась", "пожалуйста", "какой", "какая",
+                "дошкольник", "подготовка к школе", "животные"]
+    # Ukrainian words that must not appear in Russian PDF
     uk_words = ["порахуй", "знайди", "з'єднай", "розв'яжи", "дай відповіді",
-                "намалюй", "розфарбуй", "будь ласка", "який", "яка"]
+                "намалюй", "розфарбуй", "будь ласка", "який", "яка",
+                "дошкільник", "підготовка до школи", "тварини"]
     if lang == "uk":
         for w in ru_words:
             if re.search(r'\b' + re.escape(w) + r'\b', text_lower):
@@ -170,6 +233,31 @@ def check_language_mismatch(data: Dict[str, Any]) -> List[str]:
         for w in uk_words:
             if re.search(r'\b' + re.escape(w) + r'\b', text_lower):
                 issues.append(f"HARD FAIL: Ukrainian word '{w}' in Russian PDF")
+    return issues
+
+
+def check_theme_mismatch(data: Dict[str, Any]) -> List[str]:
+    """Flag if cover title topic doesn't match content topic key."""
+    issues = []
+    title = data.get("title", "").lower()
+    topic = data.get("topic", "")
+    if not topic or topic in ("general", "custom", ""):
+        return issues
+    try:
+        from core.topic_lexicon import get_display_name, get_words
+        lang = data.get("language", "uk").split("+")[0]
+        display = get_display_name(topic, lang).lower()
+        words = get_words(topic, lang)
+        # Check if display name appears in title at all
+        # (Title may be custom; only fail if topic words are completely absent from title)
+        if words and not any(w.lower() in title for w in words[:5]):
+            if display not in title:
+                issues.append(
+                    f"COMMERCIAL FAIL: Cover title '{data.get('title', '')}' "
+                    f"does not match topic '{topic}' (expected '{get_display_name(topic, lang)}')"
+                )
+    except ImportError:
+        pass
     return issues
 
 
@@ -207,7 +295,6 @@ def check_topic_usage(data: Dict[str, Any]) -> List[str]:
         lang = data.get("language", "ru")
         words = get_words(topic, lang)
         if not words:
-            # For bilingual packs, prefer the component languages in order
             if "+" in lang:
                 langs = lang.split("+")
             elif lang == "en":
@@ -270,7 +357,11 @@ def compute_commercial_score(data: Dict[str, Any]) -> int:
     else:
         score += 15
 
-    # 2. Topic presence: 20 points
+    # 2. No placeholder words: 20 points
+    placeholder_issues = check_placeholder_words(data)
+    score += 20 if not placeholder_issues else max(0, 20 - len(placeholder_issues) * 4)
+
+    # 3. Topic presence: 15 points
     try:
         from core.topic_lexicon import get_words
         if topic and topic not in ("general", "custom", ""):
@@ -293,17 +384,17 @@ def compute_commercial_score(data: Dict[str, Any]) -> int:
                 if pages:
                     matched = _count_topic_pages(pages, words)
                     ratio = matched / len(pages)
-                    score += min(20, int(20 * ratio / 0.7))
+                    score += min(15, int(15 * ratio / 0.7))
                 else:
-                    score += 5
+                    score += 3
             else:
-                score += 10
+                score += 7
         else:
-            score += 10
+            score += 7
     except ImportError:
-        score += 10
+        score += 7
 
-    # 3. Instruction variety: 15 points
+    # 4. Instruction variety: 15 points
     instructions = [p.get("instruction", "") for p in data.get("pages", [])]
     unique_insts = len(set(instructions))
     total_pages = len(instructions)
@@ -313,23 +404,23 @@ def compute_commercial_score(data: Dict[str, Any]) -> int:
     else:
         score += 5
 
-    # 4. Age appropriateness: 15 points
-    age = data.get("age", 7)
-    score += 12
-
-    # 5. Answers present: 10 points
+    # 5. Answers present and non-empty: 15 points
     answers = data.get("answers", [])
     pages = data.get("pages", [])
     total_tasks = sum(len(p.get("tasks", [])) for p in pages)
     total_answers = sum(len(a.get("answers", [])) for a in answers)
+    non_empty = sum(
+        1 for block in answers for a in block.get("answers", []) if a and a.strip()
+    )
     if answers and total_answers >= total_tasks:
-        score += 10
+        answer_fill = non_empty / max(1, total_answers)
+        score += int(15 * answer_fill)
     elif answers:
         score += 5
     else:
         score += 0
 
-    # 6. No empty/overload: 10 points
+    # 6. No empty/overload pages: 10 points
     overloaded = False
     empty = False
     for p in pages:
@@ -345,11 +436,6 @@ def compute_commercial_score(data: Dict[str, Any]) -> int:
     else:
         score += 0
 
-    # 7. Natural text: 5 points
-    text = str(data).lower()
-    has_ai_phrases = any(phrase in text for phrase in AI_TONE_PHRASES)
-    score += 5 if not has_ai_phrases else 1
-
     return min(100, max(0, score))
 
 
@@ -363,6 +449,7 @@ def run_quality_gate(data: Dict[str, Any]) -> Tuple[bool, List[str], List[str], 
     hard_fails.extend(check_medical_claims(data))
     hard_fails.extend(check_brands(data))
     hard_fails.extend(check_technical_words(data))
+    hard_fails.extend(check_placeholder_words(data))
 
     lang_issues = check_language_mismatch(data)
     for li in lang_issues:
@@ -380,6 +467,18 @@ def run_quality_gate(data: Dict[str, Any]) -> Tuple[bool, List[str], List[str], 
 
     # WARNING checks
     warnings.extend(check_ai_tone(data))
+    
+    for issue in check_empty_answers(data):
+        if issue.startswith("COMMERCIAL FAIL"):
+            commercial_fails.append(issue)
+        else:
+            warnings.append(issue)
+            
+    for issue in check_theme_mismatch(data):
+        if issue.startswith("COMMERCIAL FAIL"):
+            commercial_fails.append(issue)
+        else:
+            warnings.append(issue)
 
     topic_issues = check_topic_usage(data)
     for ti in topic_issues:
@@ -395,7 +494,7 @@ def run_quality_gate(data: Dict[str, Any]) -> Tuple[bool, List[str], List[str], 
     # Commercial score
     commercial_score = compute_commercial_score(data)
     if commercial_score < 80:
-        commercial_fails.append(f"COMMERCIAL FAIL: score={commercial_score}/100")
+        commercial_fails.append(f"COMMERCIAL FAIL: score={commercial_score}/100 (need 80+)")
 
     passed = len(hard_fails) == 0
 

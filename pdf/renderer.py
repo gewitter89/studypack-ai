@@ -1,7 +1,22 @@
+"""
+Premium PDF renderer for StudyPack AI.
+Generates print-ready, commercial-grade A4 workbooks with:
+  - Professional cover with topic emoji icons
+  - Name + date field on every page
+  - Difficulty star badges
+  - Motivational footer messages
+  - Parent score box per page
+  - Certificate of completion (final page)
+  - Progress tracker / sticker chart page
+  - Visual answer key
+  - Page X of N numbering
+  - Commercial/demo watermark modes
+"""
 import os
+import random
 import logging
 from datetime import datetime
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
@@ -20,8 +35,13 @@ from reportlab.pdfgen import canvas
 
 from core.models import StudyPack
 
+logger = logging.getLogger(__name__)
+
+# ─── Font registration ───────────────────────────────────────────────────────
+
 _FONT_DIR = os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts")
 _fonts_registered = False
+
 
 def _register_fonts():
     global _fonts_registered
@@ -41,17 +61,78 @@ def _register_fonts():
                 pass
     _fonts_registered = True
 
+
 _register_fonts()
 
 FONT = "Arial"
 FONT_BOLD = "Arial-Bold"
 FONT_ITALIC = "Arial-Italic"
 
-logger = logging.getLogger(__name__)
-
 PAGE_WIDTH, PAGE_HEIGHT = A4
 MARGIN = 22 * mm
-WATERMARK_TEXT = "Демо-набір StudyPack AI"
+CONTENT_WIDTH = PAGE_WIDTH - 2 * MARGIN
+
+# ─── Topic emoji icons (Unicode safe — no images needed) ─────────────────────
+
+TOPIC_ICONS = {
+    "dinosaurs": "🦕",
+    "space": "🚀",
+    "animals": "🦊",
+    "fairy_tales": "🧚",
+    "cartoon_heroes": "🦸",
+    "cats": "🐱",
+    "dogs": "🐶",
+    "cars": "🚗",
+    "football": "⚽",
+    "princesses": "👑",
+    "pirates": "🏴‍☠️",
+    "superheroes_generic": "⚡",
+    "pixel_world": "🎮",
+    "underwater": "🐠",
+    "travel": "✈️",
+    "robots": "🤖",
+    "magic_forest": "🌲",
+    "sport": "🏅",
+    "cooking": "🍳",
+    "farm": "🐄",
+    "zoo": "🦁",
+    "nature": "🌻",
+    "general": "📚",
+}
+
+# ─── Motivational messages (per-page footer) ─────────────────────────────────
+
+MOTIVATIONAL_UK = [
+    "Ти молодець! Продовжуй!",
+    "Чудово! Так тримати!",
+    "Кожне завдання — це перемога!",
+    "Ти зростаєш з кожним завданням!",
+    "Старання — це вже успіх!",
+    "Неймовірно! Ти впораєшся!",
+    "Крок за кроком до знань!",
+    "Ти — справжня зірка! ★",
+]
+
+MOTIVATIONAL_RU = [
+    "Ты молодец! Продолжай!",
+    "Отлично! Так держать!",
+    "Каждое задание — это победа!",
+    "Ты растёшь с каждым заданием!",
+    "Стараться — это уже успех!",
+    "Невероятно! У тебя получится!",
+    "Шаг за шагом к знаниям!",
+    "Ты — настоящая звезда! ★",
+]
+
+# ─── Difficulty stars ─────────────────────────────────────────────────────────
+
+DIFFICULTY_BADGES = {
+    "easy": "⭐",
+    "medium": "⭐⭐",
+    "hard": "⭐⭐⭐",
+}
+
+# ─── Themes ───────────────────────────────────────────────────────────────────
 
 THEMES = {
     "print_bw": {
@@ -65,6 +146,8 @@ THEMES = {
         "line_color": HexColor('#BBBBBB'),
         "title_color": HexColor('#2E5090'),
         "use_ink_save": True,
+        "cover_bg": HexColor('#FFFFFF'),
+        "cover_stripe": HexColor('#2E5090'),
     },
     "minimal": {
         "name": "Минималистичный",
@@ -77,6 +160,8 @@ THEMES = {
         "line_color": HexColor('#A0AEC0'),
         "title_color": HexColor('#1A365D'),
         "use_ink_save": False,
+        "cover_bg": HexColor('#F7FAFC'),
+        "cover_stripe": HexColor('#3182CE'),
     },
     "fun": {
         "name": "Весёлый",
@@ -89,6 +174,8 @@ THEMES = {
         "line_color": HexColor('#E53E3E'),
         "title_color": HexColor('#D53F8C'),
         "use_ink_save": False,
+        "cover_bg": HexColor('#FFF5F7'),
+        "cover_stripe": HexColor('#D53F8C'),
     },
     "academic": {
         "name": "Учебный",
@@ -101,18 +188,30 @@ THEMES = {
         "line_color": HexColor('#68D391'),
         "title_color": HexColor('#22543D'),
         "use_ink_save": False,
+        "cover_bg": HexColor('#F0FFF4'),
+        "cover_stripe": HexColor('#2F855A'),
     },
 }
 
-DISCLAIMER_TEXT = (
+DISCLAIMER_TEXT_UK = (
     "Матеріал є додатковим навчальним ресурсом і не замінює "
     "консультацію педагога, логопеда, психолога або лікаря."
+)
+DISCLAIMER_TEXT_RU = (
+    "Материал является дополнительным учебным ресурсом и не заменяет "
+    "консультацию педагога, логопеда, психолога или врача."
 )
 
 
 def _get_theme(theme_id: str = "print_bw") -> dict:
     return THEMES.get(theme_id, THEMES["print_bw"])
 
+
+def _is_uk(lang: str) -> bool:
+    return lang in ("uk", "uk+en")
+
+
+# ─── Styles ───────────────────────────────────────────────────────────────────
 
 def _get_styles(theme_id: str = "print_bw"):
     styles = getSampleStyleSheet()
@@ -196,55 +295,602 @@ def _get_styles(theme_id: str = "print_bw"):
         leading=16, leftIndent=4 * mm, spaceAfter=2 * mm,
         textColor=t["dark_gray"]
     ))
+    styles.add(ParagraphStyle(
+        name='MotivFooter', fontName=FONT_ITALIC, fontSize=8,
+        leading=11, alignment=TA_CENTER, textColor=t["accent"],
+        spaceBefore=2 * mm
+    ))
+    styles.add(ParagraphStyle(
+        name='NameField', fontName=FONT, fontSize=10,
+        leading=14, textColor=t["dark_gray"]
+    ))
+    styles.add(ParagraphStyle(
+        name='ScoreBox', fontName=FONT, fontSize=9,
+        leading=12, textColor=t["med_gray"], alignment=TA_RIGHT
+    ))
+    styles.add(ParagraphStyle(
+        name='CertTitle', fontName=FONT_BOLD, fontSize=28,
+        leading=36, alignment=TA_CENTER, textColor=t["brand"],
+        spaceAfter=6 * mm
+    ))
+    styles.add(ParagraphStyle(
+        name='CertBody', fontName=FONT, fontSize=14,
+        leading=20, alignment=TA_CENTER, textColor=t["dark_gray"],
+        spaceAfter=3 * mm
+    ))
+    styles.add(ParagraphStyle(
+        name='CertName', fontName=FONT_BOLD, fontSize=22,
+        leading=30, alignment=TA_CENTER, textColor=t["brand"],
+        spaceAfter=4 * mm
+    ))
+    styles.add(ParagraphStyle(
+        name='TrackerTitle', fontName=FONT_BOLD, fontSize=16,
+        leading=22, alignment=TA_CENTER, textColor=t["title_color"],
+        spaceAfter=4 * mm
+    ))
     return styles
 
 
+# ─── Watermark canvas (page decorations drawn on every page) ──────────────────
+
 class _WatermarkCanvas:
     def __init__(self, watermark: str = "", is_commercial: bool = False,
-                 brand: str = ""):
+                 brand: str = "", total_pages: int = 0, lang: str = "uk",
+                 child_name: str = "", difficulty: str = "easy",
+                 topic: str = "general"):
         self.watermark = watermark
         self.is_commercial = is_commercial
         self.brand = brand
+        self.total_pages = total_pages
+        self.lang = lang
+        self.child_name = child_name
+        self.difficulty = difficulty
+        self.topic = topic
 
-    def add_watermark(self, c: canvas.Canvas, doc):
+    def _draw_page_decorations(self, c: canvas.Canvas, doc):
         c.saveState()
-        if not self.is_commercial and self.watermark:
+        page_num = doc.page
+
+        # Watermark (demo mode only)
+        if not self.is_commercial and self.watermark and self.watermark.lower() == "internal_demo":
             c.setFont(FONT, 36)
             c.setFillColor(HexColor('#E0E0E0'))
+            c.saveState()
             c.translate(PAGE_WIDTH / 2, PAGE_HEIGHT / 2)
             c.rotate(45)
             c.drawCentredString(0, 0, self.watermark)
-        if doc.page > 1:
+            c.restoreState()
+
+        # Skip decorations on cover page (page 1)
+        if page_num > 1:
+            uk = _is_uk(self.lang)
+
+            # ── Demo watermark footer (left side, pages > 1) ──
+            if not self.is_commercial and self.watermark and self.watermark.lower() != "internal_demo":
+                c.setFont(FONT, 6)
+                c.setFillColor(HexColor('#CCCCCC'))
+                footer_text = "StudyPack AI — демо-сторінка" if uk else "StudyPack AI — демо-версия"
+                c.drawString(MARGIN, 8 * mm, footer_text)
+
+            # ── Page X of N (bottom center) ──
+            if self.total_pages > 0:
+                label = f"Сторінка {page_num} з {self.total_pages}" if uk else f"Страница {page_num} из {self.total_pages}"
+            else:
+                label = f"— {page_num} —"
             c.setFont(FONT, 7)
             c.setFillColor(HexColor('#BBBBBB'))
-            c.drawCentredString(PAGE_WIDTH / 2, 8 * mm, f"— {doc.page} —")
-            if self.brand and not self.is_commercial:
+            c.drawCentredString(PAGE_WIDTH / 2, 8 * mm, label)
+
+            # ── Brand footer (right side) ──
+            if self.brand:
                 c.setFont(FONT, 6)
+                c.setFillColor(HexColor('#CCCCCC'))
                 c.drawRightString(PAGE_WIDTH - MARGIN, 8 * mm, self.brand)
+
+            # ── Name + Date field (top of page) ──
+            name_label = "Ім'я" if uk else "Имя"
+            date_label = "Дата" if uk else "Дата"
+            name_val = self.child_name if self.child_name else "____________________"
+            c.setFont(FONT, 9)
+            c.setFillColor(HexColor('#AAAAAA'))
+            c.drawString(MARGIN, PAGE_HEIGHT - 14 * mm,
+                         f"{name_label}: {name_val}     {date_label}: __________")
+
+            # ── Difficulty badge (top right) ──
+            badge = DIFFICULTY_BADGES.get(self.difficulty, "")
+            if badge:
+                c.setFont(FONT, 10)
+                c.drawRightString(PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 14 * mm, badge)
+
         c.restoreState()
 
     def first_page(self, c: canvas.Canvas, doc):
-        self.add_watermark(c, doc)
+        self._draw_page_decorations(c, doc)
 
     def later_pages(self, c: canvas.Canvas, doc):
-        self.add_watermark(c, doc)
+        self._draw_page_decorations(c, doc)
 
+
+# ─── Helper: separator line ──────────────────────────────────────────────────
+
+def _separator(t, width=None):
+    w = width or CONTENT_WIDTH
+    sep = Table([[""]], colWidths=[w], rowHeights=[0.5])
+    sep.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["med_gray"])]))
+    return sep
+
+
+def _thin_separator(t, width=None):
+    w = width or CONTENT_WIDTH
+    sep = Table([[""]], colWidths=[w], rowHeights=[0.3])
+    sep.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["light_gray"])]))
+    return sep
+
+
+# ─── Cover page ───────────────────────────────────────────────────────────────
+
+def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand, lang):
+    uk = _is_uk(lang)
+    title = pack_data.get("title", "StudyPack")
+    subtitle = pack_data.get("subtitle", "")
+    age = pack_data.get("age", "")
+    grade = pack_data.get("grade", "")
+    topic = pack_data.get("topic", "")
+    pages_data = pack_data.get("pages", [])
+    difficulty = pack_data.get("difficulty", "easy")
+
+    # Topic icon (big centered emoji)
+    try:
+        from core.topic_lexicon import resolve_topic, get_display_name
+        resolved_topic = resolve_topic(topic, lang)
+        display_topic = get_display_name(topic, lang)
+    except ImportError:
+        resolved_topic = topic
+        display_topic = topic
+    icon = TOPIC_ICONS.get(resolved_topic, TOPIC_ICONS.get("general", "📚"))
+
+    # Cover layout
+    elements.append(Spacer(1, 20 * mm))
+
+    # Topic icon large
+    icon_style = ParagraphStyle(
+        'CoverIcon', fontName=FONT, fontSize=48,
+        leading=56, alignment=TA_CENTER, spaceAfter=4 * mm
+    )
+    elements.append(Paragraph(icon, icon_style))
+
+    # Title
+    elements.append(Paragraph(title, styles['CoverTitle']))
+    elements.append(Spacer(1, 2 * mm))
+
+    if subtitle:
+        elements.append(Paragraph(subtitle, styles['CoverSubtitle']))
+    elements.append(Spacer(1, 8 * mm))
+
+    # Colored stripe separator
+    stripe = Table([[""]], colWidths=[CONTENT_WIDTH], rowHeights=[3])
+    stripe.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["cover_stripe"])]))
+    elements.append(stripe)
+    elements.append(Spacer(1, 6 * mm))
+
+    # Cover info table (2 columns: label + value)
+    cover_rows = []
+    if age:
+        label_a = "Вік" if uk else "Возраст"
+        val_a = f"{age} {'років' if uk else 'лет'}"
+        cover_rows.append([f"{label_a}:", val_a])
+    if grade:
+        label_g = "Клас" if uk else "Класс"
+        cover_rows.append([f"{label_g}:", grade])
+    if display_topic:
+        label_t = "Тема" if uk else "Тема"
+        cover_rows.append([f"{label_t}:", display_topic])
+    if difficulty:
+        label_d = "Складність" if uk else "Сложность"
+        badge = DIFFICULTY_BADGES.get(difficulty, difficulty)
+        cover_rows.append([f"{label_d}:", badge])
+
+    exercise_count = len([p for p in pages_data if p.get("page_type") != "answers"])
+    label_p = "Сторінок" if uk else "Страниц"
+    cover_rows.append([f"{label_p}:", str(exercise_count)])
+
+    if cover_rows:
+        info_table = Table(cover_rows, colWidths=[50 * mm, 80 * mm])
+        info_table.setStyle(TableStyle([
+            ('FONTNAME', (0, 0), (0, -1), FONT_BOLD),
+            ('FONTNAME', (1, 0), (1, -1), FONT),
+            ('FONTSIZE', (0, 0), (-1, -1), 11),
+            ('TEXTCOLOR', (0, 0), (0, -1), t["dark_gray"]),
+            ('TEXTCOLOR', (1, 0), (1, -1), t["accent"]),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('TOPPADDING', (0, 0), (-1, -1), 2),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+        ]))
+        elements.append(info_table)
+
+    # ── What's Inside list ──
+    inside_items = []
+    seen_titles = set()
+    for page in pages_data:
+        p_type = page.get("page_type", "exercise")
+        if p_type in ("answers", "instruction"):
+            continue
+        p_title = page.get("title", "")
+        if ":" in p_title:
+            p_title = p_title.split(":")[-1].strip()
+        p_title_lower = p_title.lower()
+        if p_title_lower and p_title_lower not in seen_titles:
+            seen_titles.add(p_title_lower)
+            inside_items.append(p_title)
+            
+    if pack_data.get("include_answers", True) or pack_data.get("answers"):
+        inside_items.append("відповіді для дорослого" if uk else "ответы для взрослого")
+
+    if inside_items:
+        elements.append(Spacer(1, 4 * mm))
+        inside_title = "Усередині:" if uk else "Внутри:"
+        inside_style_title = ParagraphStyle(
+            'CoverInsideTitle', fontName=FONT_BOLD, fontSize=11,
+            leading=14, spaceAfter=2 * mm, textColor=t["dark_gray"]
+        )
+        elements.append(Paragraph(inside_title, inside_style_title))
+        
+        inside_style_item = ParagraphStyle(
+            'CoverInsideItem', fontName=FONT, fontSize=10,
+            leading=13, textColor=t["accent"]
+        )
+        for item in inside_items[:5]:  # limit to 5 items to avoid overflow
+            elements.append(Paragraph(f"✓ {item.lower()}", inside_style_item))
+
+    elements.append(Spacer(1, 6 * mm))
+
+    desc = (
+        "Навчальний набір для домашніх занять"
+        if uk else "Учебный набор для домашних занятий"
+    )
+    elements.append(Paragraph(desc, styles['CoverDetail']))
+
+    if brand:
+        elements.append(Spacer(1, 5 * mm))
+        elements.append(Paragraph(brand, styles['CoverBrand']))
+
+    elements.append(Spacer(1, 6 * mm))
+    elements.append(stripe)
+
+    if not is_commercial and watermark:
+        demo_note = (
+            "ДЕМО-ВЕРСІЯ | Для комерційного використання звертайтеся до автора"
+            if uk
+            else "ДЕМО-ВЕРСИЯ | Для коммерческого использования обратитесь к автору"
+        )
+        elements.append(Spacer(1, 3 * mm))
+        elements.append(Paragraph(demo_note, styles['CoverBrand']))
+
+    elements.append(PageBreak())
+
+
+# ─── Parent instruction page ─────────────────────────────────────────────────
+
+def _build_parent_page(elements, pack_data, styles, t, lang):
+    uk = _is_uk(lang)
+    parent_instruction = pack_data.get("parent_instruction", "")
+
+    inst_title = "Інструкція для батьків" if uk else "Инструкция для родителей"
+    elements.append(Paragraph(inst_title, styles['PageTitle']))
+    elements.append(Spacer(1, 2 * mm))
+
+    bullets = [
+        "Займайтеся 10–20 хвилин на день." if uk else "Занимайтесь 10–20 минут в день.",
+        "Не сваріть дитину за помилки — хваліть за спробу." if uk else "Не ругайте ребёнка за ошибки — хвалите за попытку.",
+        "Робіть перерви, якщо дитина втомилася." if uk else "Делайте перерывы, если ребёнок устал.",
+        "Використовуйте завдання як гру, а не як іспит." if uk else "Используйте задания как игру, а не как экзамен.",
+        "Відповіді в кінці — тільки для перевірки дорослим." if uk else "Ответы в конце — только для проверки взрослым.",
+    ]
+    for b in bullets:
+        elements.append(Paragraph(f"•  {b}", styles['ParentInst']))
+        elements.append(Spacer(1, 1 * mm))
+
+    disclaimer = DISCLAIMER_TEXT_UK if uk else DISCLAIMER_TEXT_RU
+    elements.append(Spacer(1, 4 * mm))
+    elements.append(_thin_separator(t))
+    elements.append(Spacer(1, 2 * mm))
+    elements.append(Paragraph(disclaimer, styles['Disclaimer']))
+    elements.append(PageBreak())
+
+
+# ─── Exercise pages ──────────────────────────────────────────────────────────
+
+def _build_exercise_pages(elements, pages_data, styles, t, lang, difficulty):
+    uk = _is_uk(lang)
+    motiv_pool = MOTIVATIONAL_UK if uk else MOTIVATIONAL_RU
+
+    for page in pages_data:
+        if page.get("page_type") == "answers":
+            continue
+
+        title_text = page.get("title", "")
+        instruction = page.get("instruction", "")
+        tasks = page.get("tasks", [])
+
+        # Page title with decorative line
+        elements.append(Spacer(1, 4 * mm))  # space below name/date field
+        elements.append(Paragraph(title_text, styles['PageTitle']))
+        if instruction:
+            elements.append(Paragraph(instruction, styles['Instruction']))
+
+        elements.append(_thin_separator(t, CONTENT_WIDTH - 6 * mm))
+        elements.append(Spacer(1, 2 * mm))
+
+        # Tasks
+        for j, task in enumerate(tasks):
+            q = task.get("question", "")
+            opts = task.get("options") or []
+            has_space = task.get("answer_space", True)
+
+            elements.append(Paragraph(f"<b>{j + 1}. {q}</b>", styles['TaskQuestion']))
+            if opts:
+                for i, opt in enumerate(opts):
+                    letter = chr(65 + i) if i < 26 else str(i + 1)
+                    elements.append(Paragraph(
+                        f"&nbsp;&nbsp;&nbsp;{letter}) {opt}",
+                        styles['TaskOption']
+                    ))
+            if has_space:
+                elements.append(Spacer(1, 5 * mm))
+                line_data = [["____________________________________________"]]
+                line_t = Table(line_data, colWidths=[CONTENT_WIDTH - 12 * mm])
+                line_t.setStyle(TableStyle([
+                    ('TEXTCOLOR', (0, 0), (-1, -1), t["line_color"]),
+                    ('FONTSIZE', (0, 0), (-1, -1), 10),
+                ]))
+                elements.append(line_t)
+            elements.append(Spacer(1, 2 * mm))
+
+        # ── Score box (bottom of page) ──
+        score_label = "Результат" if uk else "Результат"
+        total = len(tasks)
+        score_text = f"{score_label}: ___ / {total}     {'Дата' if uk else 'Дата'}: __________"
+        elements.append(Spacer(1, 3 * mm))
+        elements.append(_thin_separator(t))
+        elements.append(Spacer(1, 1 * mm))
+        elements.append(Paragraph(score_text, styles['ScoreBox']))
+
+        # ── Motivational message ──
+        motiv = random.choice(motiv_pool)
+        elements.append(Paragraph(motiv, styles['MotivFooter']))
+
+        elements.append(PageBreak())
+
+
+# ─── Progress tracker page ───────────────────────────────────────────────────
+
+def _build_tracker_page(elements, pages_data, styles, t, lang):
+    uk = _is_uk(lang)
+    elements.append(Spacer(1, 4 * mm))
+    tracker_title = "Трекер прогресу" if uk else "Трекер прогресса"
+    elements.append(Paragraph(tracker_title, styles['TrackerTitle']))
+
+    desc = (
+        "Відмічай кожне виконане завдання зірочкою або наклейкою!"
+        if uk
+        else "Отмечай каждое выполненное задание звёздочкой или наклейкой!"
+    )
+    elements.append(Paragraph(desc, styles['Instruction']))
+    elements.append(Spacer(1, 4 * mm))
+
+    exercise_pages = [p for p in pages_data if p.get("page_type") != "answers"]
+    num_exercises = len(exercise_pages)
+
+    # Build tracker grid (rows of 7)
+    day_label = "Завдання" if uk else "Задание"
+    done_label = "✓" if uk else "✓"
+
+    header = [day_label, "☆"]
+    rows = [header]
+    for i in range(num_exercises):
+        page_title = exercise_pages[i].get("title", f"{day_label} {i+1}")
+        short_title = page_title[:30] if len(page_title) > 30 else page_title
+        rows.append([short_title, "☐"])
+
+    col_widths = [CONTENT_WIDTH - 30 * mm, 25 * mm]
+    tracker_table = Table(rows, colWidths=col_widths)
+    tracker_table.setStyle(TableStyle([
+        ('FONTNAME', (0, 0), (-1, 0), FONT_BOLD),
+        ('FONTNAME', (0, 1), (-1, -1), FONT),
+        ('FONTSIZE', (0, 0), (-1, -1), 11),
+        ('TEXTCOLOR', (0, 0), (-1, 0), t["brand"]),
+        ('TEXTCOLOR', (0, 1), (-1, -1), t["dark_gray"]),
+        ('ALIGN', (1, 0), (1, -1), 'CENTER'),
+        ('GRID', (0, 0), (-1, -1), 0.5, t["line_color"]),
+        ('BACKGROUND', (0, 0), (-1, 0), t["light_gray"]),
+        ('TOPPADDING', (0, 0), (-1, -1), 3),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+    ]))
+    elements.append(tracker_table)
+    elements.append(PageBreak())
+
+
+# ─── Final "well done" page ──────────────────────────────────────────────────
+
+def _build_final_page(elements, styles, t, lang):
+    uk = _is_uk(lang)
+    elements.append(Spacer(1, 30 * mm))
+    msg = "Молодець! Ти чудово впорався! ★" if uk else "Молодец! Ты отлично справился! ★"
+    elements.append(Paragraph(msg, styles['FinalMessage']))
+    elements.append(Spacer(1, 8 * mm))
+    finish = (
+        "Продовжуй займатися, і в тебе все вийде!"
+        if uk else "Продолжай заниматься, и у тебя всё получится!"
+    )
+    elements.append(Paragraph(finish, styles['CoverSubtitle']))
+    elements.append(PageBreak())
+
+
+# ─── Certificate of completion ────────────────────────────────────────────────
+
+def _build_certificate(elements, pack_data, styles, t, lang, child_name):
+    uk = _is_uk(lang)
+    elements.append(Spacer(1, 15 * mm))
+
+    # Decorative border (top stripe)
+    stripe = Table([[""]], colWidths=[CONTENT_WIDTH], rowHeights=[4])
+    stripe.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["cover_stripe"])]))
+    elements.append(stripe)
+    elements.append(Spacer(1, 10 * mm))
+
+    cert_label = "СЕРТИФІКАТ" if uk else "СЕРТИФИКАТ"
+    elements.append(Paragraph(cert_label, styles['CertTitle']))
+
+    desc = (
+        "Цим підтверджується, що"
+        if uk else "Настоящим подтверждается, что"
+    )
+    elements.append(Paragraph(desc, styles['CertBody']))
+
+    name_display = child_name if child_name else ("____________________" if uk else "____________________")
+    elements.append(Paragraph(name_display, styles['CertName']))
+
+    topic = pack_data.get("topic", "")
+    try:
+        from core.topic_lexicon import get_display_name
+        display_topic = get_display_name(topic, lang)
+    except ImportError:
+        display_topic = topic
+
+    title = pack_data.get("title", "StudyPack")
+    completed_text = (
+        f"успішно завершив(ла) навчальний набір «{title}»"
+        if uk
+        else f"успешно завершил(а) учебный набор «{title}»"
+    )
+    elements.append(Paragraph(completed_text, styles['CertBody']))
+    elements.append(Spacer(1, 4 * mm))
+
+    pages_count = len([p for p in pack_data.get("pages", []) if p.get("page_type") != "answers"])
+    pages_text = (
+        f"Виконано завдань: {pages_count} сторінок"
+        if uk
+        else f"Выполнено заданий: {pages_count} страниц"
+    )
+    elements.append(Paragraph(pages_text, styles['CertBody']))
+
+    stars = "⭐ ⭐ ⭐ ⭐ ⭐"
+    star_style = ParagraphStyle(
+        'CertStars', fontName=FONT, fontSize=24,
+        leading=30, alignment=TA_CENTER, spaceAfter=8 * mm
+    )
+    elements.append(Spacer(1, 4 * mm))
+    elements.append(Paragraph(stars, star_style))
+
+    date_str = datetime.now().strftime("%d.%m.%Y")
+    date_text = f"{'Дата' if uk else 'Дата'}: {date_str}"
+    elements.append(Paragraph(date_text, styles['CertBody']))
+
+    elements.append(Spacer(1, 8 * mm))
+    elements.append(stripe)
+    elements.append(PageBreak())
+
+
+# ─── Answers section ─────────────────────────────────────────────────────────
+
+def _build_answers(elements, answers_data, styles, t, lang):
+    uk = _is_uk(lang)
+    if not answers_data:
+        return
+
+    ans_title = "Відповіді" if uk else "Ответы"
+    elements.append(Paragraph(ans_title, styles['PageTitle']))
+    elements.append(Spacer(1, 3 * mm))
+    disp = (
+        "Відповіді призначені тільки для перевірки дорослим."
+        if uk else "Ответы предназначены только для проверки взрослым."
+    )
+    elements.append(Paragraph(disp, styles['Instruction']))
+    elements.append(Spacer(1, 2 * mm))
+
+    for block in answers_data:
+        an = block.get("page_number", "")
+        answers_list = block.get("answers", [])
+        label_s = "Сторінка" if uk else "Страница"
+        elements.append(Paragraph(
+            f"<b>{label_s} {an}:</b>", styles['AnswerBlock']
+        ))
+
+        # Build answer rows as a small table (visual answer key)
+        if answers_list:
+            ans_rows = []
+            for k, a in enumerate(answers_list):
+                ans_rows.append([f"{k + 1}.", str(a) if a else "—"])
+            ans_table = Table(ans_rows, colWidths=[8 * mm, CONTENT_WIDTH - 20 * mm])
+            ans_table.setStyle(TableStyle([
+                ('FONTNAME', (0, 0), (0, -1), FONT_BOLD),
+                ('FONTNAME', (1, 0), (1, -1), FONT),
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+                ('TEXTCOLOR', (0, 0), (0, -1), t["accent"]),
+                ('TEXTCOLOR', (1, 0), (1, -1), t["dark_gray"]),
+                ('TOPPADDING', (0, 0), (-1, -1), 1),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 1),
+                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+            ]))
+            elements.append(ans_table)
+
+        elements.append(Spacer(1, 2 * mm))
+
+    elements.append(_separator(t))
+    elements.append(Spacer(1, 2 * mm))
+
+    disclaimer = DISCLAIMER_TEXT_UK if uk else DISCLAIMER_TEXT_RU
+    elements.append(Paragraph(disclaimer, styles['Disclaimer']))
+
+
+# ─── Main render function ────────────────────────────────────────────────────
 
 def render_pdf(pack_data: Dict[str, Any], output_path: str,
                watermark: str = "", is_commercial: bool = False,
                brand: str = "", theme: str = "print_bw") -> str:
+    """Render a complete premium PDF workbook from pack_data dict."""
     theme_id = theme or pack_data.get("style", "print_bw")
     if theme_id not in THEMES:
         theme_id = "print_bw"
     styles = _get_styles(theme_id)
     t = _get_theme(theme_id)
+
     try:
         pack = StudyPack(**pack_data)
     except Exception as e:
         logger.warning(f"Pydantic validation failed: {e}, using raw dict")
         pack = None
 
-    wc = _WatermarkCanvas(watermark or WATERMARK_TEXT, is_commercial, brand)
+    lang = pack_data.get("language", "uk")
+    child_name = pack_data.get("child_name", "")
+    difficulty = pack_data.get("difficulty", "easy")
+    topic = pack_data.get("topic", "general")
+    pages_data = pack_data.get("pages", [])
+    answers_data = pack_data.get("answers", [])
+    parent_instruction = pack_data.get("parent_instruction", "")
+
+    # Estimate total pages for "page X of N" footer
+    total_pages = (
+        1  # cover
+        + (1 if parent_instruction else 0)  # parent instruction
+        + len([p for p in pages_data if p.get("page_type") != "answers"])  # exercises
+        + 1  # tracker
+        + 1  # final / well done
+        + 1  # certificate
+        + (1 if answers_data else 0)  # answers
+    )
+
+    wc = _WatermarkCanvas(
+        watermark=watermark or ("" if is_commercial else "Демо-набір StudyPack AI"),
+        is_commercial=is_commercial,
+        brand=brand,
+        total_pages=total_pages,
+        lang=lang,
+        child_name=child_name,
+        difficulty=difficulty,
+        topic=topic,
+    )
 
     doc = BaseDocTemplate(
         output_path,
@@ -257,7 +903,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
 
     frame = Frame(
         MARGIN, MARGIN + 8 * mm,
-        PAGE_WIDTH - 2 * MARGIN,
+        CONTENT_WIDTH,
         PAGE_HEIGHT - 2 * MARGIN - 8 * mm,
         id='normal'
     )
@@ -269,199 +915,27 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
 
     elements = []
 
-    title = pack_data.get("title", "StudyPack")
-    subtitle = pack_data.get("subtitle", "")
-    lang = pack_data.get("language", "uk")
-    age = pack_data.get("age", "")
-    grade = pack_data.get("grade", "")
-    topic = pack_data.get("topic", "")
-    pack_type = pack_data.get("pack_type", "")
-    pages_data = pack_data.get("pages", [])
-    answers_data = pack_data.get("answers", [])
-    parent_instruction = pack_data.get("parent_instruction", "")
+    # 1. Cover
+    _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand, lang)
 
-    elements.append(Spacer(1, 25 * mm))
-    elements.append(Paragraph(title, styles['CoverTitle']))
-    elements.append(Spacer(1, 3 * mm))
-    if subtitle:
-        elements.append(Paragraph(subtitle, styles['CoverSubtitle']))
-    elements.append(Spacer(1, 10 * mm))
-
-    cover_lines = []
-    if age:
-        label_a = "Вік" if lang in ("uk", "uk+en") else "Возраст"
-        cover_lines.append(f"{label_a}: {age} {('років' if lang in ('uk','uk+en') else 'лет')}")
-    if grade:
-        label_g = "Клас" if lang in ("uk", "uk+en") else "Класс"
-        cover_lines.append(f"{label_g}: {grade}")
-    if topic:
-        label_t = "Тема" if lang in ("uk", "uk+en") else "Тема"
-        cover_lines.append(f"{label_t}: {topic}")
-    label_p = "Сторінок" if lang in ("uk", "uk+en") else "Страниц"
-    exercise_count = len([p for p in pages_data if p.get("page_type") != "answers"])
-    cover_lines.append(f"{label_p}: {exercise_count}")
-
-    for line in cover_lines:
-        elements.append(Paragraph(line, styles['CoverDetail']))
-
-    elements.append(Spacer(1, 8 * mm))
-    desc = (
-        "Навчальний набір для домашніх занять"
-        if lang in ("uk", "uk+en")
-        else "Учебный набор для домашних занятий"
-    )
-    elements.append(Paragraph(desc, styles['CoverDetail']))
-
-    if brand:
-        elements.append(Spacer(1, 5 * mm))
-        elements.append(Paragraph(brand, styles['CoverBrand']))
-
-    sep =Table([[""]],colWidths=[PAGE_WIDTH - 2 * MARGIN],rowHeights=[0.5])
-    sep.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
-    elements.append(Spacer(1, 8 * mm))
-    elements.append(sep)
-
-    if not is_commercial and watermark:
-        demo_note = (
-            "ДЕМО-ВЕРСІЯ | Для комерційного використання звертайтеся до автора"
-            if lang in ("uk", "uk+en")
-            else "ДЕМО-ВЕРСИЯ | Для коммерческого использования обратитесь к автору"
-        )
-        elements.append(Spacer(1, 3 * mm))
-        elements.append(Paragraph(demo_note, styles['CoverBrand']))
-
-    elements.append(PageBreak())
-
+    # 2. Parent instruction
     if parent_instruction:
-        inst_title = "Інструкція для батьків" if lang in ("uk", "uk+en") else "Инструкция для родителей"
-        elements.append(Paragraph(inst_title, styles['PageTitle']))
-        elements.append(Spacer(1, 2 * mm))
+        _build_parent_page(elements, pack_data, styles, t, lang)
 
-        bullets = [
-            ("Займайтеся 10–20 хвилин на день." if lang in ("uk", "uk+en") else "Занимайтесь 10–20 минут в день."),
-            ("Не сваріть дитину за помилки — хваліть за спробу." if lang in ("uk", "uk+en") else "Не ругайте ребёнка за ошибки — хвалите за попытку."),
-            ("Робіть перерви, якщо дитина втомилася." if lang in ("uk", "uk+en") else "Делайте перерывы, если ребёнок устал."),
-            ("Використовуйте завдання як гру, а не як іспит." if lang in ("uk", "uk+en") else "Используйте задания как игру, а не как экзамен."),
-            ("Відповіді в кінці — тільки для перевірки дорослим." if lang in ("uk", "uk+en") else "Ответы в конце — только для проверки взрослым."),
-        ]
-        for b in bullets:
-            elements.append(Paragraph(f"•  {b}", styles['ParentInst']))
-            elements.append(Spacer(1, 1 * mm))
+    # 3. Exercise pages
+    _build_exercise_pages(elements, pages_data, styles, t, lang, difficulty)
 
-        disclaimer = (
-            DISCLAIMER_TEXT if lang in ("uk", "uk+en")
-            else "Материал является дополнительным учебным ресурсом и не заменяет "
-                 "консультацию педагога, логопеда, психолога или врача."
-        )
-        elements.append(Spacer(1, 4 * mm))
-        sep2 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN], rowHeights=[0.3])
-        sep2.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
-        elements.append(sep2)
-        elements.append(Spacer(1, 2 * mm))
-        elements.append(Paragraph(disclaimer, styles['Disclaimer']))
-        elements.append(PageBreak())
+    # 4. Progress tracker
+    _build_tracker_page(elements, pages_data, styles, t, lang)
 
-    # Exercise pages
-    for page in pages_data:
-        if page.get("page_type") == "answers":
-            continue
-        pn = page.get("page_number", "")
-        title_text = page.get("title", "")
-        instruction = page.get("instruction", "")
-        tasks = page.get("tasks", [])
+    # 5. Final "well done" page
+    _build_final_page(elements, styles, t, lang)
 
-        elements.append(Paragraph(title_text, styles['PageTitle']))
-        if instruction:
-            elements.append(Paragraph(instruction, styles['Instruction']))
+    # 6. Certificate of completion
+    _build_certificate(elements, pack_data, styles, t, lang, child_name)
 
-        # Decorative separator
-        sep3 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN - 6 * mm], rowHeights=[0.3])
-        sep3.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["light_gray"])]))
-        elements.append(sep3)
-        elements.append(Spacer(1, 2 * mm))
-
-        for j, task in enumerate(tasks):
-            q = task.get("question", "")
-            opts = task.get("options") or []
-            ans = task.get("answer", "")
-            has_space = task.get("answer_space", True)
-            ttype = task.get("type", "")
-
-            elements.append(Paragraph(f"<b>{j + 1}. {q}</b>", styles['TaskQuestion']))
-            if opts:
-                for i, opt in enumerate(opts):
-                    letter = chr(65 + i) if i < 26 else str(i + 1)
-                    elements.append(Paragraph(
-                        f"&nbsp;&nbsp;&nbsp;{letter}) {opt}",
-                        styles['TaskOption']
-                    ))
-            if has_space:
-                elements.append(Spacer(1, 7 * mm))
-                line_data = [["____________________________________________"]]
-                line_t = Table(line_data, colWidths=[PAGE_WIDTH - 2 * MARGIN - 12 * mm])
-                line_t.setStyle(TableStyle([
-                    ('TEXTCOLOR', (0,0), (-1,-1), t["line_color"]),
-                    ('FONTSIZE', (0,0), (-1,-1), 10),
-                ]))
-                elements.append(line_t)
-            elements.append(Spacer(1, 2 * mm))
-
-        elements.append(PageBreak())
-
-    # Final page
-    elements.append(Spacer(1, 30 * mm))
-    msg = (
-        "Молодець! Ти чудово впорався! \u2605"
-        if lang in ("uk", "uk+en")
-        else "Молодец! Ты отлично справился! \u2605"
-    )
-    elements.append(Paragraph(msg, styles['FinalMessage']))
-    elements.append(Spacer(1, 8 * mm))
-    finish = (
-        "Продовжуй займатися, і в тебе все вийде!"
-        if lang in ("uk", "uk+en")
-        else "Продолжай заниматься, и у тебя всё получится!"
-    )
-    elements.append(Paragraph(finish, styles['CoverSubtitle']))
-    elements.append(PageBreak())
-
-    # Answers
-    if answers_data:
-        ans_title = "Відповіді" if lang in ("uk", "uk+en") else "Ответы"
-        elements.append(Paragraph(ans_title, styles['PageTitle']))
-        elements.append(Spacer(1, 3 * mm))
-        disp = (
-            "Відповіді призначені тільки для перевірки дорослим."
-            if lang in ("uk", "uk+en")
-            else "Ответы предназначены только для проверки взрослым."
-        )
-        elements.append(Paragraph(disp, styles['Instruction']))
-        elements.append(Spacer(1, 2 * mm))
-
-        for block in answers_data:
-            an = block.get("page_number", "")
-            answers_list = block.get("answers", [])
-            label_s = "Сторінка" if lang in ("uk", "uk+en") else "Страница"
-            elements.append(Paragraph(
-                f"<b>{label_s} {an}:</b>", styles['AnswerBlock']
-            ))
-            for k, a in enumerate(answers_list):
-                elements.append(Paragraph(
-                    f"{k + 1}. {a}", styles['AnswerBlock']
-                ))
-            elements.append(Spacer(1, 1.5 * mm))
-
-        sep4 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN], rowHeights=[0.3])
-        sep4.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
-        elements.append(sep4)
-        elements.append(Spacer(1, 2 * mm))
-
-    disclaimer_text = (
-        DISCLAIMER_TEXT if lang in ("uk", "uk+en")
-        else "Материал является дополнительным учебным ресурсом и не заменяет "
-             "консультацию педагога, логопеда, психолога или врача."
-    )
-    elements.append(Paragraph(disclaimer_text, styles['Disclaimer']))
+    # 7. Answers
+    _build_answers(elements, answers_data, styles, t, lang)
 
     doc.build(elements)
     logger.info(f"PDF saved: {output_path} ({os.path.getsize(output_path)} bytes)")

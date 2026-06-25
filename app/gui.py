@@ -19,6 +19,7 @@ from pdf.renderer import render_pdf
 from pdf.preview import render_html_preview
 from config.settings_loader import load_settings
 from config.topics_loader import load_topics
+from core.updater import VERSION
 
 
 class StudyPackGUI:
@@ -28,6 +29,17 @@ class StudyPackGUI:
         self.root.geometry("720x820")
         self.root.resizable(False, False)
 
+        try:
+            from PIL import Image, ImageTk
+            from core.paths import logo_path
+            icon_path = logo_path()
+            if os.path.exists(icon_path):
+                img = Image.open(icon_path)
+                photo = ImageTk.PhotoImage(img)
+                self.root.wm_iconphoto(True, photo)
+        except Exception:
+            pass
+
         self.settings = load_settings()
         self.topics = load_topics()
 
@@ -35,6 +47,8 @@ class StudyPackGUI:
         self.last_json_path = None
         self.last_pack_data = None
         self._build_ui()
+        
+        self._check_for_updates_silently()
 
     def _build_ui(self):
         main_frame = Frame(self.root, padx=15, pady=8)
@@ -228,8 +242,9 @@ class StudyPackGUI:
         win.resizable(False, False)
 
         try:
+            from core.paths import env_file_path
             from dotenv import load_dotenv, set_key
-            load_dotenv()
+            load_dotenv(env_file_path())
         except ImportError:
             set_key = None
 
@@ -244,8 +259,8 @@ class StudyPackGUI:
         Entry(win, textvariable=model_var, width=50).pack(fill="x", pady=5)
 
         def save():
-            from core.paths import _base_path
-            env_path = os.path.join(_base_path(), ".env")
+            from core.paths import env_file_path
+            env_path = env_file_path()
             if set_key:
                 set_key(env_path, "OPENROUTER_API_KEY", api_var.get())
                 set_key(env_path, "OPENROUTER_MODEL", model_var.get())
@@ -253,6 +268,8 @@ class StudyPackGUI:
                 with open(env_path, "w") as f:
                     f.write(f"OPENROUTER_API_KEY={api_var.get()}\n")
                     f.write(f"OPENROUTER_MODEL={model_var.get()}\n")
+            os.environ["OPENROUTER_API_KEY"] = api_var.get()
+            os.environ["OPENROUTER_MODEL"] = model_var.get()
             messagebox.showinfo("StudyPack AI", "Настройки сохранены.")
             win.destroy()
 
@@ -498,5 +515,70 @@ class StudyPackGUI:
             self.root.after(0, lambda: self.generate_btn.config(state="normal", text="Сгенерировать PDF"))
             self.root.after(0, lambda: self.progress.stop())
 
+    def _check_for_updates_silently(self):
+        def worker():
+            from core.updater import check_for_update
+            update_info = check_for_update(VERSION)
+            if update_info:
+                self.root.after(0, lambda: self._prompt_update(update_info))
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _prompt_update(self, update_info):
+        changelog = update_info.get("changelog", "Нет описания изменений.")
+        msg = f"Доступна новая версия v{update_info['version']}!\n\nЧто нового:\n{changelog}\n\nХотите обновить программу сейчас?"
+        if messagebox.askyesno("Доступно обновление", msg):
+            self._start_update_process(update_info)
+
+    def _start_update_process(self, update_info):
+        from core.updater import download_update, verify_sha256, apply_update, get_current_exe_path
+        from tkinter.ttk import Progressbar
+        
+        win = Toplevel(self.root)
+        win.title("Обновление StudyPack AI")
+        win.geometry("400x160")
+        win.resizable(False, False)
+        win.transient(self.root)
+        win.grab_set()
+        
+        lbl = Label(win, text=f"Загрузка обновления v{update_info['version']}...", font=("Arial", 10, "bold"))
+        lbl.pack(pady=(20, 10))
+        
+        progress = Progressbar(win, length=320, mode='determinate')
+        progress.pack(pady=10)
+        
+        status_lbl = Label(win, text="0%", font=("Arial", 9))
+        status_lbl.pack()
+        
+        def progress_callback(fraction):
+            self.root.after(0, lambda: progress.config(value=fraction * 100))
+            self.root.after(0, lambda: status_lbl.config(text=f"{int(fraction * 100)}%"))
+            
+        def download_worker():
+            import tempfile
+            temp_dir = os.path.join(tempfile.gettempdir(), "StudyPackAIUpdate")
+            new_exe_name = "StudyPack_AI_new.exe"
+            new_exe_path = os.path.join(temp_dir, new_exe_name)
+            
+            # Download file
+            success = download_update(update_info["download_url"], new_exe_path, progress_callback)
+            if not success:
+                self.root.after(0, lambda: messagebox.showerror("Ошибка", "Не удалось скачать обновление. Проверьте интернет."))
+                self.root.after(0, win.destroy)
+                return
+                
+            # Verify SHA-256
+            self.root.after(0, lambda: lbl.config(text="Проверка целостности файла..."))
+            if not verify_sha256(new_exe_path, update_info["sha256"]):
+                self.root.after(0, lambda: messagebox.showerror("Ошибка", "Проверка хэша SHA-256 не удалась. Файл повреждён."))
+                self.root.after(0, win.destroy)
+                return
+                
+            # Apply update
+            self.root.after(0, lambda: lbl.config(text="Применение обновления, перезапуск..."))
+            self.root.after(800, lambda: apply_update(new_exe_path, get_current_exe_path()))
+            
+        threading.Thread(target=download_worker, daemon=True).start()
+
     def run(self):
         self.root.mainloop()
+

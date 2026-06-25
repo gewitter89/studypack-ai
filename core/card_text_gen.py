@@ -10,6 +10,15 @@ def _topic_q(text: str, tw: str) -> str:
     return text.replace("{t}", tw).replace("{topic}", tw)
 
 
+def _creative_ans(lang: str) -> str:
+    if lang == "en":
+        return "Checked by adult"
+    elif lang in ("uk", "uk+en"):
+        return "Перевіряється дорослим"
+    else:
+        return "Проверяется взрослым"
+
+
 def gen_story_read(tmpl, count, topic, seed, lang):
     tw = random_word(topic, lang) if topic and topic not in ("general", "custom") else ""
     stories_ru = [
@@ -19,7 +28,7 @@ def gen_story_read(tmpl, count, topic, seed, lang):
         ("На реке", "Дети купались в реке. Вода была тёплая и чистая. Все смеялись.", ["Где купались дети?", "Какая была вода?"], ["в реке", "тёплая"]),
     ]
     stories_uk = [
-        ("Сонячний день", f"Настало тепле ранок. Сонце освітило ліс. Пташки заспівали. {tw.capitalize()} вибіг на галявину." if tw else "Зайчик вибіг на галявину.", ["Яка пора року?", "Хто вибіг?"], ["ранок", "зайчик"]),
+        ("Сонячний день", f"Настав теплий ранок. Сонце освітило ліс. Пташки заспівали. {tw.capitalize()} вибіг на галявину." if tw else "Зайчик вибіг на галявину.", ["Яка пора дня?", "Хто вибіг?"], ["ранок", "зайчик"]),
         ("Помічник", "Марійка допомагала мамі. Вона полила квіти.", ["Як звали дівчинку?", "Що вона зробила?"], ["Марійка", "полила квіти"]),
         ("У лісі", f"У лісі було тихо та гарно. {tw.capitalize()} стрибав по галявині." if tw else "Білка стрибала по гілках.", ["Де було тихо?", "Хто стрибав?"], ["у лісі", "білка"]),
     ]
@@ -54,19 +63,23 @@ def gen_find_word(tmpl, count, topic, seed, lang):
 
 def gen_main_idea(tmpl, count, topic, seed, lang):
     if lang == "en":
-        return [CardResult(card_type=tmpl.id, question="What is the main idea of this text?", answer="") for _ in range(count)]
+        return [CardResult(card_type=tmpl.id, question="What is the main idea of this text?", answer=_creative_ans(lang)) for _ in range(count)]
     q = "Яка головна думка тексту?" if lang in ("uk", "uk+en") else "Какая главная мысль текста?"
-    return [CardResult(card_type=tmpl.id, question=q, answer="") for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=q, answer=_creative_ans(lang)) for _ in range(count)]
 
 
 def gen_character_guess(tmpl, count, topic, seed, lang):
     tw = random_word(topic, lang) if topic and topic not in ("general", "custom") else ""
-    ru_chars = [(f"{tw.capitalize()}", f"круглый, убежал от бабушки"), ("Репка", "тянули всей семьёй"), ("Золушка", "потеряла туфельку")]
-    uk_chars = [(f"{tw.capitalize()}", f"круглий, втік від бабусі"), ("Ріпка", "тягнули всією сім'єю"), ("Попелюшка", "загубила туфельку")]
-    en_chars = [(f"{tw.capitalize()}", f"round, ran away from grandma"), ("Cinderella", "lost her slipper"), ("Turnip", "the whole family pulled it")]
+    default_ru = tw.capitalize() if tw else "Колобок"
+    default_uk = tw.capitalize() if tw else "Колобок"
+    default_en = tw.capitalize() if tw else "Gingerbread Man"
+    ru_chars = [(default_ru, f"круглый, убежал от бабушки"), ("Репка", "тянули всей семьёй"), ("Золушка", "потеряла туфельку")]
+    uk_chars = [(default_uk, f"круглий, втік від бабусі"), ("Ріпка", "тягнули всією сім'єю"), ("Попелюшка", "загубила туфельку")]
+    en_chars = [(default_en, f"round, ran away from grandma"), ("Cinderella", "lost her slipper"), ("Turnip", "the whole family pulled it")]
     pool = uk_chars if lang in ("uk", "uk+en") else (en_chars if lang == "en" else ru_chars)
     prefix = ll("guess", lang)
     return [CardResult(card_type=tmpl.id, question=f"{prefix}: {pool[(seed+i)%len(pool)][1]}", answer=pool[(seed+i)%len(pool)][0]) for i in range(count)]
+
 
 
 def gen_sequence(tmpl, count, topic, seed, lang):
@@ -79,12 +92,12 @@ def gen_sequence(tmpl, count, topic, seed, lang):
 
 def gen_retelling(tmpl, count, topic, seed, lang):
     prompt = f"Перекажи текст у 3 реченнях ({topic})" if lang in ("uk", "uk+en") else (f"Retell in 3 sentences ({topic})" if lang == "en" else f"Перескажи текст в 3 предложениях ({topic})")
-    return [CardResult(card_type=tmpl.id, question=prompt, answer="") for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=prompt, answer=_creative_ans(lang)) for _ in range(count)]
 
 
 def gen_make_plan(tmpl, count, topic, seed, lang):
     prompt = "Склади план: що було на початку, потім, в кінці" if lang in ("uk", "uk+en") else ("Make a plan: beginning, middle, end" if lang == "en" else "Составь план: что было в начале, потом, в конце")
-    return [CardResult(card_type=tmpl.id, question=prompt, answer="") for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=prompt, answer=_creative_ans(lang)) for _ in range(count)]
 
 
 def gen_synonym_find(tmpl, count, topic, seed, lang):
@@ -104,7 +117,7 @@ def gen_discussion(tmpl, count, topic, seed, lang):
         message = f"Чому {tw} важливе? Напиши 2 причини."
     else:
         message = f"Почему {tw} важно? Напиши 2 причины."
-    return [CardResult(card_type=tmpl.id, question=message, answer="") for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=message, answer=_creative_ans(lang)) for _ in range(count)]
 
 
 def gen_pattern(tmpl, count, topic, seed, lang):
@@ -178,7 +191,7 @@ def gen_table_fill(tmpl, count, topic, seed, lang):
 
 def gen_crossword(tmpl, count, topic, seed, lang):
     action = "Розгадай кросворд" if lang in ("uk", "uk+en") else ("Solve the crossword" if lang == "en" else "Разгадай кроссворд")
-    return [CardResult(card_type=tmpl.id, question=f"{action} ({topic})", answer="") for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=f"{action} ({topic})", answer=_creative_ans(lang)) for _ in range(count)]
 
 
 def gen_detective(tmpl, count, topic, seed, lang):
@@ -207,17 +220,17 @@ def gen_count_trace(tmpl, count, topic, seed, lang):
 
 
 def gen_shape_find(tmpl, count, topic, seed, lang):
-    ru_shapes = [("круг", "о"), ("квадрат", "□"), ("треугольник", "△")]
-    uk_shapes = [("коло", "о"), ("квадрат", "□"), ("трикутник", "△")]
-    en_shapes = [("circle", "о"), ("square", "□"), ("triangle", "△")]
+    ru_shapes = [("круг", "круг"), ("квадрат", "квадрат"), ("треугольник", "треугольник")]
+    uk_shapes = [("коло", "коло"), ("квадрат", "квадрат"), ("трикутник", "трикутник")]
+    en_shapes = [("circle", "circle"), ("square", "square"), ("triangle", "triangle")]
     pool = uk_shapes if lang in ("uk", "uk+en") else (en_shapes if lang == "en" else ru_shapes)
     prefix = ll("find", lang)
     if lang in ("uk", "uk+en"):
-        post = "серед фігур: о □ △ ☆ ◇"
+        post = "серед фігур: ○ □ △ ☆ ◇"
     elif lang == "en":
-        post = "among shapes: о □ △ ☆ ◇"
+        post = "among shapes: ○ □ △ ☆ ◇"
     else:
-        post = "среди фигур: о □ △ ☆ ◇"
+        post = "среди фигур: ○ □ △ ☆ ◇"
     tw = random_word(topic, lang) if topic and topic not in ("general", "custom") else ""
     if tw:
         post = f"{post} ({tw})"
@@ -240,21 +253,33 @@ def gen_letter_trace(tmpl, count, topic, seed, lang):
     else:
         visible = letters[(seed)%len(letters)]
     circle_word = ll("circle", lang)
-    return [CardResult(card_type=tmpl.id, question=f"{circle_word} букву {visible} за точками" if lang in ("uk", "uk+en") else f"{circle_word} букву {visible} по точкам", answer=visible) for i in range(count)]
+    return [CardResult(card_type=tmpl.id, question=f"{circle_word} букву {visible} за точками" if lang in ("uk", "uk+en") else f"{circle_word} букву {visible} по точкам", answer=f"літера {visible}" if lang in ("uk", "uk+en") else f"буква {visible}") for i in range(count)]
 
 
 def gen_same_shape(tmpl, count, topic, seed, lang):
     shapes = ["○", "□", "△", "☆", "◇"]
     s = shapes[(seed)%len(shapes)]
     tw = random_word(topic, lang) if topic and topic not in ("general", "custom") else ""
-    if lang == "en":
+    
+    shape_names_ru = {"○": "круг", "□": "квадрат", "△": "треугольник", "☆": "звезда", "◇": "ромб"}
+    shape_names_uk = {"○": "коло", "□": "квадрат", "△": "трикутник", "☆": "зірка", "◇": "ромб"}
+    shape_names_en = {"○": "circle", "□": "square", "△": "triangle", "☆": "star", "◇": "diamond"}
+    
+    if lang in ("uk", "uk+en"):
+        ans = shape_names_uk.get(s, s)
+        prefix = "Знайди таку ж:"
+        base = f"{prefix} {s} | {' '.join(shapes)}"
+    elif lang == "en":
+        ans = shape_names_en.get(s, s)
         base = f"Find the same: {s} | {' '.join(shapes)}"
     else:
-        prefix = "Знайди таку ж:" if lang in ("uk", "uk+en") else "Найди такую же:"
+        ans = shape_names_ru.get(s, s)
+        prefix = "Найди такую же:"
         base = f"{prefix} {s} | {' '.join(shapes)}"
+        
     if tw:
         base = f"{base} ({tw})"
-    return [CardResult(card_type=tmpl.id, question=base, answer=s) for _ in range(count)]
+    return [CardResult(card_type=tmpl.id, question=base, answer=ans) for _ in range(count)]
 
 
 def gen_coloring(tmpl, count, topic, seed, lang):
@@ -270,7 +295,7 @@ def gen_coloring(tmpl, count, topic, seed, lang):
     if len(pool) <= 1:
         pool = pool * 3
     color_word = "Розфарбуй" if lang in ("uk", "uk+en") else ("Colour" if lang == "en" else "Раскрась")
-    return [CardResult(card_type=tmpl.id, question=f"{color_word} {pool[(seed+i)%len(pool)]}", answer="") for i in range(count)]
+    return [CardResult(card_type=tmpl.id, question=f"{color_word} {pool[(seed+i)%len(pool)]}", answer=_creative_ans(lang)) for i in range(count)]
 
 
 def gen_color_find(tmpl, count, topic, seed, lang):

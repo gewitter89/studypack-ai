@@ -1,0 +1,308 @@
+{
+  "title": "Підготовка до школи: Казкові пригоди",
+  "subtitle": "Завдання для дітей 6 років",
+  "language": "uk",
+  "age": 6,
+  "grade": "Дошкільник",
+  "topic": "fairy_tales",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Лічба",
+      "instruction": "Порахуй та запиши кількість",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Порахуй замків: 🏰 🏰 🏰 🏰 🏰 🏰",
+          "options": [],
+          "answer_space": true,
+          "answer": "6 замків"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй книг: 📘 📘 📘 📘 📘 📘",
+          "options": [],
+          "answer_space": true,
+          "answer": "6 книг"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй зірки: ⭐ ⭐ ⭐ ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "4 зірки"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Фігури",
+      "instruction": "Обведи правильну фігуру",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Обведи квадрат: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "квадрат"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи коло: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "коло"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи трикутник: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "трикутник"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи прямокутник: □ ○ △ ▭",
+          "options": [],
+          "answer_space": true,
+          "answer": "прямокутник"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Букви",
+      "instruction": "Обведи першу букву кожного слова",
+      "tasks": [
+        {
+          "type": "writing",
+          "question": "Обведи букву Л у слові «лицар»",
+          "options": [],
+          "answer_space": true,
+          "answer": "Л"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву К у слові «корона»",
+          "options": [],
+          "answer_space": true,
+          "answer": "К"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву К у слові «карта»",
+          "options": [],
+          "answer_space": true,
+          "answer": "К"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Знайди таку ж",
+      "instruction": "З'єднай однакові предмети",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "З'єднай однакові замки: 🏰 — 🏰",
+          "options": [],
+          "answer_space": true,
+          "answer": "замок"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові книги: 📘 — 📘",
+          "options": [],
+          "answer_space": true,
+          "answer": "книга"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові зірки: ⭐ — ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "зірка"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Розфарбуй",
+      "instruction": "Розфарбуй малюнки за вказівками",
+      "tasks": [
+        {
+          "type": "creative",
+          "question": "Розфарбуй 2 замки",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 3 книги",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 3 зірки",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Знайди зайве",
+      "instruction": "Знайди предмет, який не підходить до групи",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Що зайве? ліхтарик, книга, вежа, скарб",
+          "options": [
+            "ліхтарик",
+            "книга",
+            "вежа",
+            "скарб"
+          ],
+          "answer_space": true,
+          "answer": "книга"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "У кошика 1 книга. Поклали ще 6. Скільки всього?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math",
+          "question": "Було 3 фея. Взяли 1. Скільки залишилося?",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "У кошика 3 зірка. Поклали ще 3. Скільки всього?",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Читання: Казкові пригоди",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Жив собі маленький книга.",
+          "options": [],
+          "answer_space": true,
+          "answer": "книга"
+        },
+        {
+          "type": "reading",
+          "question": "Що знайшов книга?",
+          "options": [],
+          "answer_space": true,
+          "answer": "чарівництво"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "6 замків",
+        "6 книг",
+        "4 зірки"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "квадрат",
+        "коло",
+        "трикутник",
+        "прямокутник"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "літера Л",
+        "літера К",
+        "літера К"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "замок",
+        "книга",
+        "зірка"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "Перевіряється дорослим",
+        "Перевіряється дорослим",
+        "Перевіряється дорослим"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "книга"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "7",
+        "2",
+        "6"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "книга",
+        "чарівництво"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "commercial_score": 100,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

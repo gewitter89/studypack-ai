@@ -3,21 +3,20 @@ chcp 65001 > nul
 title StudyPack AI - Build
 
 echo =============================================
-echo  StudyPack AI - Release Build
+echo  StudyPack AI - Release Build (Single EXE)
 echo =============================================
 echo.
 
-:: Check if PyInstaller is installed
-pip show pyinstaller > nul 2>&1
+:: Generate icon from logo.png
+echo [*] Generating icon from logo...
+python scripts/generate_icon.py
 if %errorlevel% neq 0 (
-    echo [*] Installing PyInstaller...
-    pip install pyinstaller
+    echo [!] Icon generation failed! Ensure Pillow is installed.
+    pause
+    exit /b 1
 )
 
-echo [*] Cleaning old builds...
-if exist "dist" rmdir /s /q dist
-if exist "build" rmdir /s /q build
-
+:: Run tests before build
 echo [*] Running tests...
 python -m pytest tests/ -v
 if %errorlevel% neq 0 (
@@ -26,35 +25,37 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo [*] Building one-folder package...
-pyinstaller --onedir --windowed --name "StudyPack AI" ^
-    --add-data "config;config" ^
-    --add-data "prompts;prompts" ^
-    --add-data "examples;examples" ^
-    main.py
+:: Clean old build artifacts
+echo [*] Cleaning old builds...
+if exist "dist" rmdir /s /q dist
+if exist "build" rmdir /s /q build
+if exist "release" rmdir /s /q release
+if exist "release_package" rmdir /s /q release_package
+if exist "user_data" rmdir /s /q user_data
+
+:: Build single executable
+echo [*] Building standalone executable...
+pyinstaller "StudyPack AI.spec" --noconfirm
 
 if %errorlevel% neq 0 (
-    echo [!] Build failed!
+    echo [!] PyInstaller build failed!
     pause
     exit /b 1
 )
 
 echo.
-echo [OK] Build complete!
+echo [OK] Standalone EXE compiled!
 echo.
-echo Exe location: dist\StudyPack AI\StudyPack AI.exe
-echo.
-echo [*] Preparing release package...
-if not exist "release_package" mkdir release_package
-if exist "release_package\StudyPack AI" rmdir /s /q "release_package\StudyPack AI"
+echo [*] Preparing clean release directory...
+mkdir release
+copy "dist\StudyPack AI.exe" "release\StudyPack AI.exe" > nul
+copy ".env.example" "release\.env.example" > nul
+xcopy /E /I "examples" "release\examples\" > nul
 
-xcopy /E /I "dist\StudyPack AI" "release_package\StudyPack AI" > nul
-xcopy /E /I "examples" "release_package\examples\" > nul
-copy ".env.example" "release_package\.env.example" > nul
-copy "README.md" "release_package\README.md" > nul
+:: Copy README.txt to release directory
+copy "README.txt" "release\README.txt" > nul
 
+
+echo [OK] Release folder prepared successfully at .\release\
 echo.
 echo =============================================
-echo  Release package ready: release_package\
-echo =============================================
-pause

@@ -5,8 +5,9 @@ from typing import Optional
 
 import requests
 from dotenv import load_dotenv
+from core.paths import env_file_path
 
-load_dotenv()
+load_dotenv(env_file_path())
 
 logger = logging.getLogger(__name__)
 

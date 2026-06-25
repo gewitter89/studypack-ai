@@ -7,7 +7,7 @@ from typing import Dict, Any, Optional
 
 from core.models import PackRequest
 import core.paths
-from ai.openrouter_client import OpenRouterClient
+from ai.cascade_client import CascadeClient
 from ai.prompt_builder import build_prompt, build_repair_prompt
 from core.validator import full_validation
 from core.sanitizer import sanitize_pack_data, check_topic_and_replace
@@ -31,12 +31,11 @@ class GenerationResult:
 class StudyPackGenerator:
     def __init__(self):
         self.settings = load_settings()
-        self.client = OpenRouterClient(
-            model=self.settings.get("default_model", "openrouter/free"),
+        self.client = CascadeClient(
+            model=self.settings.get("default_model", "llama3-70b-8192"),
             temperature=self.settings.get("temperature", 0.7),
             max_tokens=self.settings.get("max_tokens", 8000),
         )
-        self.fallback_models = self.settings.get("fallback_models", [])
         self.max_retries = self.settings.get("max_retries", 2)
 
     def _clean_raw_json(self, raw: str) -> str:
@@ -48,21 +47,16 @@ class StudyPackGenerator:
         return raw
 
     def _request_json(self, prompt: str, label: str = "") -> Optional[str]:
-        models_to_try = [self.client.model] + self.fallback_models
-        for attempt, model in enumerate(models_to_try):
-            if attempt > self.max_retries:
-                break
+        for attempt in range(self.max_retries + 1):
             try:
-                if model != self.client.model:
-                    self.client.model = model
-                    logger.info(f"Trying fallback model: {model}")
                 raw = self.client.send_request(prompt)
                 if raw:
                     return self._clean_raw_json(raw)
             except Exception as e:
-                logger.error(f"Attempt {attempt + 1} {label} with {model} failed: {e}")
-                if attempt == len(models_to_try) - 1:
+                logger.error(f"Attempt {attempt + 1} {label} failed: {e}")
+                if attempt == self.max_retries:
                     raise
+                time.sleep(2)
                 continue
         return None
 
@@ -72,20 +66,24 @@ class StudyPackGenerator:
         if not raw:
             return None
 
-        valid, data, err = full_validation(raw, params["pages_count"], True)
-        if not valid and err:
-            logger.warning(f"Validation failed for {block_label}, attempting repair")
+        from core.validator import validate_json_structure
+        val_res = full_validation(raw, params["pages_count"], True)
+        valid, data, err = validate_json_structure(raw)
+        
+        if (not val_res.is_valid or not valid) and val_res.errors:
+            logger.warning(f"Validation failed for {block_label}, attempting repair: {val_res.errors}")
             repair_prompt = build_repair_prompt(raw)
             try:
                 repaired = self._request_json(repair_prompt, f"repair-{block_label}")
                 if repaired:
-                    valid2, data, err2 = full_validation(repaired, params["pages_count"], True)
-                    if valid2:
-                        return data
+                    val_res2 = full_validation(repaired, params["pages_count"], True)
+                    valid2, data2, err2 = validate_json_structure(repaired)
+                    if val_res2.is_valid and valid2:
+                        return data2
             except Exception as e:
                 logger.error(f"Repair failed: {e}")
 
-        if valid:
+        if val_res.is_valid and valid:
             return data
         return None
 
@@ -93,7 +91,7 @@ class StudyPackGenerator:
         result = GenerationResult()
 
         if not request.offline_mode and not self.client.is_configured():
-            result.error = "API ключ не настроен. Создайте файл .env и укажите OPENROUTER_API_KEY."
+            result.error = "API ключ не настроен. Создайте файл .env и укажите OPENROUTER_API_KEY, GROQ_API_KEY, DEEPSEEK_API_KEY или GEMINI_API_KEY."
             return result
 
         request.topic = check_topic_and_replace(request.topic)
@@ -225,6 +223,21 @@ class StudyPackGenerator:
         pack_data = sanitize_pack_data(pack_data)
         from core.postprocess import postprocess
         pack_data = postprocess(pack_data)
+
+        # Quality Gate enforcement
+        quality = pack_data.get("_quality", {})
+        if not quality.get("passed", True) or quality.get("hard_fails"):
+            result.success = False
+            result.error = "Quality gate HARD FAIL:\n" + "\n".join(quality.get("hard_fails", []))
+            return result
+
+        if quality.get("commercial_fails"):
+            result.warnings.extend(quality.get("commercial_fails", []))
+            # In commercial mode, a commercial fail is a hard error
+            if getattr(request, 'commercial_mode', False):
+                result.success = False
+                result.error = "Quality gate COMMERCIAL FAIL:\n" + "\n".join(quality.get("commercial_fails", []))
+                return result
 
         math_issues = verify_math_in_pack(pack_data)
         result.math_issues = math_issues

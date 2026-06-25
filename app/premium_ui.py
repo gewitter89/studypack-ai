@@ -21,6 +21,7 @@ from pdf.renderer import render_pdf
 from pdf.preview import render_html_preview
 from config.settings_loader import load_settings
 from config.topics_loader import load_topics
+from core.updater import VERSION
 
 ctk.set_appearance_mode("Light")
 ctk.set_default_color_theme("blue")
@@ -53,7 +54,9 @@ class PremiumStudyPackUI:
         self.last_json_path: Optional[str] = None
         self.last_pack_data: Optional[dict] = None
         self._build_ui()
+        
         self._check_first_run()
+        self._check_for_updates_silently()
 
     def _check_first_run(self):
         user_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "user_data")
@@ -123,6 +126,18 @@ class PremiumStudyPackUI:
         self.root.geometry("1180x760")
         self.root.minsize(1100, 720)
         self.root.configure(fg_color=COLOR_BG)
+        
+        try:
+            from PIL import Image, ImageTk
+            from core.paths import logo_path
+            icon_path = logo_path()
+            if os.path.exists(icon_path):
+                img = Image.open(icon_path)
+                photo = ImageTk.PhotoImage(img)
+                self.root.wm_iconphoto(True, photo)
+        except Exception as e:
+            logger.warning(f"Failed to set window icon: {e}")
+
         self.root.after(0, lambda: self.root.focus_force())
 
         # Top bar
@@ -152,13 +167,13 @@ class PremiumStudyPackUI:
         ctk.CTkLabel(inner, text="Генератор PDF-заданий для детей",
                      font=("Segoe UI", 11), text_color=COLOR_SECONDARY).pack(side="left", padx=(8, 0))
 
-        ctk.CTkLabel(inner, text="v0.1.0", font=FONT_SMALL,
+        ctk.CTkLabel(inner, text=f"v{VERSION}", font=FONT_SMALL,
                      text_color=COLOR_SECONDARY).pack(side="right", padx=5)
         self.update_btn = ctk.CTkButton(inner, text="Проверить обновления",
                                         font=FONT_SMALL, fg_color="transparent",
                                         border_width=1, border_color=COLOR_BORDER,
                                         text_color=COLOR_SECONDARY, height=28,
-                                        command=lambda: None)
+                                        command=self._check_for_updates_manually)
         self.update_btn.pack(side="right", padx=5)
 
     def _build_sidebar(self, parent):
@@ -166,8 +181,22 @@ class PremiumStudyPackUI:
         side.pack(side="left", fill="y", padx=(0, 8))
         side.pack_propagate(False)
 
-        ctk.CTkLabel(side, text="Меню", font=FONT_BOLD,
-                     text_color=COLOR_TEXT).pack(pady=(12, 6))
+        try:
+            from PIL import Image
+            from core.paths import logo_path
+            img_path = logo_path()
+            if os.path.exists(img_path):
+                pil_img = Image.open(img_path)
+                aspect = pil_img.height / pil_img.width
+                h = int(160 * aspect)
+                logo_img = ctk.CTkImage(light_image=pil_img, dark_image=pil_img, size=(160, h))
+                logo_label = ctk.CTkLabel(side, image=logo_img, text="")
+                logo_label.pack(pady=(12, 8))
+            else:
+                ctk.CTkLabel(side, text="StudyPack AI", font=FONT_BOLD, text_color=COLOR_TEXT).pack(pady=(12, 6))
+        except Exception as e:
+            logger.warning(f"Failed to load logo in sidebar: {e}")
+            ctk.CTkLabel(side, text="StudyPack AI", font=FONT_BOLD, text_color=COLOR_TEXT).pack(pady=(12, 6))
 
         self.nav_btns = {}
         nav_items = [
@@ -1173,8 +1202,9 @@ class PremiumStudyPackUI:
         ctk.CTkLabel(sec1, text="AI-настройки", font=FONT_HEADER,
                      text_color=COLOR_TEXT).pack(anchor="w", padx=15, pady=(10, 4))
 
+        from core.paths import env_file_path
         from dotenv import load_dotenv, set_key
-        load_dotenv()
+        load_dotenv(env_file_path())
 
         r1 = ctk.CTkFrame(sec1, fg_color="transparent")
         r1.pack(fill="x", padx=15, pady=3)
@@ -1193,8 +1223,7 @@ class PremiumStudyPackUI:
                       font=FONT).pack(side="left", padx=5)
 
         def save_api():
-            base = os.path.dirname(os.path.dirname(__file__))
-            env_path = os.path.join(base, ".env")
+            env_path = env_file_path()
             try:
                 set_key(env_path, "OPENROUTER_API_KEY", self.api_key_var.get())
                 set_key(env_path, "OPENROUTER_MODEL", self.api_model_var.get())
@@ -1457,8 +1486,90 @@ class PremiumStudyPackUI:
                             for i in issues[:10]])
             self._show_error(f"Найдено {len(issues)} ошибок:\n{msg}")
 
+    def _check_for_updates_silently(self):
+        def worker():
+            from core.updater import check_for_update
+            update_info = check_for_update(VERSION)
+            if update_info:
+                self.root.after(0, lambda: self._prompt_update(update_info))
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _check_for_updates_manually(self):
+        self.update_btn.configure(text="Проверка...", state="disabled")
+        def worker():
+            from core.updater import check_for_update
+            update_info = check_for_update(VERSION)
+            if update_info:
+                self.root.after(0, lambda: self.update_btn.configure(text="Обновить!", fg_color=COLOR_PRIMARY, text_color="#FFFFFF", state="normal"))
+                self.root.after(0, lambda: self._prompt_update(update_info))
+            else:
+                self.root.after(0, lambda: self.update_btn.configure(text="Проверить обновления", state="normal"))
+                self.root.after(0, lambda: tkmsg.showinfo("Обновление", f"У вас установлена последняя версия v{VERSION}."))
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _prompt_update(self, update_info):
+        self.update_btn.configure(
+            text=f"Обновить до v{update_info['version']}",
+            fg_color=COLOR_PRIMARY,
+            text_color="#FFFFFF"
+        )
+        changelog = update_info.get("changelog", "Нет описания изменений.")
+        msg = f"Доступна новая версия v{update_info['version']}!\n\nЧто нового:\n{changelog}\n\nХотите обновить программу сейчас?"
+        if tkmsg.askyesno("Доступно обновление", msg):
+            self._start_update_process(update_info)
+
+    def _start_update_process(self, update_info):
+        from core.updater import download_update, verify_sha256, apply_update, get_current_exe_path
+        
+        win = ctk.CTkToplevel(self.root)
+        win.title("Обновление StudyPack AI")
+        win.geometry("420x200")
+        win.resizable(False, False)
+        win.transient(self.root)
+        win.grab_set()
+        
+        frame = ctk.CTkFrame(win, fg_color=COLOR_CARD, corner_radius=12)
+        frame.pack(fill="both", expand=True, padx=10, pady=10)
+        
+        lbl = ctk.CTkLabel(frame, text=f"Загрузка обновления v{update_info['version']}...", font=FONT_BOLD, text_color=COLOR_TEXT)
+        lbl.pack(pady=(20, 10))
+        
+        progress = ctk.CTkProgressBar(frame, width=320)
+        progress.set(0)
+        progress.pack(pady=10)
+        
+        status_lbl = ctk.CTkLabel(frame, text="0%", font=FONT_SMALL, text_color=COLOR_SECONDARY)
+        status_lbl.pack()
+        
+        def progress_callback(fraction):
+            self.root.after(0, lambda: progress.set(fraction))
+            self.root.after(0, lambda: status_lbl.configure(text=f"{int(fraction * 100)}%"))
+            
+        def download_worker():
+            import tempfile
+            temp_dir = os.path.join(tempfile.gettempdir(), "StudyPackAIUpdate")
+            new_exe_name = "StudyPack_AI_new.exe"
+            new_exe_path = os.path.join(temp_dir, new_exe_name)
+            
+            # Download file
+            success = download_update(update_info["download_url"], new_exe_path, progress_callback)
+            if not success:
+                self.root.after(0, lambda: tkmsg.showerror("Ошибка", "Не удалось скачать обновление. Проверьте интернет."))
+                self.root.after(0, win.destroy)
+                return
+                
+            # Verify SHA-256
+            self.root.after(0, lambda: lbl.configure(text="Проверка целостности файла..."))
+            if not verify_sha256(new_exe_path, update_info["sha256"]):
+                self.root.after(0, lambda: tkmsg.showerror("Ошибка", "Проверка хэша SHA-256 не удалась. Файл повреждён."))
+                self.root.after(0, win.destroy)
+                return
+                
+            # Apply update
+            self.root.after(0, lambda: lbl.configure(text="Применение обновления, перезапуск..."))
+            self.root.after(800, lambda: apply_update(new_exe_path, get_current_exe_path()))
+            
+        threading.Thread(target=download_worker, daemon=True).start()
+
     def run(self):
         self.root.mainloop()
-
-
-

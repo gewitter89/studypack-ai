@@ -1,3 +1,7 @@
+"""
+Topic lexicon: themed word pools, topic aliases, display names.
+Supports: uk, ru, en languages.
+"""
 import random
 from typing import List, Dict, Optional
 
@@ -34,6 +38,28 @@ _TOPICS: Dict[str, Dict[str, List[str]]] = {
         "en": ["animal", "forest", "paw", "fur", "den", "lair", "tail",
                "bear", "hare", "wolf", "fox", "hedgehog", "squirrel", "elk", "deer",
                "track", "hunt", "winter", "nature"],
+    },
+    "fairy_tales": {
+        "ru": ["герой", "замок", "звезда", "волшебная палочка", "книга", "дракон",
+               "фонарик", "карта", "сокровище", "приключение", "принцесса", "принц",
+               "корона", "башня", "рыцарь", "единорог", "волшебство", "фея"],
+        "uk": ["герой", "замок", "зірка", "чарівна паличка", "книга", "дракон",
+               "ліхтарик", "карта", "скарб", "пригода", "принцеса", "принц",
+               "корона", "вежа", "лицар", "єдиноріг", "чарівництво", "фея"],
+        "en": ["hero", "castle", "star", "magic wand", "book", "dragon",
+               "lantern", "map", "treasure", "adventure", "princess", "prince",
+               "crown", "tower", "knight", "unicorn", "magic", "fairy"],
+    },
+    "cartoon_heroes": {
+        "ru": ["герой", "маска", "плащ", "сила", "смелость", "приключение",
+               "команда", "дружба", "победа", "загадка", "суперсила", "злодей",
+               "спасение", "магия", "полет"],
+        "uk": ["герой", "маска", "плащ", "сила", "сміливість", "пригода",
+               "команда", "дружба", "перемога", "загадка", "суперсила", "лиходій",
+               "порятунок", "магія", "політ"],
+        "en": ["hero", "mask", "cape", "power", "bravery", "adventure",
+               "team", "friendship", "victory", "mystery", "superpower", "villain",
+               "rescue", "magic", "flight"],
     },
     "cats": {
         "ru": ["кот", "кошка", "котёнок", "лапа", "усы", "хвост", "клубок",
@@ -163,6 +189,219 @@ _TOPICS: Dict[str, Dict[str, List[str]]] = {
         "en": ["zoo", "animal", "cage", "elephant", "giraffe", "monkey", "tiger",
                "lion", "zebra", "hippo", "rhino", "crocodile", "parrot", "turtle"],
     },
+    "nature": {
+        "ru": ["природа", "река", "гора", "лес", "поле", "цветок", "трава",
+               "дерево", "облако", "дождь", "снег", "солнце", "ветер", "камень"],
+        "uk": ["природа", "річка", "гора", "ліс", "поле", "квітка", "трава",
+               "дерево", "хмара", "дощ", "сніг", "сонце", "вітер", "камінь"],
+        "en": ["nature", "river", "mountain", "forest", "field", "flower", "grass",
+               "tree", "cloud", "rain", "snow", "sun", "wind", "stone"],
+    },
+}
+
+# ─── Topic aliases (user input → canonical topic key) ──────────────────────
+_TOPIC_ALIASES: Dict[str, str] = {
+    # Ukrainian aliases
+    "мультики": "fairy_tales",
+    "мультфільми": "fairy_tales",
+    "мультики та персонажі": "fairy_tales",
+    "казкові пригоди": "fairy_tales",
+    "казки": "fairy_tales",
+    "тварини": "animals",
+    "тваринки": "animals",
+    "звірята": "animals",
+    "дикі тварини": "animals",
+    "підводний світ": "underwater",
+    "підводний": "underwater",
+    "морські мешканці": "underwater",
+    "космос": "space",
+    "зірки та планети": "space",
+    "динозаври": "dinosaurs",
+    "кіти": "cats",
+    "коти": "cats",
+    "кошенята": "cats",
+    "собаки": "dogs",
+    "цуценята": "dogs",
+    "пірати": "pirates",
+    "принцеси": "princesses",
+    "супергерої": "superheroes_generic",
+    "роботи": "robots",
+    "ферма": "farm",
+    "фермерство": "farm",
+    "зоопарк": "zoo",
+    "природа": "nature",
+    "спорт": "sport",
+    "кухня": "cooking",
+    "готування": "cooking",
+    "магічний ліс": "magic_forest",
+    "чарівний ліс": "magic_forest",
+    "машини": "cars",
+    "автомобілі": "cars",
+    "футбол": "football",
+    "подорожі": "travel",
+    "мандри": "travel",
+    "герої мультфільмів": "cartoon_heroes",
+    "казкові герої": "fairy_tales",
+    # Russian aliases
+    "мультфильмы": "fairy_tales",
+    "сказки": "fairy_tales",
+    "сказочные приключения": "fairy_tales",
+    "животные": "animals",
+    "дикие животные": "animals",
+    "подводный мир": "underwater",
+    "морские обитатели": "underwater",
+    "звёзды и планеты": "space",
+    "динозавры": "dinosaurs",
+    "кошки": "cats",
+    "котята": "cats",
+    "собаки": "dogs",
+    "щенки": "dogs",
+    "пираты": "pirates",
+    "принцессы": "princesses",
+    "супергерои": "superheroes_generic",
+    "роботы": "robots",
+    "зоопарк": "zoo",
+    "природа": "nature",
+    "спорт": "sport",
+    "кулинария": "cooking",
+    "волшебный лес": "magic_forest",
+    "машины": "cars",
+    "путешествия": "travel",
+    "герои мультфильмов": "cartoon_heroes",
+    # English aliases
+    "cartoons": "fairy_tales",
+    "fairy tales": "fairy_tales",
+    "fairytale": "fairy_tales",
+    "magic": "fairy_tales",
+    "wild animals": "animals",
+    "ocean": "underwater",
+    "sea world": "underwater",
+    "outer space": "space",
+    "stars": "space",
+    "kittens": "cats",
+    "puppies": "dogs",
+    "superheroes": "superheroes_generic",
+    "cooking": "cooking",
+    "jungle": "animals",
+}
+
+# ─── Localized display names for covers ─────────────────────────────────────
+_TOPIC_DISPLAY_NAMES: Dict[str, Dict[str, str]] = {
+    "dinosaurs": {
+        "ru": "Динозавры",
+        "uk": "Динозаври",
+        "en": "Dinosaurs",
+    },
+    "space": {
+        "ru": "Космос",
+        "uk": "Космос",
+        "en": "Space",
+    },
+    "animals": {
+        "ru": "Животные",
+        "uk": "Тварини",
+        "en": "Animals",
+    },
+    "fairy_tales": {
+        "ru": "Сказочные приключения",
+        "uk": "Казкові пригоди",
+        "en": "Fairy Tale Adventures",
+    },
+    "cartoon_heroes": {
+        "ru": "Герои мультфильмов",
+        "uk": "Герої мультфільмів",
+        "en": "Cartoon Heroes",
+    },
+    "cats": {
+        "ru": "Кошки",
+        "uk": "Кошенята",
+        "en": "Cats",
+    },
+    "dogs": {
+        "ru": "Собаки",
+        "uk": "Собачки",
+        "en": "Dogs",
+    },
+    "cars": {
+        "ru": "Машины",
+        "uk": "Машини",
+        "en": "Cars",
+    },
+    "football": {
+        "ru": "Футбол",
+        "uk": "Футбол",
+        "en": "Football",
+    },
+    "princesses": {
+        "ru": "Принцессы",
+        "uk": "Принцеси",
+        "en": "Princesses",
+    },
+    "pirates": {
+        "ru": "Пираты",
+        "uk": "Пірати",
+        "en": "Pirates",
+    },
+    "superheroes_generic": {
+        "ru": "Супергерои",
+        "uk": "Супергерої",
+        "en": "Superheroes",
+    },
+    "pixel_world": {
+        "ru": "Пиксельный мир",
+        "uk": "Піксельний світ",
+        "en": "Pixel World",
+    },
+    "underwater": {
+        "ru": "Подводный мир",
+        "uk": "Підводний світ",
+        "en": "Underwater World",
+    },
+    "travel": {
+        "ru": "Путешествия",
+        "uk": "Подорожі",
+        "en": "Travel",
+    },
+    "robots": {
+        "ru": "Роботы",
+        "uk": "Роботи",
+        "en": "Robots",
+    },
+    "magic_forest": {
+        "ru": "Волшебный лес",
+        "uk": "Чарівний ліс",
+        "en": "Magic Forest",
+    },
+    "sport": {
+        "ru": "Спорт",
+        "uk": "Спорт",
+        "en": "Sport",
+    },
+    "cooking": {
+        "ru": "Кулинария",
+        "uk": "Кулінарія",
+        "en": "Cooking",
+    },
+    "farm": {
+        "ru": "Ферма",
+        "uk": "Ферма",
+        "en": "Farm",
+    },
+    "zoo": {
+        "ru": "Зоопарк",
+        "uk": "Зоопарк",
+        "en": "Zoo",
+    },
+    "nature": {
+        "ru": "Природа",
+        "uk": "Природа",
+        "en": "Nature",
+    },
+    "general": {
+        "ru": "Общий курс",
+        "uk": "Загальний курс",
+        "en": "General",
+    },
 }
 
 _NEUTRAL_WORDS = {
@@ -179,6 +418,45 @@ _GENERIC_ITEMS = {
     "uk": ["яблуко", "груша", "банан", "книга", "ручка", "стіл", "стілець"],
     "en": ["apple", "pear", "banana", "book", "pen", "table", "chair"],
 }
+
+
+def resolve_topic(raw_topic: str, lang: str = "uk") -> str:
+    """Normalize user-input topic to a canonical topic key.
+
+    Returns a known topic key (from _TOPICS) or 'general' if nothing matches.
+    Prevents unsupported topics from leaking placeholder words into tasks.
+    """
+    if not raw_topic:
+        return "general"
+    normalized = raw_topic.lower().strip()
+    # Direct key match
+    if normalized in _TOPICS:
+        return normalized
+    # Alias match
+    if normalized in _TOPIC_ALIASES:
+        return _TOPIC_ALIASES[normalized]
+    # Partial alias match (substring)
+    for alias, key in _TOPIC_ALIASES.items():
+        if alias in normalized or normalized in alias:
+            return key
+    # If the topic is a known display name (any language), resolve it
+    for key, names in _TOPIC_DISPLAY_NAMES.items():
+        for _lang, display in names.items():
+            if display.lower() == normalized:
+                return key
+    # Fallback: if topic is short and contains only known chars, return fairy_tales
+    # as a safe catch-all for "fun" topics (мультики, персонажі, etc.)
+    return "general"
+
+
+def get_display_name(topic: str, lang: str = "uk") -> str:
+    """Return a localized display name for the topic (for PDF covers)."""
+    topic = resolve_topic(topic, lang) if topic not in _TOPICS else topic
+    simple_lang = lang.split("+")[0]
+    names = _TOPIC_DISPLAY_NAMES.get(topic, {})
+    if names:
+        return names.get(simple_lang, names.get("ru", topic))
+    return topic.replace("_", " ").capitalize()
 
 
 def get_words(topic: str, language: str = "ru") -> List[str]:
@@ -204,14 +482,15 @@ def random_word(topic: str, language: str = "ru") -> str:
         simple_lang = "en" if language.startswith("uk") else "ru"
         words = get_words(topic, simple_lang)
     if not words:
-        words = get_neutral(simple_lang)
-    return random.choice(words) if words else "?"
+        # Do NOT fall back to neutral/placeholder — return empty
+        return ""
+    return random.choice(words) if words else ""
 
 
 def random_n_words(topic: str, language: str = "ru", n: int = 3) -> List[str]:
     words = get_words(topic, language)
     if not words:
-        words = get_neutral(language)
+        words = get_generic(language)
     return random.sample(words, min(n, len(words)))
 
 
@@ -242,7 +521,7 @@ def make_story(topic_word: str, language: str = "ru") -> str:
         "ru": [
             f"Однажды {topic_word} отправился в путешествие.",
             f"Встретили {topic_word} на поляне.",
-            f"Маленький {topic_word} нашёл новый друг.",
+            f"Маленький {topic_word} нашёл нового друга.",
         ],
         "uk": [
             f"Одного разу {topic_word} вирушив у подорож.",

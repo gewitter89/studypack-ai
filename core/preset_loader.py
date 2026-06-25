@@ -85,8 +85,8 @@ def preset_to_request(preset: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _presets_dir() -> Optional[str]:
-    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    path = os.path.join(base, "templates_library", "presets")
+    from core.paths import templates_dir
+    path = os.path.join(templates_dir(), "presets")
     if os.path.isdir(path):
         return path
     logger.warning(f"Presets directory not found: {path}")

@@ -29,9 +29,17 @@ def setup_logging():
 
 
 def main():
+    try:
+        from dotenv import load_dotenv
+        from core.paths import env_file_path
+        load_dotenv(env_file_path())
+    except Exception as e:
+        print(f"Warning: Failed to load .env file: {e}")
+
     setup_logging()
     logger = logging.getLogger(__name__)
-    logger.info("StudyPack AI started")
+    from core.updater import VERSION
+    logger.info(f"StudyPack AI v{VERSION} started")
 
     parser = setup_argparser()
     args = parser.parse_args()

@@ -1,0 +1,259 @@
+{
+  "title": "Читання: Підводний світ",
+  "subtitle": "Тексти для дітей 8 років",
+  "language": "uk",
+  "age": 8,
+  "grade": "1 клас",
+  "topic": "underwater",
+  "pack_type": "reading",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Читання: Підводний світ",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Жив собі маленький риба. Одного разу він знайшов акула. Поряд стояв великий корал.",
+          "options": [],
+          "answer_space": true,
+          "answer": "риба"
+        },
+        {
+          "type": "reading",
+          "question": "Що знайшов риба?",
+          "options": [],
+          "answer_space": true,
+          "answer": "акула"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Сонячний день",
+      "instruction": "Прочитай та дай відповіді на запитання",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Сонце світить яскраво. Діти раді. Вони грають у дворі.\n\nЩо світить яскраво?",
+          "options": [],
+          "answer_space": true,
+          "answer": "сонце"
+        },
+        {
+          "type": "reading",
+          "question": "Сонце світить яскраво. Діти раді. Вони грають у дворі.\n\nДе грають діти?",
+          "options": [],
+          "answer_space": true,
+          "answer": "у дворі"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Читання: Підводний світ",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Жив собі маленький океан. Одного разу він знайшов глибина. Поряд стояв великий риба.",
+          "options": [],
+          "answer_space": true,
+          "answer": "океан"
+        },
+        {
+          "type": "reading",
+          "question": "Що знайшов океан?",
+          "options": [],
+          "answer_space": true,
+          "answer": "глибина"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Кіт і миша",
+      "instruction": "Прочитай та дай відповіді на запитання",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Кіт побачив мишу. Миша втекла в нірку. Кіт залишився голодним.\n\nКого побачив кіт?",
+          "options": [],
+          "answer_space": true,
+          "answer": "мишу"
+        },
+        {
+          "type": "reading",
+          "question": "Кіт побачив мишу. Миша втекла в нірку. Кіт залишився голодним.\n\nКуди втекла миша?",
+          "options": [],
+          "answer_space": true,
+          "answer": "в нірку"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Читання: Підводний світ",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Жив собі маленький корал. Одного разу він знайшов хвиля. Поряд стояв великий зірка.",
+          "options": [],
+          "answer_space": true,
+          "answer": "корал"
+        },
+        {
+          "type": "reading",
+          "question": "Що знайшов корал?",
+          "options": [],
+          "answer_space": true,
+          "answer": "хвиля"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Весна прийшла",
+      "instruction": "Прочитай та дай відповіді на запитання",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Прийшла весна. Птахи повернулися. Квіти зацвіли в саду.\n\nЩо прийшло?",
+          "options": [],
+          "answer_space": true,
+          "answer": "весна"
+        },
+        {
+          "type": "reading",
+          "question": "Прийшла весна. Птахи повернулися. Квіти зацвіли в саду.\n\nЩо зацвіло?",
+          "options": [],
+          "answer_space": true,
+          "answer": "квіти"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Читання: Підводний світ",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Жив собі маленький мушля. Одного разу він знайшов океан. Поряд стояв великий акула.",
+          "options": [],
+          "answer_space": true,
+          "answer": "мушля"
+        },
+        {
+          "type": "reading",
+          "question": "Що знайшов мушля?",
+          "options": [],
+          "answer_space": true,
+          "answer": "океан"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Сонячний день",
+      "instruction": "Прочитай та дай відповіді на запитання",
+      "tasks": [
+        {
+          "type": "reading",
+          "question": "Сонце світить яскраво. Діти раді. Вони грають у дворі.\n\nЩо світить яскраво?",
+          "options": [],
+          "answer_space": true,
+          "answer": "сонце"
+        },
+        {
+          "type": "reading",
+          "question": "Сонце світить яскраво. Діти раді. Вони грають у дворі.\n\nДе грають діти?",
+          "options": [],
+          "answer_space": true,
+          "answer": "у дворі"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "риба",
+        "акула"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "сонце",
+        "у дворі"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "океан",
+        "глибина"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "мишу",
+        "в нірку"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "корал",
+        "хвиля"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "весна",
+        "квіти"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "мушля",
+        "океан"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "сонце",
+        "у дворі"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "WARNING: Same instruction on 4 pages",
+      "WARNING: Same instruction on 4 pages",
+      "Topic 'underwater' on only 4/8 pages (50%), target >= 60%"
+    ],
+    "commercial_score": 84,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

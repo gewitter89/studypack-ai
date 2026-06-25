@@ -1,14 +1,11 @@
 {
-  "default_language": "ru",
+  "default_language": "uk",
   "default_pages_count": 12,
   "default_style": "print_bw",
-  "default_model": "openrouter/free",
-  "fallback_models": [
-    "openrouter/free",
-    "qwen3-coder:free",
-    "nemotron-3-ultra:free"
-  ],
+  "default_model": "llama-3.3-70b-versatile",
+  "fallback_models": [],
   "max_retries": 2,
   "temperature": 0.7,
-  "max_tokens": 8000
+  "max_tokens": 8000,
+  "update_url": "https://raw.githubusercontent.com/username/studypack-ai/main/version.json"
 }

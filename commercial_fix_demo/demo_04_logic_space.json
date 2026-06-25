@@ -1,0 +1,265 @@
+{
+  "title": "Логика и внимание: Космос",
+  "subtitle": "Задания для детей 6 лет",
+  "language": "ru",
+  "age": 6,
+  "grade": "Дошкольник",
+  "topic": "space",
+  "pack_type": "logic",
+  "difficulty": "easy",
+  "parent_instruction": "Занимайтесь 10–20 минут в день. Хвалите ребёнка за старание. Ответы — только для проверки взрослым.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: ракета, орбита, ракета, орбита, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? астероид, сатурн, яблоко, ракета",
+          "options": [
+            "астероид",
+            "сатурн",
+            "яблоко",
+            "ракета"
+          ],
+          "answer_space": true,
+          "answer": "яблоко"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: 🚀 — 🚀",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: 🪐 — 🪐",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: ⭐ — ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: солнце, звезда, солнце, звезда, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "солнце"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? телескоп, инопланетянин, юпитер, стол",
+          "options": [
+            "телескоп",
+            "инопланетянин",
+            "юпитер",
+            "стол"
+          ],
+          "answer_space": true,
+          "answer": "стол"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: 🚀 — 🚀",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: 🪐 — 🪐",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: ⭐ — ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: звездопад, солнце, звездопад,...",
+          "options": [],
+          "answer_space": true,
+          "answer": "звездопад"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? ручка, юпитер, инопланетянин, сатурн",
+          "options": [
+            "ручка",
+            "юпитер",
+            "инопланетянин",
+            "сатурн"
+          ],
+          "answer_space": true,
+          "answer": "ручка"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "ракета",
+        "●"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "яблоко"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "ракета",
+        "планета",
+        "звезда"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "солнце",
+        "●"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "стол"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "ракета",
+        "планета",
+        "звезда"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "звездопад",
+        "●"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "ручка"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "WARNING: Same instruction on 3 pages",
+      "WARNING: Same instruction on 3 pages"
+    ],
+    "commercial_score": 92,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

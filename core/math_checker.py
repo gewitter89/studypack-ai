@@ -63,7 +63,8 @@ def verify_math_in_pack(pack_data: dict) -> list:
     return issues
 
 
-def generate_math_examples(count: int, difficulty: str, age: int, topic: str = "") -> list:
+def generate_math_examples(count: int, difficulty: str, age: int, topic: str = "",
+                            language: str = "uk") -> list:
     import random
     examples = []
 
@@ -73,17 +74,27 @@ def generate_math_examples(count: int, difficulty: str, age: int, topic: str = "
     elif difficulty == "hard":
         max_val = min(max_val * 2, 200)
 
-    ops_descriptions = []
-
     if age <= 5:
-        ops = [("+", "сложение")]
+        ops = ["+"]
     elif age <= 7:
-        ops = [("+", "сложение"), ("-", "вычитание")]
+        ops = ["+", "-"]
     else:
-        ops = [("+", "сложение"), ("-", "вычитание"), ("×", "умножение")]
+        ops = ["+", "-", "×"]
+
+    # Get topic words from lexicon (not hardcoded)
+    topic_items = []
+    if topic and topic not in ("general", "custom", ""):
+        try:
+            from core.topic_lexicon import get_words, get_generic
+            simple_lang = language.split("+")[0]
+            topic_items = get_words(topic, simple_lang)
+            if not topic_items:
+                topic_items = get_generic(simple_lang)
+        except ImportError:
+            pass
 
     for i in range(count):
-        op, op_name = random.choice(ops)
+        op = random.choice(ops)
         if op == "+":
             b = random.randint(1, max_val)
             a = random.randint(1, max_val)
@@ -101,11 +112,6 @@ def generate_math_examples(count: int, difficulty: str, age: int, topic: str = "
             answer = str(a * b)
 
         full_q = f"{question} = ?"
-        if topic:
-            theme_items = ["яблок", "конфет", "звёзд", "машинок", "динозавров",
-                           "мячей", "книг", "карандашей", "кубиков", "монет"]
-            item = random.choice(theme_items)
-            full_q = f"Было {a} {item}, {op_name} {b}. Сколько стало? {question} = ?"
 
         examples.append({
             "question": full_q,

@@ -1,7 +1,7 @@
 import random
 import re
 from typing import Dict, List, Optional, Tuple
-from core.topic_lexicon import get_words, random_word
+from core.topic_lexicon import get_words, random_word, resolve_topic
 
 
 _INJECTION_TEMPLATES: Dict[str, Dict[str, List[str]]] = {
@@ -177,21 +177,102 @@ _MATH_WORD_PROBLEMS: Dict[str, Dict[str, List[str]]] = {
             "Built {a} cubes, then {b} more. How many now?",
         ],
     },
-}
-
-_fallback_topic_words = {
-    "ru": "предмет",
-    "uk": "предмет",
-    "en": "object",
+    "animals": {
+        "ru": [
+            "В лесу {a} зайцев. Прибежало ещё {b}. Сколько стало?",
+            "У медведя было {a} ягод. Он съел {b}. Сколько осталось?",
+            "На поляне {a} белок. Убежали {b}. Сколько осталось?",
+        ],
+        "uk": [
+            "У лісі {a} зайців. Прибігло ще {b}. Скільки стало?",
+            "У ведмедя було {a} ягід. Він з'їв {b}. Скільки залишилося?",
+            "На галявині {a} білок. Втекли {b}. Скільки залишилося?",
+        ],
+        "en": [
+            "There are {a} hares in the forest. {b} more came. How many now?",
+            "A bear had {a} berries. He ate {b}. How many left?",
+            "There are {a} squirrels. {b} ran away. How many left?",
+        ],
+    },
+    "pirates": {
+        "ru": [
+            "Пираты нашли {a} сокровищ. Потеряли {b}. Сколько осталось?",
+            "На корабле {a} пиратов. Присоединились {b}. Сколько стало?",
+            "В сундуке {a} золотых монет. Добавили {b}. Сколько всего?",
+        ],
+        "uk": [
+            "Пірати знайшли {a} скарбів. Загубили {b}. Скільки залишилося?",
+            "На кораблі {a} піратів. Приєдналися {b}. Скільки стало?",
+            "У скрині {a} золотих монет. Додали {b}. Скільки всього?",
+        ],
+        "en": [
+            "Pirates found {a} treasures. Lost {b}. How many left?",
+            "There are {a} pirates on the ship. {b} more joined. How many now?",
+            "In the chest {a} gold coins. Added {b}. How many total?",
+        ],
+    },
+    "princesses": {
+        "ru": [
+            "У принцессы {a} платьев. Ей подарили ещё {b}. Сколько стало?",
+            "В замке {a} комнат. Открыли ещё {b}. Сколько комнат?",
+            "На балу танцевали {a} гостей. Ушли {b}. Сколько осталось?",
+        ],
+        "uk": [
+            "У принцеси {a} суконь. Їй подарували ще {b}. Скільки стало?",
+            "У замку {a} кімнат. Відкрили ще {b}. Скільки кімнат?",
+            "На балу танцювали {a} гостей. Пішли {b}. Скільки залишилося?",
+        ],
+        "en": [
+            "A princess has {a} dresses. She got {b} more. How many now?",
+            "The castle has {a} rooms. {b} more opened. How many rooms?",
+            "At the ball {a} guests danced. {b} left. How many stayed?",
+        ],
+    },
+    "robots": {
+        "ru": [
+            "У робота {a} шестерёнок. Добавили {b}. Сколько стало?",
+            "На заводе {a} роботов. Собрали ещё {b}. Сколько всего?",
+            "Робот выполнил {a} заданий. Осталось {b}. Сколько было?",
+        ],
+        "uk": [
+            "У робота {a} шестерень. Додали {b}. Скільки стало?",
+            "На заводі {a} роботів. Зібрали ще {b}. Скільки всього?",
+            "Робот виконав {a} завдань. Залишилося {b}. Скільки було?",
+        ],
+        "en": [
+            "A robot has {a} gears. Added {b}. How many now?",
+            "The factory has {a} robots. Built {b} more. How many total?",
+            "A robot did {a} tasks. {b} remain. How many total?",
+        ],
+    },
+    "underwater": {
+        "ru": [
+            "В море плавает {a} рыб. Приплыли ещё {b}. Сколько стало?",
+            "Осьминог нашёл {a} ракушек. Потерял {b}. Сколько осталось?",
+            "На дне {a} кораллов. Выросло ещё {b}. Сколько всего?",
+        ],
+        "uk": [
+            "У морі плаває {a} риб. Припливли ще {b}. Скільки стало?",
+            "Восьминіг знайшов {a} мушель. Загубив {b}. Скільки залишилося?",
+            "На дні {a} коралів. Виросло ще {b}. Скільки всього?",
+        ],
+        "en": [
+            "{a} fish swim in the sea. {b} more came. How many now?",
+            "An octopus found {a} shells. Lost {b}. How many left?",
+            "There are {a} corals. {b} more grew. How many total?",
+        ],
+    },
 }
 
 
 def _get_topic_word(topic: str, language: str = "ru") -> str:
+    """Get a topic word. NEVER returns a generic placeholder — returns '' if nothing found."""
     if topic and topic not in ("general", "custom", ""):
         tw = random_word(topic, language)
         if tw:
             return tw
-    return _fallback_topic_words.get(language, "object")
+    # No fallback to 'предмет'/'object' — return empty string
+    return ""
 
 
 def _pluralize(word: str) -> str:
@@ -212,13 +293,12 @@ def inject_into_math(
         return question, answer
     # Comparison cards (math_compare) have non-numeric answers (> < =)
     # — just append topic word suffix instead of replacing the question
+    tw = _get_topic_word(topic, language)
     if card_type == "math_compare":
-        tw = _get_topic_word(topic, language)
         if tw:
             question = f"{question} ({tw})"
         return question, answer
     if topic not in _MATH_WORD_PROBLEMS:
-        tw = _get_topic_word(topic, language)
         if tw:
             question = f"{question} ({tw})"
         return question, answer
@@ -238,7 +318,7 @@ def inject_into_math(
         result = abs(a - b)
     else:
         result = a + b
-    filled = template.format(a=a, b=b, topic_word=_get_topic_word(topic, language))
+    filled = template.format(a=a, b=b, topic_word=tw if tw else topic)
     return filled, str(result)
 
 
