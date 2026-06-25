@@ -1,0 +1,559 @@
+{
+  "title": "Grammar: verb to be, have got",
+  "subtitle": "Завдання для дітей 9 років",
+  "language": "uk",
+  "age": 9,
+  "grade": "3 класс",
+  "topic": "travel",
+  "pack_type": "english",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "fill_gap_en",
+      "title": "fill_gap_en - 1",
+      "instruction": "Доповни речення.",
+      "tasks": [
+        {
+          "type": "fill_gap_en",
+          "question": "The park ___ happy. (luggage)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "Park ___ friends. (mountain)",
+          "options": [],
+          "answer_space": true,
+          "answer": "are"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "I ___ a student. (park)",
+          "options": [],
+          "answer_space": true,
+          "answer": "am"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "She ___ a teacher. (travel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "The park ___ happy. (luggage)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "correct_form_en",
+      "title": "correct_form_en - 2",
+      "instruction": "Обери правильну форму.",
+      "tasks": [
+        {
+          "type": "correct_form_en",
+          "question": "They (play/plays) with hotel. (passport)",
+          "options": [],
+          "answer_space": true,
+          "answer": "play"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "He (go/goes) to school. (plane)",
+          "options": [],
+          "answer_space": true,
+          "answer": "goes"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "She (have/has) a cat. (train)",
+          "options": [],
+          "answer_space": true,
+          "answer": "has"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "They (play/plays) with hotel. (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "play"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "He (go/goes) to school. (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "goes"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "sentence_build",
+      "title": "sentence_build - 3",
+      "instruction": "Склади речення зі слів.",
+      "tasks": [
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: cat / the / sleeping / is (suitcase)",
+          "options": [],
+          "answer_space": true,
+          "answer": "The map is sleeping"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: like / I / apples (park)",
+          "options": [],
+          "answer_space": true,
+          "answer": "I like apples"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: go / let's / park / the / to (luggage)",
+          "options": [],
+          "answer_space": true,
+          "answer": "Let's go to the park"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: cat / the / sleeping / is (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "The map is sleeping"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: like / I / apples (map)",
+          "options": [],
+          "answer_space": true,
+          "answer": "I like apples"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "question_answer_en",
+      "title": "question_answer_en - 4",
+      "instruction": "Answer the questions.",
+      "tasks": [
+        {
+          "type": "question_answer_en",
+          "question": "How many legs does a cat have? (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What does a map like? (sea)",
+          "options": [],
+          "answer_space": true,
+          "answer": "map"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What color is the sky? (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "blue"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "How many legs does a cat have? (ticket)",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What does a map like? (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "map"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "fill_gap_en",
+      "title": "fill_gap_en - 5",
+      "instruction": "Обери вірний варіант.",
+      "tasks": [
+        {
+          "type": "fill_gap_en",
+          "question": "The mountain ___ happy. (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "Mountain ___ friends. (plane)",
+          "options": [],
+          "answer_space": true,
+          "answer": "are"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "I ___ a student. (train)",
+          "options": [],
+          "answer_space": true,
+          "answer": "am"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "She ___ a teacher. (park)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "The mountain ___ happy. (park)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "correct_form_en",
+      "title": "correct_form_en - 6",
+      "instruction": "Постав дієслово у потрібну форму.",
+      "tasks": [
+        {
+          "type": "correct_form_en",
+          "question": "He (go/goes) to school. (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "goes"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "She (have/has) a cat. (museum)",
+          "options": [],
+          "answer_space": true,
+          "answer": "has"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "They (play/plays) with passport. (passport)",
+          "options": [],
+          "answer_space": true,
+          "answer": "play"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "He (go/goes) to school. (ticket)",
+          "options": [],
+          "answer_space": true,
+          "answer": "goes"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "She (have/has) a cat. (hotel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "has"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "sentence_build",
+      "title": "sentence_build - 7",
+      "instruction": "Напиши речення.",
+      "tasks": [
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: like / I / apples (suitcase)",
+          "options": [],
+          "answer_space": true,
+          "answer": "I like apples"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: go / let's / park / the / to (travel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "Let's go to the park"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: cat / the / sleeping / is (travel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "The photo is sleeping"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: like / I / apples (museum)",
+          "options": [],
+          "answer_space": true,
+          "answer": "I like apples"
+        },
+        {
+          "type": "sentence_build",
+          "question": "Make a sentence: go / let's / park / the / to (ticket)",
+          "options": [],
+          "answer_space": true,
+          "answer": "Let's go to the park"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "question_answer_en",
+      "title": "question_answer_en - 8",
+      "instruction": "Дай відповіді на запитання англійською.",
+      "tasks": [
+        {
+          "type": "question_answer_en",
+          "question": "What does a park like? (ticket)",
+          "options": [],
+          "answer_space": true,
+          "answer": "park"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What color is the sky? (travel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "blue"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "How many legs does a cat have? (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What does a park like? (souvenir)",
+          "options": [],
+          "answer_space": true,
+          "answer": "park"
+        },
+        {
+          "type": "question_answer_en",
+          "question": "What color is the sky? (sea)",
+          "options": [],
+          "answer_space": true,
+          "answer": "blue"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "fill_gap_en",
+      "title": "fill_gap_en - 9",
+      "instruction": "Доповни речення.",
+      "tasks": [
+        {
+          "type": "fill_gap_en",
+          "question": "The mountain ___ happy. (museum)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "Mountain ___ friends. (hotel)",
+          "options": [],
+          "answer_space": true,
+          "answer": "are"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "I ___ a student. (ticket)",
+          "options": [],
+          "answer_space": true,
+          "answer": "am"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "She ___ a teacher. (map)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        },
+        {
+          "type": "fill_gap_en",
+          "question": "The mountain ___ happy. (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "is"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "correct_form_en",
+      "title": "correct_form_en - 10",
+      "instruction": "Обери правильну форму.",
+      "tasks": [
+        {
+          "type": "correct_form_en",
+          "question": "She (have/has) a cat. (photo)",
+          "options": [],
+          "answer_space": true,
+          "answer": "has"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "They (play/plays) with museum. (passport)",
+          "options": [],
+          "answer_space": true,
+          "answer": "play"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "He (go/goes) to school. (mountain)",
+          "options": [],
+          "answer_space": true,
+          "answer": "goes"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "She (have/has) a cat. (suitcase)",
+          "options": [],
+          "answer_space": true,
+          "answer": "has"
+        },
+        {
+          "type": "correct_form_en",
+          "question": "They (play/plays) with museum. (mountain)",
+          "options": [],
+          "answer_space": true,
+          "answer": "play"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "is",
+        "are",
+        "am",
+        "is",
+        "is"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "play",
+        "goes",
+        "has",
+        "play",
+        "goes"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "The map is sleeping",
+        "I like apples",
+        "Let's go to the park",
+        "The map is sleeping",
+        "I like apples"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "4",
+        "map",
+        "blue",
+        "4",
+        "map"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "is",
+        "are",
+        "am",
+        "is",
+        "is"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "goes",
+        "has",
+        "play",
+        "goes",
+        "has"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "I like apples",
+        "Let's go to the park",
+        "The photo is sleeping",
+        "I like apples",
+        "Let's go to the park"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "park",
+        "blue",
+        "4",
+        "park",
+        "blue"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "is",
+        "are",
+        "am",
+        "is",
+        "is"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "has",
+        "play",
+        "goes",
+        "has",
+        "play"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [
+      "COMMERCIAL FAIL: Topic 'travel' on only 0/10 pages (0%), need >= 55%",
+      "COMMERCIAL FAIL: score=77/100"
+    ],
+    "warnings": [],
+    "commercial_score": 77,
+    "hard_fails": [],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Topic 'travel' on only 0/10 pages (0%), need >= 55%",
+      "COMMERCIAL FAIL: score=77/100"
+    ]
+  }
+}

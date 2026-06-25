@@ -1,0 +1,23 @@
+{
+  "id": "reading_fairy",
+  "title": "Волшебные сказки: понимание",
+  "age": 8,
+  "grade": "2 класс",
+  "language": "ru",
+  "pack_type": "reading",
+  "topic": "fairy_tales",
+  "pages_count": 12,
+  "cards": [
+    "story_read",
+    "character_guess",
+    "question_answer",
+    "sequence",
+    "main_idea"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Волшебные сказки: понимание - medium, 12 pages, story_read, character_guess, question_answer..."
+}

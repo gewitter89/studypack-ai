@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "errors": [
+    "COMMERCIAL FAIL: Topic 'farm' on only 0/10 pages (0%), need >= 55%",
+    "COMMERCIAL FAIL: score=75/100"
+  ],
+  "warnings": [
+    "WARNING: Same instruction on 3 pages"
+  ],
+  "commercial_score": 75,
+  "hard_fails": [],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Topic 'farm' on only 0/10 pages (0%), need >= 55%",
+    "COMMERCIAL FAIL: score=75/100"
+  ]
+}

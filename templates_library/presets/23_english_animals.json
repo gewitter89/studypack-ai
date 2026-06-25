@@ -1,0 +1,22 @@
+{
+  "id": "english_animals",
+  "title": "Animals: read and write",
+  "age": 8,
+  "grade": "2 класс",
+  "language": "en",
+  "pack_type": "english",
+  "topic": "animals",
+  "pages_count": 12,
+  "cards": [
+    "word_picture",
+    "read_short_en",
+    "question_answer_en",
+    "crossword_en"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Animals: read and write - medium, 12 pages, word_picture, read_short_en, question_answer_en..."
+}

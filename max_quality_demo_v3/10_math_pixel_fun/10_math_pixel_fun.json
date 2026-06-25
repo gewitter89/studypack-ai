@@ -1,0 +1,597 @@
+{
+  "title": "Таблица умножения: 2-9",
+  "subtitle": "Завдання для дітей 7 років",
+  "language": "uk",
+  "age": 7,
+  "grade": "3 класс",
+  "topic": "pixel_world",
+  "pack_type": "math",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "math_multiplication",
+      "title": "Множення - 1",
+      "instruction": "Знайди добуток.",
+      "tasks": [
+        {
+          "type": "math_multiplication",
+          "question": "7 × 9",
+          "options": [],
+          "answer_space": true,
+          "answer": "63"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "6 × 9",
+          "options": [],
+          "answer_space": true,
+          "answer": "54"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "3 × 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "9 × 4",
+          "options": [],
+          "answer_space": true,
+          "answer": "36"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "3 × 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "math_division",
+      "title": "Ділення - 2",
+      "instruction": "Розв'яжи приклади на ділення.",
+      "tasks": [
+        {
+          "type": "math_division",
+          "question": "28 ÷ 4",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math_division",
+          "question": "49 ÷ 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math_division",
+          "question": "21 ÷ 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math_division",
+          "question": "32 ÷ 8",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math_division",
+          "question": "25 ÷ 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "missing_number",
+      "title": "Пропущене число - 3",
+      "instruction": "Знайди невідоме число.",
+      "tasks": [
+        {
+          "type": "missing_number",
+          "question": "15 + __ = 19",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "missing_number",
+          "question": "19 - 16 = __",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "missing_number",
+          "question": "8 - __ = 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "missing_number",
+          "question": "3 + __ = 9",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "missing_number",
+          "question": "__ + 6 = 10",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "math_compare",
+      "title": "Порівняння - 4",
+      "instruction": "Який знак пропущено?",
+      "tasks": [
+        {
+          "type": "math_compare",
+          "question": "19 ○ 17 (крафт)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        },
+        {
+          "type": "math_compare",
+          "question": "1 ○ 20 (кирка)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "4 ○ 13 (світ)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "15 ○ 9 (світ)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        },
+        {
+          "type": "math_compare",
+          "question": "2 ○ 20 (квадрат)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "math_multiplication",
+      "title": "Множення - 5",
+      "instruction": "Обчисли добуток чисел.",
+      "tasks": [
+        {
+          "type": "math_multiplication",
+          "question": "6 × 4",
+          "options": [],
+          "answer_space": true,
+          "answer": "24"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "3 × 6",
+          "options": [],
+          "answer_space": true,
+          "answer": "18"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "9 × 6",
+          "options": [],
+          "answer_space": true,
+          "answer": "54"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "3 × 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "21"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "8 × 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "56"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "math_division",
+      "title": "Ділення - 6",
+      "instruction": "Розв'яжи приклади на ділення.",
+      "tasks": [
+        {
+          "type": "math_division",
+          "question": "21 ÷ 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math_division",
+          "question": "18 ÷ 6",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math_division",
+          "question": "21 ÷ 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math_division",
+          "question": "40 ÷ 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math_division",
+          "question": "14 ÷ 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "missing_number",
+      "title": "Пропущене число - 7",
+      "instruction": "Встав пропущене число.",
+      "tasks": [
+        {
+          "type": "missing_number",
+          "question": "__ + 10 = 19",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        },
+        {
+          "type": "missing_number",
+          "question": "13 - 10 = __",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "missing_number",
+          "question": "16 - __ = 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "missing_number",
+          "question": "19 + __ = 20",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "missing_number",
+          "question": "__ + 4 = 18",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "math_compare",
+      "title": "Порівняння - 8",
+      "instruction": "Постав знак >, < або =.",
+      "tasks": [
+        {
+          "type": "math_compare",
+          "question": "12 ○ 17 (квадрат)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "15 ○ 3 (крафт)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        },
+        {
+          "type": "math_compare",
+          "question": "9 ○ 19 (квадрат)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "4 ○ 20 (куб)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "7 ○ 17 (світ)",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "math_multiplication",
+      "title": "Множення - 9",
+      "instruction": "Знайди добуток.",
+      "tasks": [
+        {
+          "type": "math_multiplication",
+          "question": "5 × 9",
+          "options": [],
+          "answer_space": true,
+          "answer": "45"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "4 × 8",
+          "options": [],
+          "answer_space": true,
+          "answer": "32"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "8 × 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "40"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "5 × 6",
+          "options": [],
+          "answer_space": true,
+          "answer": "30"
+        },
+        {
+          "type": "math_multiplication",
+          "question": "6 × 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "math_division",
+      "title": "Ділення - 10",
+      "instruction": "Знайди частку.",
+      "tasks": [
+        {
+          "type": "math_division",
+          "question": "10 ÷ 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        },
+        {
+          "type": "math_division",
+          "question": "32 ÷ 8",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math_division",
+          "question": "24 ÷ 6",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math_division",
+          "question": "40 ÷ 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math_division",
+          "question": "6 ÷ 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "63",
+        "54",
+        "9",
+        "36",
+        "9"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "7",
+        "7",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "4",
+        "3",
+        "3",
+        "6",
+        "4"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        ">",
+        "<",
+        "<",
+        ">",
+        "<"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "24",
+        "18",
+        "54",
+        "21",
+        "56"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "7",
+        "3",
+        "3",
+        "8",
+        "2"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "9",
+        "3",
+        "13",
+        "1",
+        "14"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "<",
+        ">",
+        "<",
+        "<",
+        "<"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "45",
+        "32",
+        "40",
+        "30",
+        "12"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "5",
+        "4",
+        "4",
+        "8",
+        "3"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [
+      "COMMERCIAL FAIL: Topic 'pixel_world' on only 2/10 pages (20%), need >= 50%"
+    ],
+    "warnings": [],
+    "commercial_score": 82,
+    "hard_fails": [],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Topic 'pixel_world' on only 2/10 pages (20%), need >= 50%"
+    ]
+  }
+}

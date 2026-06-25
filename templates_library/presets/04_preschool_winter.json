@@ -1,0 +1,23 @@
+{
+  "id": "preschool_winter",
+  "title": "Зимние игры: подготовка к письму",
+  "age": 5,
+  "grade": "Дошкольник",
+  "language": "ru",
+  "pack_type": "preschool",
+  "topic": "winter",
+  "pages_count": 10,
+  "cards": [
+    "letter_trace",
+    "pattern",
+    "snowflake_count",
+    "same_shape",
+    "maze_simple"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Зимние игры: подготовка к письму - easy, 10 pages, letter_trace, pattern, snowflake_count..."
+}

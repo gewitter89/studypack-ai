@@ -1,0 +1,318 @@
+{
+  "title": "Подготовка к школе: животные",
+  "subtitle": "Завдання для дітей 5 років",
+  "language": "uk",
+  "age": 5,
+  "grade": "Дошкольник",
+  "topic": "cats",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "count_trace",
+      "title": "Лічба - 1",
+      "instruction": "Скільки тут?",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ххххх",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: хххххх",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ххххххх",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "shape_find",
+      "title": "Фігури - 2",
+      "instruction": "Яка це фігура?",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Знайди трикутник серед фігур:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди коло серед фігур: о □...",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди квадрат серед фігур: о...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "letter_trace",
+      "title": "Букви - 3",
+      "instruction": "Обведи букву за точками.",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Р за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Р"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Р за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Р"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Р за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Р"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "same_shape",
+      "title": "Знайди таку ж - 4",
+      "instruction": "Знайди таку ж фігуру.",
+      "tasks": [
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: □ | ○ □ △ ☆ ◇...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: □ | ○ □ △ ☆ ◇...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: □ | ○ □ △ ☆ ◇...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "coloring",
+      "title": "Розфарбуй - 5",
+      "instruction": "Розфарбуй малюнок.",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Розфарбуй шерсть",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй шерсть",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй шерсть",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "count_trace",
+      "title": "Лічба - 6",
+      "instruction": "Скільки тут?",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Порахуй: в",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: вв",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ввв",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "shape_find",
+      "title": "Фігури - 7",
+      "instruction": "Знайди та обведи фігуру.",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Знайди квадрат серед фігур: о...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди трикутник серед фігур:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди коло серед фігур: о □...",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "letter_trace",
+      "title": "Букви - 8",
+      "instruction": "Обведи букву за точками.",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву К за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "К"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву К за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "К"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву К за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "К"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "△",
+        "о",
+        "□"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "Р",
+        "Р",
+        "Р"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "□",
+        "□",
+        "□"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "□",
+        "△",
+        "о"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "К",
+        "К",
+        "К"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": false,
+    "errors": [
+      "Topic 'cats' appears on only 1/8 pages (12%)"
+    ],
+    "warnings": []
+  }
+}

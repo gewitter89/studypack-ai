@@ -1,0 +1,23 @@
+{
+  "id": "reading_culture",
+  "title": "Українська культура: тексти",
+  "age": 10,
+  "grade": "4 класс",
+  "language": "uk",
+  "pack_type": "ukrainian_nush",
+  "topic": "culture",
+  "pages_count": 12,
+  "cards": [
+    "story_read",
+    "question_answer",
+    "main_idea",
+    "synonym_find",
+    "discussion"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Українська культура: тексти - hard, 12 pages, story_read, question_answer, main_idea..."
+}

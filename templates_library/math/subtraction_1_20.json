@@ -1,0 +1,21 @@
+{
+  "id": "math_subtraction_1_20",
+  "title": "Вычитание в пределах 20",
+  "subject": "math",
+  "age_min": 6,
+  "age_max": 8,
+  "grade": ["1 класс", "2 класс"],
+  "difficulty": "medium",
+  "language": ["ru", "uk"],
+  "card_type": "math_subtraction",
+  "theme_tags": ["space", "robots", "sports"],
+  "layout": "worksheet_basic",
+  "requires_ai": false,
+  "has_answer_key": true,
+  "params": {
+    "min_number": 1,
+    "max_number": 20,
+    "tasks_count": 10,
+    "with_story": true
+  }
+}

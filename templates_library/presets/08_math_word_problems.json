@@ -1,0 +1,22 @@
+{
+  "id": "math_word_problems",
+  "title": "Задачи на логику и счёт",
+  "age": 8,
+  "grade": "2 класс",
+  "language": "ru",
+  "pack_type": "math",
+  "topic": "word_problems",
+  "pages_count": 12,
+  "cards": [
+    "math_word",
+    "math_scheme",
+    "math_compare",
+    "pattern"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Задачи на логику и счёт - medium, 12 pages, math_word, math_scheme, math_compare..."
+}

@@ -1,0 +1,390 @@
+{
+  "title": "Закономерности и последовательности",
+  "subtitle": "Задания для детей 6 лет",
+  "language": "ru",
+  "age": 6,
+  "grade": "1 класс",
+  "topic": "space",
+  "pack_type": "logic",
+  "difficulty": "easy",
+  "parent_instruction": "Занимайтесь 10-20 минут в день. Хвалите ребёнка за старание. Ответы - только для проверки взрослым.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "pattern",
+      "title": "Закономерности - 1",
+      "instruction": "Какое число следующее?",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 9, 11, 13, ... (луна)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 10, 12, 14, ... (луна)",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 1, 3, 5, ... (луна)",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "odd_one_out",
+      "title": "Лишнее - 2",
+      "instruction": "Какой предмет лишний?",
+      "tasks": [
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: луна, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "солнце"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: луна, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "солнце"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: луна, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "солнце"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "missing_number",
+      "title": "Пропущенное число - 3",
+      "instruction": "Какое число пропущено?",
+      "tasks": [
+        {
+          "type": "missing_number",
+          "question": "18 - __ = 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "missing_number",
+          "question": "8 + __ = 12",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "missing_number",
+          "question": "17 - 10 = __",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "sequence",
+      "title": "Последовательность - 4",
+      "instruction": "Восстанови последовательность.",
+      "tasks": [
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324711, 324712, 324714.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324715"
+        },
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324712, 324713, 324715.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324716"
+        },
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324713, 324714, 324716.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324717"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "pattern",
+      "title": "Закономерности - 5",
+      "instruction": "Какое число следующее?",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 3, 5, 7, ... (астероид)",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 4, 6, 8, ... (астероид)",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 5, 7, 9, ... (астероид)",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "odd_one_out",
+      "title": "Лишнее - 6",
+      "instruction": "Какой предмет лишний?",
+      "tasks": [
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: телескоп, солнце, спутник, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: телескоп, солнце, спутник, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: телескоп, солнце, спутник, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "missing_number",
+      "title": "Пропущенное число - 7",
+      "instruction": "Вставь пропущенное число.",
+      "tasks": [
+        {
+          "type": "missing_number",
+          "question": "20 - 15 = __",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        },
+        {
+          "type": "missing_number",
+          "question": "18 - __ = 14",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "missing_number",
+          "question": "20 - 18 = __",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "sequence",
+      "title": "Последовательность - 8",
+      "instruction": "Расставь по порядку.",
+      "tasks": [
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324715, 324716, 324718.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324719"
+        },
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324716, 324717, 324719.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324720"
+        },
+        {
+          "type": "sequence",
+          "question": "Разложи по порядку: 324717, 324718, 324720.",
+          "options": [],
+          "answer_space": true,
+          "answer": "324721"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "pattern",
+      "title": "Закономерности - 9",
+      "instruction": "Найди закономерность.",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 7, 9, 11, ... (спутник)",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 8, 10, 12, ... (спутник)",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 9, 11, 13, ... (спутник)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "odd_one_out",
+      "title": "Лишнее - 10",
+      "instruction": "Что лишнее? Найди и объясни.",
+      "tasks": [
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: планета, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "астероид"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: планета, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "астероид"
+        },
+        {
+          "type": "odd_one_out",
+          "question": "Что лишнее?: планета, метеорит, галактика, ???",
+          "options": [],
+          "answer_space": true,
+          "answer": "астероид"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "15",
+        "16",
+        "7"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "солнце",
+        "солнце",
+        "солнце"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "16",
+        "4",
+        "7"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "324715",
+        "324716",
+        "324717"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "ракета",
+        "ракета",
+        "ракета"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "5",
+        "4",
+        "2"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "324719",
+        "324720",
+        "324721"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "астероид",
+        "астероид",
+        "астероид"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  }
+}

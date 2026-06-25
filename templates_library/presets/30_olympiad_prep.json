@@ -1,0 +1,24 @@
+{
+  "id": "olympiad_prep",
+  "title": "Олимпиадная подготовка: 4 класс",
+  "age": 10,
+  "grade": "4 класс",
+  "language": "ru",
+  "pack_type": "mixed_week",
+  "topic": "olympiad",
+  "pages_count": 20,
+  "cards": [
+    "math_word",
+    "detective",
+    "sudoku",
+    "fraction_draw",
+    "story_logic",
+    "analogy"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Олимпиадная подготовка: 4 класс - hard, 20 pages, math_word, detective, sudoku..."
+}

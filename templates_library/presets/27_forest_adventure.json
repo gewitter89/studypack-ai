@@ -1,0 +1,24 @@
+{
+  "id": "forest_adventure",
+  "title": "Лісова пригода: логіка, рахунок, письмо",
+  "age": 6,
+  "grade": "1 класс",
+  "language": "uk",
+  "pack_type": "mixed_week",
+  "topic": "forest",
+  "pages_count": 15,
+  "cards": [
+    "count_trace",
+    "pattern",
+    "story_read",
+    "maze",
+    "letter_trace",
+    "odd_one_out"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Лісова пригода: логіка, рахунок, письмо - easy, 15 pages, count_trace, pattern, story_read..."
+}

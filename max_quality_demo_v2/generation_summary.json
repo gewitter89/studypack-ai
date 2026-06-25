@@ -1,0 +1,71 @@
+[
+  {
+    "name": "01_preschool_animals_bw",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "02_preschool_space_fun",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "03_math_dino_fun",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "04_reading_underwater_minimal",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "05_english_farm_fun",
+    "quality_passed": false,
+    "quality_errors": [
+      "Topic 'farm' appears on only 0/10 pages (0%)"
+    ]
+  },
+  {
+    "name": "06_logic_space_minimal",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "07_math_soccer_academic",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "08_preschool_cats_bw",
+    "quality_passed": false,
+    "quality_errors": [
+      "Topic 'cats' appears on only 1/8 pages (12%)"
+    ]
+  },
+  {
+    "name": "09_english_travel_minimal",
+    "quality_passed": false,
+    "quality_errors": [
+      "Topic 'travel' appears on only 0/10 pages (0%)"
+    ]
+  },
+  {
+    "name": "10_math_pixel_fun",
+    "quality_passed": false,
+    "quality_errors": [
+      "Same instruction on 3 pages: p.1,5,9 ('Обчисли добуток чисел....')",
+      "Topic 'pixel_world' appears on only 0/10 pages (0%)"
+    ]
+  },
+  {
+    "name": "11_logic_robots_fun",
+    "quality_passed": true,
+    "quality_errors": []
+  },
+  {
+    "name": "12_custom_reading_academic",
+    "quality_passed": true,
+    "quality_errors": []
+  }
+]

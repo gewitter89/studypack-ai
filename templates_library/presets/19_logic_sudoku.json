@@ -1,0 +1,22 @@
+{
+  "id": "logic_sudoku",
+  "title": "Судоку и таблицы",
+  "age": 9,
+  "grade": "3 класс",
+  "language": "ru",
+  "pack_type": "logic",
+  "topic": "sudoku",
+  "pages_count": 10,
+  "cards": [
+    "sudoku",
+    "table_fill",
+    "crossword",
+    "pattern"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Судоку и таблицы - hard, 10 pages, sudoku, table_fill, crossword..."
+}

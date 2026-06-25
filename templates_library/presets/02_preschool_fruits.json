@@ -1,0 +1,23 @@
+{
+  "id": "preschool_fruits",
+  "title": "Фрукти та овочі: рахунок і кольори",
+  "age": 5,
+  "grade": "Дошкольник",
+  "language": "uk",
+  "pack_type": "preschool",
+  "topic": "fruits",
+  "pages_count": 10,
+  "cards": [
+    "count_trace",
+    "color_find",
+    "letter_trace",
+    "same_shape",
+    "puzzle_lines"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Фрукти та овочі: рахунок і кольори - easy, 10 pages, count_trace, color_find, letter_trace..."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "reading_short_passage",
+  "title": "Короткий текст с вопросами",
+  "subject": "reading",
+  "age_min": 6,
+  "age_max": 10,
+  "grade": ["1 класс", "2 класс", "3 класс"],
+  "difficulty": "medium",
+  "language": ["ru", "uk"],
+  "card_type": "reading_passage",
+  "theme_tags": ["animals", "nature", "adventure"],
+  "layout": "worksheet_with_text",
+  "requires_ai": true,
+  "has_answer_key": true,
+  "params": {
+    "text_length": "short",
+    "questions_count": 4,
+    "question_types": ["direct", "true_false", "vocabulary"],
+    "age_text_length_map": {
+      "6": "3-5 sentences",
+      "7": "4-6 sentences",
+      "8": "5-7 sentences",
+      "9": "6-8 sentences",
+      "10": "7-10 sentences"
+    }
+  }
+}

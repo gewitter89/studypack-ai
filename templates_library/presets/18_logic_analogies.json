@@ -1,0 +1,22 @@
+{
+  "id": "logic_analogies",
+  "title": "Аналогии и сравнения",
+  "age": 8,
+  "grade": "2 класс",
+  "language": "ru",
+  "pack_type": "logic",
+  "topic": "analogies",
+  "pages_count": 10,
+  "cards": [
+    "analogy",
+    "odd_one_out",
+    "sequence",
+    "pattern"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Аналогии и сравнения - medium, 10 pages, analogy, odd_one_out, sequence..."
+}

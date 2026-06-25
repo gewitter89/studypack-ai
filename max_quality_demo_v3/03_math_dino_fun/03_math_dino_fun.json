@@ -1,0 +1,659 @@
+{
+  "title": "Космическое путешествие",
+  "subtitle": "Завдання для дітей 7 років",
+  "language": "uk",
+  "age": 7,
+  "grade": "1 класс",
+  "topic": "dinosaurs",
+  "pack_type": "mixed_week",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "math_addition",
+      "title": "Додавання - 1",
+      "instruction": "Розв'яжи приклади на додавання.",
+      "tasks": [
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 7 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 7 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 7 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 7 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 7 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "story_read",
+      "title": "Читання - 2",
+      "instruction": "Прочитай невелику розповідь.",
+      "tasks": [
+        {
+          "type": "story_read",
+          "question": "У лісі: У лісі було тихо та гарно. Папороть стрибав по галявині.",
+          "options": [],
+          "answer_space": true,
+          "answer": "у лісі"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "У лісі: У лісі було тихо та гарно. Папороть стрибав по галявині.",
+          "options": [],
+          "answer_space": true,
+          "answer": "у лісі"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "maze",
+      "title": "Лабіринт - 3",
+      "instruction": "Пройди лабіринт.",
+      "tasks": [
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 6x6) (зуб)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 7x5) (зуб)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 8x8) (скам'янілість)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 5x7) (джунглі)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 6x6) (вулкан)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "pattern",
+      "title": "Закономірності - 4",
+      "instruction": "Яке число наступне?",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 9, 11, 13, ... (хвіст) (гніздо)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 10, 12, 14, ... (хвіст) (динозаврик)",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 1, 3, 5, ... (хвіст) (динозаврик)",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 2, 4, 6, ... (хвіст) (гніздо)",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 3, 5, 7, ... (хвіст) (трицератопс)",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "coloring",
+      "title": "Розфарбуй - 5",
+      "instruction": "Якого кольору?",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Покажи яйце. Розфарбуй тиранозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Покажи папороть. Розфарбуй тиранозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Покажи лапа. Розфарбуй тиранозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Покажи трицератопс. Розфарбуй тиранозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Покажи динозаврик. Розфарбуй тиранозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "find_word",
+      "title": "Знайди слово - 6",
+      "instruction": "Знайди та обведи слово.",
+      "tasks": [
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'джунглі'",
+          "options": [],
+          "answer_space": true,
+          "answer": "джунглі"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'кістка'",
+          "options": [],
+          "answer_space": true,
+          "answer": "кістка"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'хвіст'",
+          "options": [],
+          "answer_space": true,
+          "answer": "хвіст"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'зуб'",
+          "options": [],
+          "answer_space": true,
+          "answer": "зуб"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'лапа'",
+          "options": [],
+          "answer_space": true,
+          "answer": "лапа"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "math_addition",
+      "title": "Додавання - 7",
+      "instruction": "Скільки буде? Запиши відповідь.",
+      "tasks": [
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 14 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 14 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 14 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 14 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_addition",
+          "question": "Тиранозавр пробіг 14 метрів, а стегозавр — 6 метрів.",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "story_read",
+      "title": "Читання - 8",
+      "instruction": "Прочитай уважно.",
+      "tasks": [
+        {
+          "type": "story_read",
+          "question": "У лісі: У лісі було тихо та гарно. Печера стрибав по галявині.",
+          "options": [],
+          "answer_space": true,
+          "answer": "у лісі"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "У лісі: У лісі було тихо та гарно. Печера стрибав по галявині.",
+          "options": [],
+          "answer_space": true,
+          "answer": "у лісі"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "maze",
+      "title": "Лабіринт - 9",
+      "instruction": "Допоможи знайти шлях.",
+      "tasks": [
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 8x8) (динозаврик)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 5x7) (папороть)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 6x6) (кістка)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 7x5) (лапа)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Знайди вихід (лабіринт 8x8) (річка)",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "pattern",
+      "title": "Закономірності - 10",
+      "instruction": "Продовж ряд.",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 5, 7, 9, ... (трицератопс) (печера)",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 6, 8, 10, ... (трицератопс) (хвіст)",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 7, 9, 11, ... (трицератопс) (папороть)",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 8, 10, 12, ... (трицератопс) (лапа)",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "pattern",
+          "question": "Продовж ряд: 9, 11, 13, ... (трицератопс) (птеродактиль)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "page_type": "coloring",
+      "title": "Розфарбуй - 11",
+      "instruction": "Розфарбуй за цифрами.",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Порахуй гніздо. Розфарбуй динозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Порахуй трицератопс. Розфарбуй динозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Порахуй кістка. Розфарбуй динозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Порахуй вулкан. Розфарбуй динозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Порахуй вулкан. Розфарбуй динозавр",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "page_type": "find_word",
+      "title": "Знайди слово - 12",
+      "instruction": "Знайди слово в тексті.",
+      "tasks": [
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'печера'",
+          "options": [],
+          "answer_space": true,
+          "answer": "печера"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'річка'",
+          "options": [],
+          "answer_space": true,
+          "answer": "річка"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'скам'янілість'",
+          "options": [],
+          "answer_space": true,
+          "answer": "скам'янілість"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'гніздо'",
+          "options": [],
+          "answer_space": true,
+          "answer": "гніздо"
+        },
+        {
+          "type": "find_word",
+          "question": "Знайди слово 'динозаврик'",
+          "options": [],
+          "answer_space": true,
+          "answer": "динозаврик"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "13",
+        "13",
+        "13",
+        "13",
+        "13"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "у лісі",
+        "ранок",
+        "Марійка",
+        "у лісі",
+        "ранок"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "OK",
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "15",
+        "16",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "джунглі",
+        "кістка",
+        "хвіст",
+        "зуб",
+        "лапа"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "20",
+        "20",
+        "20",
+        "20",
+        "20"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "у лісі",
+        "ранок",
+        "Марійка",
+        "у лісі",
+        "ранок"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "OK",
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "page_number": 11,
+      "answers": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 12,
+      "answers": [
+        "печера",
+        "річка",
+        "скам'янілість",
+        "гніздо",
+        "динозаврик"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "commercial_score": 97,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

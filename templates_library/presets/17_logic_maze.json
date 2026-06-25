@@ -1,0 +1,22 @@
+{
+  "id": "logic_maze",
+  "title": "Лабиринты и головоломки",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "uk",
+  "pack_type": "logic",
+  "topic": "maze",
+  "pages_count": 10,
+  "cards": [
+    "maze",
+    "labyrinth",
+    "find_path",
+    "puzzle_lines"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Лабиринты и головоломки - easy, 10 pages, maze, labyrinth, find_path..."
+}

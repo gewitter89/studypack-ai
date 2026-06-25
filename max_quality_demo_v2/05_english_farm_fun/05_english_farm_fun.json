@@ -1,0 +1,392 @@
+{
+  "title": "Colours and numbers",
+  "subtitle": "Завдання для дітей 7 років",
+  "language": "uk+en",
+  "age": 7,
+  "grade": "1 класс",
+  "topic": "farm",
+  "pack_type": "english",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "color_find_en",
+      "title": "color_find_en - 1",
+      "instruction": "Какого цвета?",
+      "tasks": [
+        {
+          "type": "color_find_en",
+          "question": "Find color: green 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟢"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: yellow 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟡"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: red 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🔴"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "count_en",
+      "title": "count_en - 2",
+      "instruction": "Посчитай по-английски.",
+      "tasks": [
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★★ (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★★★ (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★★★★ (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "word_picture",
+      "title": "word_picture - 3",
+      "instruction": "Соедини слово и картинку.",
+      "tasks": [
+        {
+          "type": "word_picture",
+          "question": "Match word: 📖 = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "field"
+        },
+        {
+          "type": "word_picture",
+          "question": "Match word: 🐟 = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "fish"
+        },
+        {
+          "type": "word_picture",
+          "question": "Match word: 🐱 = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "cat"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "match_pairs_en",
+      "title": "match_pairs_en - 4",
+      "instruction": "Подбери перевод.",
+      "tasks": [
+        {
+          "type": "match_pairs_en",
+          "question": "11 barn",
+          "options": [],
+          "answer_space": true,
+          "answer": "25"
+        },
+        {
+          "type": "match_pairs_en",
+          "question": "11 barn",
+          "options": [],
+          "answer_space": true,
+          "answer": "25"
+        },
+        {
+          "type": "match_pairs_en",
+          "question": "11 barn",
+          "options": [],
+          "answer_space": true,
+          "answer": "25"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "color_find_en",
+      "title": "color_find_en - 5",
+      "instruction": "Какого цвета?",
+      "tasks": [
+        {
+          "type": "color_find_en",
+          "question": "Find color: green 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟢"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: yellow 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟡"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: red 🔴 🔵 🟢 🟡 (field)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🔴"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "count_en",
+      "title": "count_en - 6",
+      "instruction": "How many?",
+      "tasks": [
+        {
+          "type": "count_en",
+          "question": "How many? ★★ (pig)",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★ (pig)",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★ (pig)",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "word_picture",
+      "title": "word_picture - 7",
+      "instruction": "Какое слово подходит?",
+      "tasks": [
+        {
+          "type": "word_picture",
+          "question": "Match word: ☀ = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "sun"
+        },
+        {
+          "type": "word_picture",
+          "question": "Match word: 📖 = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "duck"
+        },
+        {
+          "type": "word_picture",
+          "question": "Match word: 🐟 = ? (cat, dog, sun, book, fish)",
+          "options": [],
+          "answer_space": true,
+          "answer": "fish"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "match_pairs_en",
+      "title": "match_pairs_en - 8",
+      "instruction": "Соедини пары.",
+      "tasks": [
+        {
+          "type": "match_pairs_en",
+          "question": "15 pig",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        },
+        {
+          "type": "match_pairs_en",
+          "question": "15 pig",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        },
+        {
+          "type": "match_pairs_en",
+          "question": "15 pig",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "color_find_en",
+      "title": "color_find_en - 9",
+      "instruction": "Найди цвет.",
+      "tasks": [
+        {
+          "type": "color_find_en",
+          "question": "Find color: green 🔴 🔵 🟢 🟡 (goat)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟢"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: yellow 🔴 🔵 🟢 🟡 (goat)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🟡"
+        },
+        {
+          "type": "color_find_en",
+          "question": "Find color: red 🔴 🔵 🟢 🟡 (goat)",
+          "options": [],
+          "answer_space": true,
+          "answer": "🔴"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "count_en",
+      "title": "count_en - 10",
+      "instruction": "Сколько? Напиши число.",
+      "tasks": [
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★ (chicken)",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★★ (chicken)",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "count_en",
+          "question": "How many? ★★★★★★★★ (chicken)",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "🟢",
+        "🟡",
+        "🔴"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "field",
+        "fish",
+        "cat"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "25",
+        "25",
+        "25"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "🟢",
+        "🟡",
+        "🔴"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "sun",
+        "duck",
+        "fish"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "22",
+        "22",
+        "22"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "🟢",
+        "🟡",
+        "🔴"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "6",
+        "7",
+        "8"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": false,
+    "errors": [
+      "Topic 'farm' appears on only 0/10 pages (0%)"
+    ],
+    "warnings": []
+  }
+}

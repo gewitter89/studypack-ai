@@ -223,6 +223,8 @@ class StudyPackGenerator:
 
     def _finalize(self, pack_data: dict, request, result) -> GenerationResult:
         pack_data = sanitize_pack_data(pack_data)
+        from core.postprocess import postprocess
+        pack_data = postprocess(pack_data)
 
         math_issues = verify_math_in_pack(pack_data)
         result.math_issues = math_issues

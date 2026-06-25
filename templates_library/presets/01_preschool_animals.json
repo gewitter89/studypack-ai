@@ -1,0 +1,23 @@
+{
+  "id": "preschool_animals",
+  "title": "Подготовка к школе: животные",
+  "age": 5,
+  "grade": "Дошкольник",
+  "language": "uk",
+  "pack_type": "preschool",
+  "topic": "animals",
+  "pages_count": 10,
+  "cards": [
+    "count_trace",
+    "shape_find",
+    "letter_trace",
+    "same_shape",
+    "coloring"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Подготовка к школе: животные - easy, 10 pages, count_trace, shape_find, letter_trace..."
+}

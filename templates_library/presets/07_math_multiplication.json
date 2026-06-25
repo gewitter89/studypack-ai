@@ -1,0 +1,22 @@
+{
+  "id": "math_multiplication",
+  "title": "Таблица умножения: 2-9",
+  "age": 9,
+  "grade": "3 класс",
+  "language": "uk",
+  "pack_type": "math",
+  "topic": "multiplication",
+  "pages_count": 12,
+  "cards": [
+    "math_multiplication",
+    "math_division",
+    "missing_number",
+    "math_compare"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Таблица умножения: 2-9 - medium, 12 pages, math_multiplication, math_division, missing_number..."
+}

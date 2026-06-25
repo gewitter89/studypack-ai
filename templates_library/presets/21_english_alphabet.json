@@ -1,0 +1,22 @@
+{
+  "id": "english_alphabet",
+  "title": "ABC: буквы и слова",
+  "age": 6,
+  "grade": "Дошкольник",
+  "language": "en",
+  "pack_type": "english",
+  "topic": "alphabet",
+  "pages_count": 10,
+  "cards": [
+    "letter_trace_en",
+    "abc_match",
+    "word_picture",
+    "color_find_en"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "ABC: буквы и слова - easy, 10 pages, letter_trace_en, abc_match, word_picture..."
+}

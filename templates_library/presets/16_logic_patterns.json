@@ -1,0 +1,22 @@
+{
+  "id": "logic_patterns",
+  "title": "Закономерности и последовательности",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "ru",
+  "pack_type": "logic",
+  "topic": "patterns",
+  "pages_count": 10,
+  "cards": [
+    "pattern",
+    "odd_one_out",
+    "missing_number",
+    "sequence"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Закономерности и последовательности - easy, 10 pages, pattern, odd_one_out, missing_number..."
+}

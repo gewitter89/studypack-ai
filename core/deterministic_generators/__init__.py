@@ -1,0 +1,2 @@
+from core.deterministic_generators.math_generator import DeterministicMathGenerator
+from core.deterministic_generators.word_search_generator import SimpleWordSearch

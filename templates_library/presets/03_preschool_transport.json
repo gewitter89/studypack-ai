@@ -1,0 +1,23 @@
+{
+  "id": "preschool_transport",
+  "title": "Транспорт: фигуры и счёт",
+  "age": 5,
+  "grade": "Дошкольник",
+  "language": "ru",
+  "pack_type": "preschool",
+  "topic": "transport",
+  "pages_count": 10,
+  "cards": [
+    "count_trace",
+    "shape_find",
+    "find_shadow",
+    "same_shape",
+    "coloring"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Транспорт: фигуры и счёт - easy, 10 pages, count_trace, shape_find, find_shadow..."
+}

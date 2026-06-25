@@ -1,0 +1,22 @@
+{
+  "id": "math_addition_1_10",
+  "title": "Сложение в пределах 10",
+  "subject": "math",
+  "age_min": 5,
+  "age_max": 7,
+  "grade": ["Дошкольник", "1 класс"],
+  "difficulty": "easy",
+  "language": ["ru", "uk"],
+  "card_type": "math_addition",
+  "theme_tags": ["animals", "dinosaurs", "toys", "food"],
+  "layout": "worksheet_basic",
+  "requires_ai": false,
+  "has_answer_key": true,
+  "params": {
+    "min_number": 1,
+    "max_number": 10,
+    "tasks_count": 8,
+    "with_story": true,
+    "visual_support": true
+  }
+}

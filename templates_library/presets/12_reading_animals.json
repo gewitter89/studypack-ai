@@ -1,0 +1,22 @@
+{
+  "id": "reading_animals",
+  "title": "Тварини: читаємо і відповідаємо",
+  "age": 7,
+  "grade": "2 класс",
+  "language": "uk",
+  "pack_type": "reading",
+  "topic": "animals",
+  "pages_count": 10,
+  "cards": [
+    "story_read",
+    "question_answer",
+    "main_idea",
+    "find_word"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Тварини: читаємо і відповідаємо - easy, 10 pages, story_read, question_answer, main_idea..."
+}

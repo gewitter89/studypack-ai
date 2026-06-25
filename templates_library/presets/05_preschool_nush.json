@@ -1,0 +1,23 @@
+{
+  "id": "preschool_nush",
+  "title": "НУШ: готуємося до 1 класу",
+  "age": 6,
+  "grade": "Дошкольник",
+  "language": "uk",
+  "pack_type": "ukrainian_nush",
+  "topic": "school",
+  "pages_count": 12,
+  "cards": [
+    "letter_trace",
+    "count_trace",
+    "shape_find",
+    "sound_letter",
+    "pattern"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "НУШ: готуємося до 1 класу - easy, 12 pages, letter_trace, count_trace, shape_find..."
+}

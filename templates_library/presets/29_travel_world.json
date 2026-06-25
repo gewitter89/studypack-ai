@@ -1,0 +1,24 @@
+{
+  "id": "travel_world",
+  "title": "Путешествие по миру",
+  "age": 9,
+  "grade": "3 класс",
+  "language": "ru",
+  "pack_type": "mixed_week",
+  "topic": "travel",
+  "pages_count": 18,
+  "cards": [
+    "math_money",
+    "reading_culture",
+    "math_multiplication",
+    "analogy",
+    "story_logic",
+    "crossword"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Путешествие по миру - hard, 18 pages, math_money, reading_culture, math_multiplication..."
+}

@@ -285,4 +285,8 @@ def generate_offline(request: PackRequest) -> Optional[Dict[str, Any]]:
         logger.warning(f"No template for pack type: {request.pack_type}")
         return None
     logger.info(f"Generating offline template: {request.pack_type}")
-    return func(request)
+    data = func(request)
+    if data:
+        from core.postprocess import postprocess
+        data = postprocess(data)
+    return data

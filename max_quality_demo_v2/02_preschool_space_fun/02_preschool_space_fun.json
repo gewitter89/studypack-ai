@@ -1,0 +1,390 @@
+{
+  "title": "Подготовка к школе: животные",
+  "subtitle": "Завдання для дітей 6 років",
+  "language": "uk",
+  "age": 6,
+  "grade": "Дошкольник",
+  "topic": "space",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "count_trace",
+      "title": "Лічба - 1",
+      "instruction": "Скільки тут?",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Порахуй: зз",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ззз",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: зззз",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "shape_find",
+      "title": "Фігури - 2",
+      "instruction": "Знайди фігуру.",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Знайди трикутник серед фігур: о □ △ ☆ ◇ (зірка)",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди коло серед фігур: о □ △ ☆ ◇ (зірка)",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди квадрат серед фігур: о □ △ ☆ ◇ (зірка)",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "letter_trace",
+      "title": "Букви - 3",
+      "instruction": "Обведи букву за точками.",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву С за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "С"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву С за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "С"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву С за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "С"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "same_shape",
+      "title": "Знайди таку ж - 4",
+      "instruction": "Де така сама?",
+      "tasks": [
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (сатурн)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (сатурн)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (сатурн)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "coloring",
+      "title": "Розфарбуй - 5",
+      "instruction": "Розфарбуй малюнок.",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Розфарбуй комета",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй комета",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй комета",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "count_trace",
+      "title": "Лічба - 6",
+      "instruction": "Обведи правильне число.",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ссссссс",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: сссссссс",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "count_trace",
+          "question": "Порахуй: ссссссссс",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "shape_find",
+      "title": "Фігури - 7",
+      "instruction": "Знайди та обведи фігуру.",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Знайди квадрат серед фігур: о □ △ ☆ ◇ (галактика)",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди трикутник серед фігур: о □ △ ☆ ◇...",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        },
+        {
+          "type": "shape_find",
+          "question": "Знайди коло серед фігур: о □ △ ☆ ◇ (галактика)",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "letter_trace",
+      "title": "Букви - 8",
+      "instruction": "Обведи букву за точками.",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Г за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Г"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Г за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Г"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Г за точками",
+          "options": [],
+          "answer_space": true,
+          "answer": "Г"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "same_shape",
+      "title": "Знайди таку ж - 9",
+      "instruction": "З'єднай однакові.",
+      "tasks": [
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (космонавт)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (космонавт)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        },
+        {
+          "type": "same_shape",
+          "question": "Знайди таку ж: ○ | ○ □ △ ☆ ◇ (космонавт)",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "coloring",
+      "title": "Розфарбуй - 10",
+      "instruction": "Якого кольору?",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Розфарбуй юпітер",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй юпітер",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Розфарбуй юпітер",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "△",
+        "о",
+        "□"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "С",
+        "С",
+        "С"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "○",
+        "○",
+        "○"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "□",
+        "△",
+        "о"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "Г",
+        "Г",
+        "Г"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "○",
+        "○",
+        "○"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  }
+}

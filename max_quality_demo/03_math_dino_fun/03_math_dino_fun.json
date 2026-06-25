@@ -1,0 +1,656 @@
+{
+  "title": "Космическое путешествие",
+  "subtitle": "Завдання для дітей 7 років",
+  "language": "uk",
+  "age": 7,
+  "grade": "1 класс",
+  "topic": "dinosaurs",
+  "pack_type": "mixed_week",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "math_addition",
+      "title": "Сложение - 1",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "math_addition",
+          "question": "69 + 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "77"
+        },
+        {
+          "type": "math_addition",
+          "question": "25 + 61 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "86"
+        },
+        {
+          "type": "math_addition",
+          "question": "87 + 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "95"
+        },
+        {
+          "type": "math_addition",
+          "question": "9 + 12 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "21"
+        },
+        {
+          "type": "math_addition",
+          "question": "15 + 62 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "77"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "story_read",
+      "title": "Чтение - 2",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "maze",
+      "title": "Лабиринт - 3",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "maze",
+          "question": "Лабиринт 5x5. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 6x8. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 7x7. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 8x6. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 5x5. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "pattern",
+      "title": "Закономерности - 4",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 8, 10, 12, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 9, 11, 13, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 10, 12, 14, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 1, 3, 5, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 2, 4, 6, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "coloring",
+      "title": "Раскрась - 5",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Раскрась м'ячик",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась зірку",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась сонечко",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась квітку",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась будиночок",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "find_word",
+      "title": "Найди слово - 6",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "find_word",
+          "question": "Найди слово 'ЛІС'",
+          "options": [],
+          "answer_space": true,
+          "answer": "ЛІС"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'МАМА'",
+          "options": [],
+          "answer_space": true,
+          "answer": "МАМА"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'ТАТО'",
+          "options": [],
+          "answer_space": true,
+          "answer": "ТАТО"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'СОНЦЕ'",
+          "options": [],
+          "answer_space": true,
+          "answer": "СОНЦЕ"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'КНИГА'",
+          "options": [],
+          "answer_space": true,
+          "answer": "КНИГА"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "math_addition",
+      "title": "Сложение - 7",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "math_addition",
+          "question": "43 + 40 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "83"
+        },
+        {
+          "type": "math_addition",
+          "question": "80 + 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "83"
+        },
+        {
+          "type": "math_addition",
+          "question": "62 + 17 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "79"
+        },
+        {
+          "type": "math_addition",
+          "question": "61 + 37 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "98"
+        },
+        {
+          "type": "math_addition",
+          "question": "96 + 4 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "100"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "story_read",
+      "title": "Чтение - 8",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        },
+        {
+          "type": "story_read",
+          "question": "Сонячний день: Настало тепле ранок. Сонце освітило ліс.",
+          "options": [],
+          "answer_space": true,
+          "answer": "ранок"
+        },
+        {
+          "type": "story_read",
+          "question": "Помічник: Марійка допомагала мамі. Вона полила квіти.",
+          "options": [],
+          "answer_space": true,
+          "answer": "Марійка"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "maze",
+      "title": "Лабиринт - 9",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "maze",
+          "question": "Лабиринт 7x7. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 8x6. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 5x5. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 6x8. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        },
+        {
+          "type": "maze",
+          "question": "Лабиринт 7x7. Найди выход.",
+          "options": [],
+          "answer_space": true,
+          "answer": "OK"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "pattern",
+      "title": "Закономерности - 10",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 4, 6, 8, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 5, 7, 9, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 6, 8, 10, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 7, 9, 11, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 8, 10, 12, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        }
+      ]
+    },
+    {
+      "page_number": 11,
+      "page_type": "coloring",
+      "title": "Раскрась - 11",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Раскрась зірку",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась сонечко",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась квітку",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась будиночок",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась м'ячик",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 12,
+      "page_type": "find_word",
+      "title": "Найди слово - 12",
+      "instruction": "Розв'яжи 5 завдань",
+      "tasks": [
+        {
+          "type": "find_word",
+          "question": "Найди слово 'ЛІС'",
+          "options": [],
+          "answer_space": true,
+          "answer": "ЛІС"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'МАМА'",
+          "options": [],
+          "answer_space": true,
+          "answer": "МАМА"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'ТАТО'",
+          "options": [],
+          "answer_space": true,
+          "answer": "ТАТО"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'СОНЦЕ'",
+          "options": [],
+          "answer_space": true,
+          "answer": "СОНЦЕ"
+        },
+        {
+          "type": "find_word",
+          "question": "Найди слово 'КНИГА'",
+          "options": [],
+          "answer_space": true,
+          "answer": "КНИГА"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "77",
+        "86",
+        "95",
+        "21",
+        "77"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "Марійка",
+        "ранок",
+        "Марійка",
+        "ранок",
+        "Марійка"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "OK",
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "14",
+        "15",
+        "16",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "ЛІС",
+        "МАМА",
+        "ТАТО",
+        "СОНЦЕ",
+        "КНИГА"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "83",
+        "83",
+        "79",
+        "98",
+        "100"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "Марійка",
+        "ранок",
+        "Марійка",
+        "ранок",
+        "Марійка"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "OK",
+        "OK",
+        "OK",
+        "OK",
+        "OK"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "page_number": 11,
+      "answers": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 12,
+      "answers": [
+        "ЛІС",
+        "МАМА",
+        "ТАТО",
+        "СОНЦЕ",
+        "КНИГА"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  }
+}

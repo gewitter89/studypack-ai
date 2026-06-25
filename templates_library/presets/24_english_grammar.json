@@ -1,0 +1,22 @@
+{
+  "id": "english_grammar",
+  "title": "Grammar: verb to be, have got",
+  "age": 9,
+  "grade": "3 класс",
+  "language": "en",
+  "pack_type": "english",
+  "topic": "grammar",
+  "pages_count": 12,
+  "cards": [
+    "fill_gap_en",
+    "correct_form_en",
+    "sentence_build",
+    "question_answer_en"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Grammar: verb to be, have got - medium, 12 pages, fill_gap_en, correct_form_en, sentence_build..."
+}

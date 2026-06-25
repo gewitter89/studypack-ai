@@ -7,7 +7,10 @@ import logging
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app.cli import setup_argparser, run_cli
-from app.gui import StudyPackGUI
+try:
+    from app.premium_ui import PremiumStudyPackUI as GUI_CLASS
+except ImportError:
+    from app.gui import StudyPackGUI as GUI_CLASS
 
 
 def setup_logging():
@@ -37,7 +40,7 @@ def main():
         run_cli(args)
     else:
         try:
-            gui = StudyPackGUI()
+            gui = GUI_CLASS()
             gui.run()
         except ImportError as e:
             print(f"Ошибка: не удалось запустить GUI. {e}")

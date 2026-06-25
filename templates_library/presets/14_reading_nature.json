@@ -1,0 +1,23 @@
+{
+  "id": "reading_nature",
+  "title": "Природа: научно-популярные тексты",
+  "age": 9,
+  "grade": "3 класс",
+  "language": "uk",
+  "pack_type": "reading",
+  "topic": "nature",
+  "pages_count": 12,
+  "cards": [
+    "story_read",
+    "question_answer",
+    "main_idea",
+    "make_plan",
+    "retelling"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Природа: научно-популярные тексты - medium, 12 pages, story_read, question_answer, main_idea..."
+}

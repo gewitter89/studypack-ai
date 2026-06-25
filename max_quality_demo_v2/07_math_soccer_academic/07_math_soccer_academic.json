@@ -1,0 +1,592 @@
+{
+  "title": "Задачи на логику и счёт",
+  "subtitle": "Задания для детей 8 лет",
+  "language": "ru",
+  "age": 8,
+  "grade": "2 класс",
+  "topic": "football",
+  "pack_type": "math",
+  "difficulty": "medium",
+  "parent_instruction": "Занимайтесь 10-20 минут в день. Хвалите ребёнка за старание. Ответы - только для проверки взрослым.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "math_word",
+      "title": "Задачи - 1",
+      "instruction": "Прочитай условие и ответь.",
+      "tasks": [
+        {
+          "type": "math_word",
+          "question": "В кошику було 7 цукерок. Поклали ще 2. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 8 звірят. Поклали ще 3. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 6 олівців. Поклали ще 4. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 8 олівців. Поклали ще 2. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 9 яблук. Поклали ще 3. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "math_scheme",
+      "title": "math_scheme - 2",
+      "instruction": "Запиши выражение.",
+      "tasks": [
+        {
+          "type": "math_scheme",
+          "question": "4 + 11",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "math_scheme",
+          "question": "19 + 1",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_scheme",
+          "question": "11 + 9",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_scheme",
+          "question": "10 + 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "math_scheme",
+          "question": "6 + 14",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "math_compare",
+      "title": "Сравнение - 3",
+      "instruction": "Поставь знак >, < или =.",
+      "tasks": [
+        {
+          "type": "math_compare",
+          "question": "3 ○ 13",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "17 ○ 11",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        },
+        {
+          "type": "math_compare",
+          "question": "10 ○ 16",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "20 ○ 12",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        },
+        {
+          "type": "math_compare",
+          "question": "2 ○ 10",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "pattern",
+      "title": "Закономерности - 4",
+      "instruction": "Какое число следующее?",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 5, 7, 9, ... (нападающий)",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 6, 8, 10, ... (нападающий)",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 7, 9, 11, ... (нападающий)",
+          "options": [],
+          "answer_space": true,
+          "answer": "13"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 8, 10, 12, ... (нападающий)",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 9, 11, 13, ... (нападающий)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "math_word",
+      "title": "Задачи - 5",
+      "instruction": "Какой ответ в задаче?",
+      "tasks": [
+        {
+          "type": "math_word",
+          "question": "В кошику було 6 яблук. Поклали ще 5. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "math_word",
+          "question": "Було 3 груш. Віддали 2. Скільки залишилося?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math_word",
+          "question": "Було 4 груш. Віддали 3. Скільки залишилося?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 10 книжок. Поклали ще 6. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "math_word",
+          "question": "Було 5 книжок. Віддали 3. Скільки залишилося?",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "math_scheme",
+      "title": "math_scheme - 6",
+      "instruction": "Составь пример по схеме.",
+      "tasks": [
+        {
+          "type": "math_scheme",
+          "question": "11 + 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "18"
+        },
+        {
+          "type": "math_scheme",
+          "question": "15 + 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "18"
+        },
+        {
+          "type": "math_scheme",
+          "question": "1 + 11",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        },
+        {
+          "type": "math_scheme",
+          "question": "10 + 5",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "math_scheme",
+          "question": "1 + 19",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "math_compare",
+      "title": "Сравнение - 7",
+      "instruction": "Поставь знак >, < или =.",
+      "tasks": [
+        {
+          "type": "math_compare",
+          "question": "14 ○ 16",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "4 ○ 13",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "8 ○ 14",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "1 ○ 3",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": "<"
+        },
+        {
+          "type": "math_compare",
+          "question": "16 ○ 1",
+          "options": [
+            ">",
+            "<",
+            "="
+          ],
+          "answer_space": true,
+          "answer": ">"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "pattern",
+      "title": "Закономерности - 8",
+      "instruction": "Какое число следующее?",
+      "tasks": [
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 9, 11, 13, ... (кубок)",
+          "options": [],
+          "answer_space": true,
+          "answer": "15"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 10, 12, 14, ... (кубок)",
+          "options": [],
+          "answer_space": true,
+          "answer": "16"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 1, 3, 5, ... (кубок)",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 2, 4, 6, ... (кубок)",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "pattern",
+          "question": "Продолжи ряд: 3, 5, 7, ... (кубок)",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        }
+      ]
+    },
+    {
+      "page_number": 9,
+      "page_type": "math_word",
+      "title": "Задачи - 9",
+      "instruction": "Реши задачу.",
+      "tasks": [
+        {
+          "type": "math_word",
+          "question": "Було 5 звірят. Віддали 4. Скільки залишилося?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 8 яблук. Поклали ще 6. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 4 цукерок. Поклали ще 5. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "9"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 9 груш. Поклали ще 5. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "math_word",
+          "question": "В кошику було 6 груш. Поклали ще 5. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        }
+      ]
+    },
+    {
+      "page_number": 10,
+      "page_type": "math_scheme",
+      "title": "math_scheme - 10",
+      "instruction": "Составь пример по схеме.",
+      "tasks": [
+        {
+          "type": "math_scheme",
+          "question": "18 + 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        },
+        {
+          "type": "math_scheme",
+          "question": "5 + 2",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math_scheme",
+          "question": "12 + 7",
+          "options": [],
+          "answer_space": true,
+          "answer": "19"
+        },
+        {
+          "type": "math_scheme",
+          "question": "8 + 10",
+          "options": [],
+          "answer_space": true,
+          "answer": "18"
+        },
+        {
+          "type": "math_scheme",
+          "question": "17 + 3",
+          "options": [],
+          "answer_space": true,
+          "answer": "20"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "9",
+        "11",
+        "10",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "15",
+        "20",
+        "20",
+        "13",
+        "20"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "<",
+        ">",
+        "<",
+        ">",
+        "<"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "11",
+        "1",
+        "1",
+        "16",
+        "2"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "18",
+        "18",
+        "12",
+        "15",
+        "20"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "<",
+        "<",
+        "<",
+        "<",
+        ">"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "15",
+        "16",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "page_number": 9,
+      "answers": [
+        "1",
+        "14",
+        "9",
+        "14",
+        "11"
+      ]
+    },
+    {
+      "page_number": 10,
+      "answers": [
+        "20",
+        "7",
+        "19",
+        "18",
+        "20"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Topic 'football' appears on only 2/10 pages (20%)"
+    ]
+  }
+}

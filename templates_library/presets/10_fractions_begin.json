@@ -1,0 +1,22 @@
+{
+  "id": "fractions_begin",
+  "title": "Дроби: начало",
+  "age": 10,
+  "grade": "4 класс",
+  "language": "uk",
+  "pack_type": "math",
+  "topic": "fractions",
+  "pages_count": 10,
+  "cards": [
+    "math_compare",
+    "math_fraction_draw",
+    "math_addition",
+    "missing_number"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Дроби: начало - hard, 10 pages, math_compare, math_fraction_draw, math_addition..."
+}

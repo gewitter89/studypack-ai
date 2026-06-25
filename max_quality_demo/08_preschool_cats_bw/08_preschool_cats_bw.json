@@ -1,0 +1,316 @@
+{
+  "title": "Подготовка к школе: животные",
+  "subtitle": "Завдання для дітей 5 років",
+  "language": "uk",
+  "age": 5,
+  "grade": "Дошкольник",
+  "topic": "cats",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10-20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "count_trace",
+      "title": "Счёт - 1",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★★★★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★★★★★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★★★★★★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "shape_find",
+      "title": "Фигуры - 2",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Найди коло среди фигур: о □ △...",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        },
+        {
+          "type": "shape_find",
+          "question": "Найди квадрат среди фигур: о...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "shape_find",
+          "question": "Найди трикутник среди фигур:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "letter_trace",
+      "title": "Буквы - 3",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Е по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "Е"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Є по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "Є"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Ж по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "Ж"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "same_shape",
+      "title": "Найди такую же - 4",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "same_shape",
+          "question": "Найди такую же: ○ | ○ □ △ ☆ ◇",
+          "options": [],
+          "answer_space": true,
+          "answer": "○"
+        },
+        {
+          "type": "same_shape",
+          "question": "Найди такую же: □ | ○ □ △ ☆ ◇",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        },
+        {
+          "type": "same_shape",
+          "question": "Найди такую же: △ | ○ □ △ ☆ ◇",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "coloring",
+      "title": "Раскрась - 5",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "coloring",
+          "question": "Раскрась квітку",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась будиночок",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "coloring",
+          "question": "Раскрась м'ячик",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "count_trace",
+      "title": "Счёт - 6",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "count_trace",
+          "question": "Посчитай: ★★★★",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "shape_find",
+      "title": "Фигуры - 7",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "shape_find",
+          "question": "Найди трикутник среди фигур:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "△"
+        },
+        {
+          "type": "shape_find",
+          "question": "Найди коло среди фигур: о □ △...",
+          "options": [],
+          "answer_space": true,
+          "answer": "о"
+        },
+        {
+          "type": "shape_find",
+          "question": "Найди квадрат среди фигур: о...",
+          "options": [],
+          "answer_space": true,
+          "answer": "□"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "letter_trace",
+      "title": "Буквы - 8",
+      "instruction": "Розв'яжи 3 завдань",
+      "tasks": [
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву І по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "І"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Ї по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "Ї"
+        },
+        {
+          "type": "letter_trace",
+          "question": "Обведи букву Й по точкам",
+          "options": [],
+          "answer_space": true,
+          "answer": "Й"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "о",
+        "□",
+        "△"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "Е",
+        "Є",
+        "Ж"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "○",
+        "□",
+        "△"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "△",
+        "о",
+        "□"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "І",
+        "Ї",
+        "Й"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  }
+}

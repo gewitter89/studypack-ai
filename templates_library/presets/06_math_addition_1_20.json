@@ -1,0 +1,22 @@
+{
+  "id": "math_addition_1_20",
+  "title": "Сложение и вычитание до 20",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "ru",
+  "pack_type": "math",
+  "topic": "numbers",
+  "pages_count": 10,
+  "cards": [
+    "math_addition",
+    "math_subtraction",
+    "math_compare",
+    "missing_number"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Сложение и вычитание до 20 - easy, 10 pages, math_addition, math_subtraction, math_compare..."
+}

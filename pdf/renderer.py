@@ -14,9 +14,38 @@ from reportlab.platypus import (
     Table, TableStyle, Frame, PageTemplate, BaseDocTemplate,
     KeepTogether
 )
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
 from core.models import StudyPack
+
+_FONT_DIR = os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts")
+_fonts_registered = False
+
+def _register_fonts():
+    global _fonts_registered
+    if _fonts_registered:
+        return
+    for name, file in [
+        ("Arial", "arial.ttf"),
+        ("Arial-Bold", "arialbd.ttf"),
+        ("Arial-Italic", "ariali.ttf"),
+        ("Arial-BoldItalic", "arialbi.ttf"),
+    ]:
+        path = os.path.join(_FONT_DIR, file)
+        if os.path.exists(path):
+            try:
+                pdfmetrics.registerFont(TTFont(name, path))
+            except Exception:
+                pass
+    _fonts_registered = True
+
+_register_fonts()
+
+FONT = "Arial"
+FONT_BOLD = "Arial-Bold"
+FONT_ITALIC = "Arial-Italic"
 
 logger = logging.getLogger(__name__)
 
@@ -24,12 +53,56 @@ PAGE_WIDTH, PAGE_HEIGHT = A4
 MARGIN = 22 * mm
 WATERMARK_TEXT = "Демо-набір StudyPack AI"
 
-BRAND_COLOR = HexColor('#2E5090')
-LIGHT_GRAY = HexColor('#F0F0F0')
-MED_GRAY = HexColor('#CCCCCC')
-DARK_GRAY = HexColor('#444444')
-ANSWER_LINE_COLOR = HexColor('#BBBBBB')
-ACCENT_COLOR = HexColor('#3A7BD5')
+THEMES = {
+    "print_bw": {
+        "name": "Чёрно-белый для печати",
+        "brand": HexColor('#2E5090'),
+        "light_gray": HexColor('#F0F0F0'),
+        "med_gray": HexColor('#CCCCCC'),
+        "dark_gray": HexColor('#444444'),
+        "accent": HexColor('#3A7BD5'),
+        "sep_color": HexColor('#E0E0E0'),
+        "line_color": HexColor('#BBBBBB'),
+        "title_color": HexColor('#2E5090'),
+        "use_ink_save": True,
+    },
+    "minimal": {
+        "name": "Минималистичный",
+        "brand": HexColor('#1A365D'),
+        "light_gray": HexColor('#F7FAFC'),
+        "med_gray": HexColor('#CBD5E0'),
+        "dark_gray": HexColor('#2D3748'),
+        "accent": HexColor('#3182CE'),
+        "sep_color": HexColor('#E2E8F0'),
+        "line_color": HexColor('#A0AEC0'),
+        "title_color": HexColor('#1A365D'),
+        "use_ink_save": False,
+    },
+    "fun": {
+        "name": "Весёлый",
+        "brand": HexColor('#D53F8C'),
+        "light_gray": HexColor('#FFF5F7'),
+        "med_gray": HexColor('#FBB6CE'),
+        "dark_gray": HexColor('#702459'),
+        "accent": HexColor('#DD6B20'),
+        "sep_color": HexColor('#FED7D7'),
+        "line_color": HexColor('#E53E3E'),
+        "title_color": HexColor('#D53F8C'),
+        "use_ink_save": False,
+    },
+    "academic": {
+        "name": "Учебный",
+        "brand": HexColor('#22543D'),
+        "light_gray": HexColor('#F0FFF4'),
+        "med_gray": HexColor('#C6F6D5'),
+        "dark_gray": HexColor('#22543D'),
+        "accent": HexColor('#2F855A'),
+        "sep_color": HexColor('#C6F6D5'),
+        "line_color": HexColor('#68D391'),
+        "title_color": HexColor('#22543D'),
+        "use_ink_save": False,
+    },
+}
 
 DISCLAIMER_TEXT = (
     "Матеріал є додатковим навчальним ресурсом і не замінює "
@@ -37,86 +110,91 @@ DISCLAIMER_TEXT = (
 )
 
 
-def _get_styles():
+def _get_theme(theme_id: str = "print_bw") -> dict:
+    return THEMES.get(theme_id, THEMES["print_bw"])
+
+
+def _get_styles(theme_id: str = "print_bw"):
     styles = getSampleStyleSheet()
+    t = _get_theme(theme_id)
 
     styles.add(ParagraphStyle(
-        name='CoverTitle', fontName='Helvetica-Bold', fontSize=30,
+        name='CoverTitle', fontName=FONT_BOLD, fontSize=30,
         leading=38, alignment=TA_CENTER, spaceAfter=8 * mm,
-        textColor=BRAND_COLOR
+        textColor=t["brand"]
     ))
     styles.add(ParagraphStyle(
-        name='CoverSubtitle', fontName='Helvetica', fontSize=16,
+        name='CoverSubtitle', fontName=FONT, fontSize=16,
         leading=22, alignment=TA_CENTER, spaceAfter=4 * mm,
-        textColor=HexColor('#555555')
+        textColor=t["dark_gray"]
     ))
     styles.add(ParagraphStyle(
-        name='CoverDetail', fontName='Helvetica', fontSize=11,
-        leading=15, alignment=TA_CENTER, textColor=HexColor('#777777'),
+        name='CoverDetail', fontName=FONT, fontSize=11,
+        leading=15, alignment=TA_CENTER, textColor=t["dark_gray"],
         spaceAfter=1.5 * mm
     ))
     styles.add(ParagraphStyle(
-        name='CoverBrand', fontName='Helvetica-Bold', fontSize=10,
-        leading=14, alignment=TA_CENTER, textColor=HexColor('#AAAAAA'),
+        name='CoverBrand', fontName=FONT_BOLD, fontSize=10,
+        leading=14, alignment=TA_CENTER, textColor=t["med_gray"],
         spaceBefore=10 * mm
     ))
     styles.add(ParagraphStyle(
-        name='PageTitle', fontName='Helvetica-Bold', fontSize=20,
+        name='PageTitle', fontName=FONT_BOLD, fontSize=20,
         leading=26, spaceBefore=2 * mm, spaceAfter=4 * mm,
-        textColor=BRAND_COLOR
+        textColor=t["title_color"]
     ))
     styles.add(ParagraphStyle(
-        name='Instruction', fontName='Helvetica', fontSize=11,
-        leading=15, spaceAfter=3 * mm, textColor=HexColor('#444444'),
+        name='Instruction', fontName=FONT, fontSize=11,
+        leading=15, spaceAfter=3 * mm, textColor=t["dark_gray"],
         leftIndent=3 * mm
     ))
     styles.add(ParagraphStyle(
-        name='TaskQuestion', fontName='Helvetica', fontSize=12,
+        name='TaskQuestion', fontName=FONT, fontSize=12,
         leading=17, spaceAfter=1 * mm, leftIndent=6 * mm,
         textColor=black
     ))
     styles.add(ParagraphStyle(
-        name='TaskOption', fontName='Helvetica', fontSize=11,
-        leading=15, leftIndent=10 * mm, textColor=HexColor('#333333'),
+        name='TaskOption', fontName=FONT, fontSize=11,
+        leading=15, leftIndent=10 * mm, textColor=t["dark_gray"],
         spaceAfter=0.5 * mm
     ))
     styles.add(ParagraphStyle(
-        name='TaskAnswer', fontName='Helvetica', fontSize=11,
-        leading=15, leftIndent=6 * mm, textColor=ACCENT_COLOR,
+        name='TaskAnswer', fontName=FONT, fontSize=11,
+        leading=15, leftIndent=6 * mm, textColor=t["accent"],
         spaceBefore=2 * mm, spaceAfter=4 * mm
     ))
     styles.add(ParagraphStyle(
-        name='Footer', fontName='Helvetica', fontSize=8,
-        alignment=TA_CENTER, textColor=HexColor('#AAAAAA')
+        name='Footer', fontName=FONT, fontSize=8,
+        alignment=TA_CENTER, textColor=t["med_gray"]
     ))
     styles.add(ParagraphStyle(
-        name='AnswerBlockTitle', fontName='Helvetica-Bold', fontSize=14,
+        name='AnswerBlockTitle', fontName=FONT_BOLD, fontSize=14,
         leading=18, spaceBefore=4 * mm, spaceAfter=3 * mm,
-        textColor=BRAND_COLOR
+        textColor=t["title_color"]
     ))
     styles.add(ParagraphStyle(
-        name='AnswerBlock', fontName='Helvetica', fontSize=11,
+        name='AnswerBlock', fontName=FONT, fontSize=11,
         leading=16, leftIndent=6 * mm, spaceAfter=1.5 * mm
     ))
     styles.add(ParagraphStyle(
-        name='FinalMessage', fontName='Helvetica-Bold', fontSize=26,
+        name='FinalMessage', fontName=FONT_BOLD, fontSize=26,
         leading=34, alignment=TA_CENTER, spaceAfter=6 * mm,
-        textColor=BRAND_COLOR
+        textColor=t["brand"]
     ))
     styles.add(ParagraphStyle(
-        name='Disclaimer', fontName='Helvetica-Oblique', fontSize=8,
-        leading=11, alignment=TA_CENTER, textColor=HexColor('#AAAAAA'),
+        name='Disclaimer', fontName=FONT_ITALIC, fontSize=8,
+        leading=11, alignment=TA_CENTER, textColor=t["med_gray"],
         spaceBefore=3 * mm
     ))
     styles.add(ParagraphStyle(
-        name='SectionRule', fontName='Helvetica-Bold', fontSize=13,
+        name='SectionRule', fontName=FONT_BOLD, fontSize=13,
         leading=17, spaceBefore=3 * mm, spaceAfter=2 * mm,
-        textColor=HexColor('#666666')
+        textColor=t["dark_gray"]
     ))
     styles.add(ParagraphStyle(
-        name='ParentInst', fontName='Helvetica', fontSize=11,
+        name='ParentInst', fontName=FONT, fontSize=11,
         leading=16, leftIndent=4 * mm, spaceAfter=2 * mm,
-        textColor=HexColor('#333333')
+        textColor=t["dark_gray"]
     ))
     return styles
 
@@ -131,17 +209,17 @@ class _WatermarkCanvas:
     def add_watermark(self, c: canvas.Canvas, doc):
         c.saveState()
         if not self.is_commercial and self.watermark:
-            c.setFont('Helvetica', 36)
+            c.setFont(FONT, 36)
             c.setFillColor(HexColor('#E0E0E0'))
             c.translate(PAGE_WIDTH / 2, PAGE_HEIGHT / 2)
             c.rotate(45)
             c.drawCentredString(0, 0, self.watermark)
         if doc.page > 1:
-            c.setFont('Helvetica', 7)
+            c.setFont(FONT, 7)
             c.setFillColor(HexColor('#BBBBBB'))
             c.drawCentredString(PAGE_WIDTH / 2, 8 * mm, f"— {doc.page} —")
             if self.brand and not self.is_commercial:
-                c.setFont('Helvetica', 6)
+                c.setFont(FONT, 6)
                 c.drawRightString(PAGE_WIDTH - MARGIN, 8 * mm, self.brand)
         c.restoreState()
 
@@ -154,8 +232,12 @@ class _WatermarkCanvas:
 
 def render_pdf(pack_data: Dict[str, Any], output_path: str,
                watermark: str = "", is_commercial: bool = False,
-               brand: str = "") -> str:
-    styles = _get_styles()
+               brand: str = "", theme: str = "print_bw") -> str:
+    theme_id = theme or pack_data.get("style", "print_bw")
+    if theme_id not in THEMES:
+        theme_id = "print_bw"
+    styles = _get_styles(theme_id)
+    t = _get_theme(theme_id)
     try:
         pack = StudyPack(**pack_data)
     except Exception as e:
@@ -235,7 +317,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
         elements.append(Paragraph(brand, styles['CoverBrand']))
 
     sep =Table([[""]],colWidths=[PAGE_WIDTH - 2 * MARGIN],rowHeights=[0.5])
-    sep.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), MED_GRAY)]))
+    sep.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
     elements.append(Spacer(1, 8 * mm))
     elements.append(sep)
 
@@ -273,7 +355,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
         )
         elements.append(Spacer(1, 4 * mm))
         sep2 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN], rowHeights=[0.3])
-        sep2.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), MED_GRAY)]))
+        sep2.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
         elements.append(sep2)
         elements.append(Spacer(1, 2 * mm))
         elements.append(Paragraph(disclaimer, styles['Disclaimer']))
@@ -294,7 +376,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
 
         # Decorative separator
         sep3 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN - 6 * mm], rowHeights=[0.3])
-        sep3.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), LIGHT_GRAY)]))
+        sep3.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["light_gray"])]))
         elements.append(sep3)
         elements.append(Spacer(1, 2 * mm))
 
@@ -318,7 +400,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
                 line_data = [["____________________________________________"]]
                 line_t = Table(line_data, colWidths=[PAGE_WIDTH - 2 * MARGIN - 12 * mm])
                 line_t.setStyle(TableStyle([
-                    ('TEXTCOLOR', (0,0), (-1,-1), ANSWER_LINE_COLOR),
+                    ('TEXTCOLOR', (0,0), (-1,-1), t["line_color"]),
                     ('FONTSIZE', (0,0), (-1,-1), 10),
                 ]))
                 elements.append(line_t)
@@ -370,7 +452,7 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
             elements.append(Spacer(1, 1.5 * mm))
 
         sep4 = Table([[""]], colWidths=[PAGE_WIDTH - 2 * MARGIN], rowHeights=[0.3])
-        sep4.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), MED_GRAY)]))
+        sep4.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,-1), t["med_gray"])]))
         elements.append(sep4)
         elements.append(Spacer(1, 2 * mm))
 

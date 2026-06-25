@@ -125,7 +125,7 @@ class StudyPackGUI:
         self.instruction_var = IntVar(value=1)
         Checkbutton(main_frame, text="Добавить инструкцию для родителя",
                     variable=self.instruction_var).pack(anchor="w", pady=1)
-        self.offline_var = BooleanVar(value=False)
+        self.offline_var = BooleanVar(value=True)
         Checkbutton(main_frame, text="Офлайн-режим (без AI, шаблонные задания)",
                     variable=self.offline_var).pack(anchor="w", pady=1)
 

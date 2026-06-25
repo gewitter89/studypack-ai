@@ -1,0 +1,24 @@
+{
+  "id": "space_journey",
+  "title": "Космическое путешествие",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "ru",
+  "pack_type": "mixed_week",
+  "topic": "space",
+  "pages_count": 15,
+  "cards": [
+    "math_addition",
+    "story_read",
+    "maze",
+    "pattern",
+    "coloring",
+    "find_word"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Космическое путешествие - medium, 15 pages, math_addition, story_read, maze..."
+}

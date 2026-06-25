@@ -1,0 +1,22 @@
+{
+  "id": "english_story",
+  "title": "Short stories + comprehension",
+  "age": 10,
+  "grade": "4 класс",
+  "language": "en",
+  "pack_type": "english",
+  "topic": "reading",
+  "pages_count": 12,
+  "cards": [
+    "read_story_en",
+    "question_answer_en",
+    "true_false_en",
+    "vocab_match"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Short stories + comprehension - hard, 12 pages, read_story_en, question_answer_en, true_false_en..."
+}

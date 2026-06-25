@@ -1,0 +1,23 @@
+{
+  "id": "logic_detective",
+  "title": "Детективные задачи",
+  "age": 10,
+  "grade": "4 класс",
+  "language": "ru",
+  "pack_type": "logic",
+  "topic": "detective",
+  "pages_count": 12,
+  "cards": [
+    "detective",
+    "story_logic",
+    "table_fill",
+    "sequence",
+    "deduction"
+  ],
+  "difficulty": "hard",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Детективные задачи - hard, 12 pages, detective, story_logic, table_fill..."
+}

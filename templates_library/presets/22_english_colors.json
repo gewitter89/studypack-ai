@@ -1,0 +1,22 @@
+{
+  "id": "english_colors",
+  "title": "Colours and numbers",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "en",
+  "pack_type": "english",
+  "topic": "colors",
+  "pages_count": 10,
+  "cards": [
+    "color_find_en",
+    "count_en",
+    "word_picture",
+    "match_pairs_en"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Colours and numbers - easy, 10 pages, color_find_en, count_en, word_picture..."
+}

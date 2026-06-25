@@ -1,0 +1,22 @@
+{
+  "id": "reading_short",
+  "title": "Короткие тексты с вопросами",
+  "age": 7,
+  "grade": "1 класс",
+  "language": "ru",
+  "pack_type": "reading",
+  "topic": "short_text",
+  "pages_count": 10,
+  "cards": [
+    "story_read",
+    "question_answer",
+    "find_word",
+    "sequence"
+  ],
+  "difficulty": "easy",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "class",
+  "description": "Короткие тексты с вопросами - easy, 10 pages, story_read, question_answer, find_word..."
+}

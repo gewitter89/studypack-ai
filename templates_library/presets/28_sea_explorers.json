@@ -1,0 +1,24 @@
+{
+  "id": "sea_explorers",
+  "title": "Море: задания на лето",
+  "age": 8,
+  "grade": "2 класс",
+  "language": "ru",
+  "pack_type": "mixed_week",
+  "topic": "sea",
+  "pages_count": 15,
+  "cards": [
+    "math_word",
+    "story_read",
+    "crossword",
+    "sequence",
+    "math_compare",
+    "labyrinth"
+  ],
+  "difficulty": "medium",
+  "style": "print_bw",
+  "with_answers": true,
+  "with_instruction": true,
+  "mode": "parent",
+  "description": "Море: задания на лето - medium, 15 pages, math_word, story_read, crossword..."
+}
