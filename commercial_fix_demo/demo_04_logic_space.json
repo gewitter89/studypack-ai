@@ -17,10 +17,10 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Продолжи ряд: ракета, орбита, ракета, орбита, ...",
+          "question": "Продолжи ряд: метеорит, сатурн, метеорит, сатурн,.",
           "options": [],
           "answer_space": true,
-          "answer": "ракета"
+          "answer": "метеорит"
         },
         {
           "type": "logic",
@@ -39,12 +39,12 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Что лишнее? астероид, сатурн, яблоко, ракета",
+          "question": "Что лишнее? инопланетянин, ракета, яблоко, орбита",
           "options": [
-            "астероид",
-            "сатурн",
+            "инопланетянин",
+            "ракета",
             "яблоко",
-            "ракета"
+            "орбита"
           ],
           "answer_space": true,
           "answer": "яблоко"
@@ -88,10 +88,10 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Продолжи ряд: солнце, звезда, солнце, звезда, ...",
+          "question": "Продолжи ряд: звездопад, космонавт, звездопад,...",
           "options": [],
           "answer_space": true,
-          "answer": "солнце"
+          "answer": "звездопад"
         },
         {
           "type": "logic",
@@ -110,15 +110,15 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Что лишнее? телескоп, инопланетянин, юпитер, стол",
+          "question": "Что лишнее? спутник, книга, телескоп, орбита",
           "options": [
+            "спутник",
+            "книга",
             "телескоп",
-            "инопланетянин",
-            "юпитер",
-            "стол"
+            "орбита"
           ],
           "answer_space": true,
-          "answer": "стол"
+          "answer": "книга"
         }
       ]
     },
@@ -159,10 +159,10 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Продолжи ряд: звездопад, солнце, звездопад,...",
+          "question": "Продолжи ряд: сатурн, телескоп, сатурн, телескоп,.",
           "options": [],
           "answer_space": true,
-          "answer": "звездопад"
+          "answer": "сатурн"
         },
         {
           "type": "logic",
@@ -181,15 +181,15 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Что лишнее? ручка, юпитер, инопланетянин, сатурн",
+          "question": "Что лишнее? груша, луна, астероид, сатурн",
           "options": [
-            "ручка",
-            "юпитер",
-            "инопланетянин",
+            "груша",
+            "луна",
+            "астероид",
             "сатурн"
           ],
           "answer_space": true,
-          "answer": "ручка"
+          "answer": "груша"
         }
       ]
     }
@@ -198,7 +198,7 @@
     {
       "page_number": 1,
       "answers": [
-        "ракета",
+        "метеорит",
         "●"
       ]
     },
@@ -219,14 +219,14 @@
     {
       "page_number": 4,
       "answers": [
-        "солнце",
+        "звездопад",
         "●"
       ]
     },
     {
       "page_number": 5,
       "answers": [
-        "стол"
+        "книга"
       ]
     },
     {
@@ -240,26 +240,30 @@
     {
       "page_number": 7,
       "answers": [
-        "звездопад",
+        "сатурн",
         "●"
       ]
     },
     {
       "page_number": 8,
       "answers": [
-        "ручка"
+        "груша"
       ]
     }
   ],
   "_quality": {
     "passed": true,
-    "errors": [],
+    "errors": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ],
     "warnings": [
       "WARNING: Same instruction on 3 pages",
       "WARNING: Same instruction on 3 pages"
     ],
     "commercial_score": 92,
     "hard_fails": [],
-    "commercial_fails": []
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ]
   }
 }

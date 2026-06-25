@@ -134,6 +134,23 @@ def check_ai_tone(data: Dict[str, Any]) -> List[str]:
     return issues
 
 
+def check_unsupported_emojis(data: Dict[str, Any]) -> List[str]:
+    issues = []
+    text = str(data)
+    emoji_pattern = re.compile(
+        "["
+        "\U0001f600-\U0001f64f"
+        "\U0001f300-\U0001f5ff"
+        "\U0001f680-\U0001f6ff"
+        "\U0001f1e0-\U0001f1ff"
+        "\U0001f900-\U0001f9ff"
+        "\U0001fa70-\U0001faff"
+        "]+", flags=re.UNICODE)
+    if emoji_pattern.search(text) or '⚙️' in text or '☁️' in text or '❤️' in text or '✔️' in text:
+        issues.append("COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)")
+    return issues
+
+
 def check_structure(data: Dict[str, Any]) -> List[str]:
     issues = []
     if not data.get("title"):
@@ -479,6 +496,9 @@ def run_quality_gate(data: Dict[str, Any]) -> Tuple[bool, List[str], List[str], 
             commercial_fails.append(issue)
         else:
             warnings.append(issue)
+            
+    for issue in check_unsupported_emojis(data):
+        commercial_fails.append(issue)
 
     topic_issues = check_topic_usage(data)
     for ti in topic_issues:

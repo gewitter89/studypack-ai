@@ -24,17 +24,17 @@
         },
         {
           "type": "math",
-          "question": "Порахуй лисиці: 🦊 🦊",
+          "question": "Порахуй лисиці: 🦊 🦊 🦊 🦊",
           "options": [],
           "answer_space": true,
-          "answer": "2 лисиці"
+          "answer": "4 лисиці"
         },
         {
           "type": "math",
-          "question": "Порахуй їжаки: 🦔 🦔 🦔 🦔",
+          "question": "Порахуй їжаки: 🦔 🦔",
           "options": [],
           "answer_space": true,
-          "answer": "4 їжаки"
+          "answer": "2 їжаки"
         }
       ]
     },
@@ -82,24 +82,24 @@
       "tasks": [
         {
           "type": "writing",
-          "question": "Обведи букву Л у слові «лисиця»",
+          "question": "Обведи букву З у слові «звір»",
           "options": [],
           "answer_space": true,
-          "answer": "Л"
+          "answer": "З"
         },
         {
           "type": "writing",
-          "question": "Обведи букву П у слові «природа»",
+          "question": "Обведи букву Б у слові «білка»",
           "options": [],
           "answer_space": true,
-          "answer": "П"
+          "answer": "Б"
         },
         {
           "type": "writing",
-          "question": "Обведи букву О у слові «олень»",
+          "question": "Обведи букву З у слові «заєць»",
           "options": [],
           "answer_space": true,
-          "answer": "О"
+          "answer": "З"
         }
       ]
     },
@@ -147,7 +147,7 @@
         },
         {
           "type": "creative",
-          "question": "Розфарбуй 2 лисиці",
+          "question": "Розфарбуй 5 лисиць",
           "options": [],
           "answer_space": true,
           "answer": "Перевіряється дорослим"
@@ -169,15 +169,15 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Що зайве? банан, лось, олень, зима",
+          "question": "Що зайве? книга, лисиця, олень, природа",
           "options": [
-            "банан",
-            "лось",
+            "книга",
+            "лисиця",
             "олень",
-            "зима"
+            "природа"
           ],
           "answer_space": true,
-          "answer": "банан"
+          "answer": "книга"
         }
       ]
     },
@@ -189,24 +189,24 @@
       "tasks": [
         {
           "type": "math",
-          "question": "У кошика 1 лось. Поклали ще 3. Скільки всього?",
+          "question": "У кошика 3 лапа. Поклали ще 5. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "4"
+          "answer": "8"
         },
         {
           "type": "math",
-          "question": "У кошика 3 звір. Поклали ще 1. Скільки всього?",
+          "question": "У кошика 4 вовк. Поклали ще 2. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "4"
+          "answer": "6"
         },
         {
           "type": "math",
-          "question": "У кошика 4 заєць. Поклали ще 1. Скільки всього?",
+          "question": "У кошика 1 звір. Поклали ще 5. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "5"
+          "answer": "6"
         }
       ]
     },
@@ -218,17 +218,17 @@
       "tasks": [
         {
           "type": "reading",
-          "question": "Жив собі маленький ведмідь.",
+          "question": "Жив собі маленький ліс.",
           "options": [],
           "answer_space": true,
-          "answer": "ведмідь"
+          "answer": "ліс"
         },
         {
           "type": "reading",
-          "question": "Що знайшов ведмідь?",
+          "question": "Що знайшов ліс?",
           "options": [],
           "answer_space": true,
-          "answer": "шерсть"
+          "answer": "їжак"
         }
       ]
     }
@@ -238,8 +238,8 @@
       "page_number": 1,
       "answers": [
         "5 зайців",
-        "2 лисиці",
-        "4 їжаки"
+        "4 лисиці",
+        "2 їжаки"
       ]
     },
     {
@@ -254,9 +254,9 @@
     {
       "page_number": 3,
       "answers": [
-        "літера Л",
-        "літера П",
-        "літера О"
+        "літера З",
+        "літера Б",
+        "літера З"
       ]
     },
     {
@@ -278,31 +278,35 @@
     {
       "page_number": 6,
       "answers": [
-        "банан"
+        "книга"
       ]
     },
     {
       "page_number": 7,
       "answers": [
-        "4",
-        "4",
-        "5"
+        "8",
+        "6",
+        "6"
       ]
     },
     {
       "page_number": 8,
       "answers": [
-        "ведмідь",
-        "шерсть"
+        "ліс",
+        "їжак"
       ]
     }
   ],
   "_quality": {
     "passed": true,
-    "errors": [],
+    "errors": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ],
     "warnings": [],
     "commercial_score": 100,
     "hard_fails": [],
-    "commercial_fails": []
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ]
   }
 }

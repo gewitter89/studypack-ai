@@ -74,31 +74,7 @@ CONTENT_WIDTH = PAGE_WIDTH - 2 * MARGIN
 
 # ─── Topic emoji icons (Unicode safe — no images needed) ─────────────────────
 
-TOPIC_ICONS = {
-    "dinosaurs": "🦕",
-    "space": "🚀",
-    "animals": "🦊",
-    "fairy_tales": "🧚",
-    "cartoon_heroes": "🦸",
-    "cats": "🐱",
-    "dogs": "🐶",
-    "cars": "🚗",
-    "football": "⚽",
-    "princesses": "👑",
-    "pirates": "🏴‍☠️",
-    "superheroes_generic": "⚡",
-    "pixel_world": "🎮",
-    "underwater": "🐠",
-    "travel": "✈️",
-    "robots": "🤖",
-    "magic_forest": "🌲",
-    "sport": "🏅",
-    "cooking": "🍳",
-    "farm": "🐄",
-    "zoo": "🦁",
-    "nature": "🌻",
-    "general": "📚",
-}
+TOPIC_ICONS = {}
 
 # ─── Motivational messages (per-page footer) ─────────────────────────────────
 
@@ -447,17 +423,17 @@ def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand
     except ImportError:
         resolved_topic = topic
         display_topic = topic
-    icon = TOPIC_ICONS.get(resolved_topic, TOPIC_ICONS.get("general", "📚"))
+    icon = ""
 
     # Cover layout
     elements.append(Spacer(1, 20 * mm))
 
-    # Topic icon large
+    # Safe decoration instead of emoji
     icon_style = ParagraphStyle(
-        'CoverIcon', fontName=FONT, fontSize=48,
-        leading=56, alignment=TA_CENTER, spaceAfter=4 * mm
+        'CoverIcon', fontName=FONT, fontSize=24, textColor=t["cover_stripe"],
+        leading=28, alignment=TA_CENTER, spaceAfter=8 * mm
     )
-    elements.append(Paragraph(icon, icon_style))
+    elements.append(Paragraph("★ ★ ★", icon_style))
 
     # Title
     elements.append(Paragraph(title, styles['CoverTitle']))

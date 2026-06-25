@@ -17,17 +17,17 @@
       "tasks": [
         {
           "type": "reading",
-          "question": "Жив собі маленький яйце. Одного разу він знайшов птеродактиль.",
+          "question": "Жив собі маленький динозавр. Одного разу він знайшов скам'янілість.",
           "options": [],
           "answer_space": true,
-          "answer": "яйце"
+          "answer": "динозавр"
         },
         {
           "type": "reading",
-          "question": "Що знайшов яйце?",
+          "question": "Що знайшов динозавр?",
           "options": [],
           "answer_space": true,
-          "answer": "птеродактиль"
+          "answer": "скам'янілість"
         }
       ]
     },
@@ -39,24 +39,24 @@
       "tasks": [
         {
           "type": "math",
-          "question": "Було 4 динозавр. Взяли 2. Скільки залишилося?",
+          "question": "У кошика 2 трицератопс. Поклали ще 6. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "2"
+          "answer": "8"
         },
         {
           "type": "math",
-          "question": "У кошика 1 слід. Поклали ще 8. Скільки всього?",
+          "question": "У кошика 4 хвіст. Поклали ще 2. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "9"
+          "answer": "6"
         },
         {
           "type": "math",
-          "question": "У кошика 1 трицератопс. Поклали ще 6. Скільки всього?",
+          "question": "У кошика 3 птеродактиль. Поклали ще 2. Скільки всього?",
           "options": [],
           "answer_space": true,
-          "answer": "7"
+          "answer": "5"
         }
       ]
     },
@@ -68,10 +68,10 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Продовж ряд: тиранозавр, птеродактиль, тиранозавр, птеродактиль, ...",
+          "question": "Продовж ряд: хвіст, динозавр, хвіст, динозавр, ...",
           "options": [],
           "answer_space": true,
-          "answer": "тиранозавр"
+          "answer": "хвіст"
         },
         {
           "type": "logic",
@@ -90,17 +90,17 @@
       "tasks": [
         {
           "type": "writing",
-          "question": "Обведи букву С у слові «скам'янілість»",
+          "question": "Обведи букву З у слові «зуб»",
           "options": [],
           "answer_space": true,
-          "answer": "С"
+          "answer": "З"
         },
         {
           "type": "writing",
-          "question": "Обведи букву С у слові «стегозавр»",
+          "question": "Обведи букву Я у слові «яйце»",
           "options": [],
           "answer_space": true,
-          "answer": "С"
+          "answer": "Я"
         },
         {
           "type": "writing",
@@ -119,24 +119,24 @@
       "tasks": [
         {
           "type": "math",
-          "question": "Порахуй яйця: 🥚 🥚 🥚",
+          "question": "Порахуй яєць: 🥚 🥚 🥚 🥚 🥚 🥚",
           "options": [],
           "answer_space": true,
-          "answer": "3 яйця"
+          "answer": "6 яєць"
         },
         {
           "type": "math",
-          "question": "Порахуй вулкани: 🌋 🌋 🌋",
+          "question": "Порахуй вулканів: 🌋 🌋 🌋 🌋 🌋 🌋 🌋",
           "options": [],
           "answer_space": true,
-          "answer": "3 вулкани"
+          "answer": "7 вулканів"
         },
         {
           "type": "math",
-          "question": "Порахуй кістки: 🦴 🦴 🦴",
+          "question": "Порахуй кісток: 🦴 🦴 🦴 🦴 🦴",
           "options": [],
           "answer_space": true,
-          "answer": "3 кістки"
+          "answer": "5 кісток"
         }
       ]
     },
@@ -148,15 +148,15 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Що зайве? скам'янілість, груша, кістка, птеродактиль",
+          "question": "Що зайве? трицератопс, лапа, слід, банан",
           "options": [
-            "скам'янілість",
-            "груша",
-            "кістка",
-            "птеродактиль"
+            "трицератопс",
+            "лапа",
+            "слід",
+            "банан"
           ],
           "answer_space": true,
-          "answer": "груша"
+          "answer": "банан"
         }
       ]
     },
@@ -182,7 +182,7 @@
         },
         {
           "type": "creative",
-          "question": "Розфарбуй 3 кістки",
+          "question": "Розфарбуй 4 кістки",
           "options": [],
           "answer_space": true,
           "answer": "Перевіряється дорослим"
@@ -194,45 +194,45 @@
     {
       "page_number": 1,
       "answers": [
-        "яйце",
-        "птеродактиль"
+        "динозавр",
+        "скам'янілість"
       ]
     },
     {
       "page_number": 2,
       "answers": [
-        "2",
-        "9",
-        "7"
+        "8",
+        "6",
+        "5"
       ]
     },
     {
       "page_number": 3,
       "answers": [
-        "тиранозавр",
+        "хвіст",
         "●"
       ]
     },
     {
       "page_number": 4,
       "answers": [
-        "літера С",
-        "літера С",
+        "літера З",
+        "літера Я",
         "літера Х"
       ]
     },
     {
       "page_number": 5,
       "answers": [
-        "3 яйця",
-        "3 вулкани",
-        "3 кістки"
+        "6 яєць",
+        "7 вулканів",
+        "5 кісток"
       ]
     },
     {
       "page_number": 6,
       "answers": [
-        "груша"
+        "банан"
       ]
     },
     {
@@ -246,10 +246,14 @@
   ],
   "_quality": {
     "passed": true,
-    "errors": [],
+    "errors": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ],
     "warnings": [],
     "commercial_score": 100,
     "hard_fails": [],
-    "commercial_fails": []
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ]
   }
 }

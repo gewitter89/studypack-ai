@@ -5,6 +5,8 @@
     "WARNING: Same instruction on 3 pages",
     "WARNING: Same instruction on 3 pages"
   ],
-  "commercial_fails": [],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+  ],
   "commercial_score": 92
 }

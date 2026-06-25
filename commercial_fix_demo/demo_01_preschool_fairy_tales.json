@@ -17,24 +17,24 @@
       "tasks": [
         {
           "type": "math",
-          "question": "Порахуй замків: 🏰 🏰 🏰 🏰 🏰 🏰",
+          "question": "Порахуй замки: 🏰 🏰",
           "options": [],
           "answer_space": true,
-          "answer": "6 замків"
+          "answer": "2 замки"
         },
         {
           "type": "math",
-          "question": "Порахуй книг: 📘 📘 📘 📘 📘 📘",
+          "question": "Порахуй книг: 📘 📘 📘 📘 📘",
           "options": [],
           "answer_space": true,
-          "answer": "6 книг"
+          "answer": "5 книг"
         },
         {
           "type": "math",
-          "question": "Порахуй зірки: ⭐ ⭐ ⭐ ⭐",
+          "question": "Порахуй зірки: ⭐ ⭐",
           "options": [],
           "answer_space": true,
-          "answer": "4 зірки"
+          "answer": "2 зірки"
         }
       ]
     },
@@ -82,17 +82,10 @@
       "tasks": [
         {
           "type": "writing",
-          "question": "Обведи букву Л у слові «лицар»",
+          "question": "Обведи букву С у слові «скарб»",
           "options": [],
           "answer_space": true,
-          "answer": "Л"
-        },
-        {
-          "type": "writing",
-          "question": "Обведи букву К у слові «корона»",
-          "options": [],
-          "answer_space": true,
-          "answer": "К"
+          "answer": "С"
         },
         {
           "type": "writing",
@@ -100,6 +93,13 @@
           "options": [],
           "answer_space": true,
           "answer": "К"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву П у слові «принц»",
+          "options": [],
+          "answer_space": true,
+          "answer": "П"
         }
       ]
     },
@@ -147,14 +147,14 @@
         },
         {
           "type": "creative",
-          "question": "Розфарбуй 3 книги",
+          "question": "Розфарбуй 2 книги",
           "options": [],
           "answer_space": true,
           "answer": "Перевіряється дорослим"
         },
         {
           "type": "creative",
-          "question": "Розфарбуй 3 зірки",
+          "question": "Розфарбуй 5 зірок",
           "options": [],
           "answer_space": true,
           "answer": "Перевіряється дорослим"
@@ -169,15 +169,15 @@
       "tasks": [
         {
           "type": "logic",
-          "question": "Що зайве? ліхтарик, книга, вежа, скарб",
+          "question": "Що зайве? замок, ліхтарик, банан, лицар",
           "options": [
+            "замок",
             "ліхтарик",
-            "книга",
-            "вежа",
-            "скарб"
+            "банан",
+            "лицар"
           ],
           "answer_space": true,
-          "answer": "книга"
+          "answer": "банан"
         }
       ]
     },
@@ -189,21 +189,21 @@
       "tasks": [
         {
           "type": "math",
-          "question": "У кошика 1 книга. Поклали ще 6. Скільки всього?",
+          "question": "У кошика 2 принц. Поклали ще 5. Скільки всього?",
           "options": [],
           "answer_space": true,
           "answer": "7"
         },
         {
           "type": "math",
-          "question": "Було 3 фея. Взяли 1. Скільки залишилося?",
+          "question": "Було 4 карта. Взяли 1. Скільки залишилося?",
           "options": [],
           "answer_space": true,
-          "answer": "2"
+          "answer": "3"
         },
         {
           "type": "math",
-          "question": "У кошика 3 зірка. Поклали ще 3. Скільки всього?",
+          "question": "У кошика 1 пригода. Поклали ще 5. Скільки всього?",
           "options": [],
           "answer_space": true,
           "answer": "6"
@@ -218,17 +218,17 @@
       "tasks": [
         {
           "type": "reading",
-          "question": "Жив собі маленький книга.",
+          "question": "Жив собі маленький принц.",
           "options": [],
           "answer_space": true,
-          "answer": "книга"
+          "answer": "принц"
         },
         {
           "type": "reading",
-          "question": "Що знайшов книга?",
+          "question": "Що знайшов принц?",
           "options": [],
           "answer_space": true,
-          "answer": "чарівництво"
+          "answer": "лицар"
         }
       ]
     }
@@ -237,9 +237,9 @@
     {
       "page_number": 1,
       "answers": [
-        "6 замків",
-        "6 книг",
-        "4 зірки"
+        "2 замки",
+        "5 книг",
+        "2 зірки"
       ]
     },
     {
@@ -254,9 +254,9 @@
     {
       "page_number": 3,
       "answers": [
-        "літера Л",
+        "літера С",
         "літера К",
-        "літера К"
+        "літера П"
       ]
     },
     {
@@ -278,31 +278,35 @@
     {
       "page_number": 6,
       "answers": [
-        "книга"
+        "банан"
       ]
     },
     {
       "page_number": 7,
       "answers": [
         "7",
-        "2",
+        "3",
         "6"
       ]
     },
     {
       "page_number": 8,
       "answers": [
-        "книга",
-        "чарівництво"
+        "принц",
+        "лицар"
       ]
     }
   ],
   "_quality": {
     "passed": true,
-    "errors": [],
+    "errors": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ],
     "warnings": [],
     "commercial_score": 100,
     "hard_fails": [],
-    "commercial_fails": []
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+    ]
   }
 }
