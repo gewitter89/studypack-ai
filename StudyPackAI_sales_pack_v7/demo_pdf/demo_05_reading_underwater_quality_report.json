@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "hard_fails": [
+    "HARD FAIL: Page 2 has only 2 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 4 has only 2 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 6 has only 2 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 8 has only 2 tasks. Minimum 4 required."
+  ],
+  "warnings": [
+    "WARNING: Same instruction on 4 pages",
+    "WARNING: Same instruction on 4 pages",
+    "Topic 'underwater' on only 4/8 pages (50%), target >= 60%"
+  ],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: score=58/100 (need 80+)"
+  ],
+  "commercial_score": 58
+}

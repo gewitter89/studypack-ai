@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "hard_fails": [
+    "HARD FAIL: Placeholder '□' in page 2 task 1: 'Обведи квадрат: ○ □ △'",
+    "HARD FAIL: Placeholder '□' in page 2 task 2: 'Обведи коло: ○ □ △'",
+    "HARD FAIL: Placeholder '□' in page 2 task 3: 'Обведи трикутник: ○ □ △'",
+    "HARD FAIL: Placeholder '□' in page 2 task 4: 'Обведи прямокутник: □ ○ △ ▭'"
+  ],
+  "warnings": [],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+    "COMMERCIAL FAIL: score=74/100 (need 80+)"
+  ],
+  "commercial_score": 74
+}

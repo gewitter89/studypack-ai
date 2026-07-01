@@ -1,7 +1,0 @@
-2026-06-25 13:29:44,534 [INFO] __main__: StudyPack AI v1.0.0 started
-2026-06-25 13:29:45,996 [INFO] core.updater: Checking for updates at: https://raw.githubusercontent.com/username/studypack-ai/main/version.json
-2026-06-25 13:29:46,500 [ERROR] core.updater: Error checking for updates: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/username/studypack-ai/main/version.json
-2026-06-25 13:30:10,147 [INFO] core.postprocess: Post-processing: editorial pass + quality gate
-2026-06-25 13:30:10,164 [INFO] core.quality_gate: Quality gate COMMERCIAL: ["COMMERCIAL FAIL: Cover title 'Богдан: задания' does not match topic 'dinosaurs' (expected 'Динозавры')"]
-2026-06-25 13:30:10,165 [INFO] core.postprocess: Quality gate COMMERCIAL: ["COMMERCIAL FAIL: Cover title 'Богдан: задания' does not match topic 'dinosaurs' (expected 'Динозавры')"]
-2026-06-25 13:30:10,257 [INFO] pdf.renderer: PDF saved: C:\Users\HOMEH\Desktop\БОТЫ\StudyPack AI\studypack-ai\release\output\StudyPack_7_dinosaurs_2026-06-25.pdf (146888 bytes)

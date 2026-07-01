@@ -3,7 +3,53 @@ Topic lexicon: themed word pools, topic aliases, display names.
 Supports: uk, ru, en languages.
 """
 import random
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
+
+_TOPICS_OBJECTS = {
+    "dinosaurs": {
+        "uk": [
+            {"nom": "яйце", "plur_nom": "яйця", "gen_plur": "яєць"},
+            {"nom": "слід", "plur_nom": "сліди", "gen_plur": "слідів"},
+            {"nom": "кістка", "plur_nom": "кістки", "gen_plur": "кісток"},
+            {"nom": "вулкан", "plur_nom": "вулкани", "gen_plur": "вулканів"},
+            {"nom": "листок", "plur_nom": "листки", "gen_plur": "листків"},
+        ],
+        "ru": [
+            {"nom": "яйцо", "plur_nom": "яйца", "gen_plur": "яиц"},
+            {"nom": "след", "plur_nom": "следы", "gen_plur": "следов"},
+            {"nom": "кость", "plur_nom": "кости", "gen_plur": "костей"},
+        ]
+    },
+    "fairy_tales": {
+        "uk": [
+            {"nom": "замок", "plur_nom": "замки", "gen_plur": "замків"},
+            {"nom": "зірка", "plur_nom": "зірки", "gen_plur": "зірок"},
+            {"nom": "книга", "plur_nom": "книги", "gen_plur": "книг"},
+        ],
+    },
+    "animals": {
+        "uk": [
+            {"nom": "ягода", "plur_nom": "ягоди", "gen_plur": "ягід"},
+            {"nom": "слід", "plur_nom": "сліди", "gen_plur": "слідів"},
+            {"nom": "горіх", "plur_nom": "горіхи", "gen_plur": "горіхів"},
+        ]
+    },
+    "space": {
+        "uk": [
+            {"nom": "ракета", "plur_nom": "ракети", "gen_plur": "ракет"},
+            {"nom": "зірка", "plur_nom": "зірки", "gen_plur": "зірок"},
+            {"nom": "комета", "plur_nom": "комети", "gen_plur": "комет"},
+        ]
+    },
+    "underwater": {
+        "uk": [
+            {"nom": "рибка", "plur_nom": "рибки", "gen_plur": "рибок"},
+            {"nom": "мушля", "plur_nom": "мушлі", "gen_plur": "мушель"},
+            {"nom": "корал", "plur_nom": "корали", "gen_plur": "коралів"},
+        ]
+    }
+}
+
 
 _TOPICS: Dict[str, Dict[str, List[str]]] = {
     "dinosaurs": {
@@ -485,6 +531,20 @@ def random_word(topic: str, language: str = "ru") -> str:
         # Do NOT fall back to neutral/placeholder — return empty
         return ""
     return random.choice(words) if words else ""
+
+def random_object(topic: str, language: str = "ru") -> Dict[str, str]:
+    simple_lang = language.split("+")[0].split("-")[0]
+    topic_key = topic.lower().replace(" ", "_")
+    default_obj = {"nom": "предмет", "plur_nom": "предмети", "gen_plur": "предметів"}
+    if simple_lang == "ru":
+        default_obj = {"nom": "предмет", "plur_nom": "предметы", "gen_plur": "предметов"}
+        
+    if topic_key in _TOPICS_OBJECTS:
+        lang_dict = _TOPICS_OBJECTS[topic_key]
+        pool = lang_dict.get(simple_lang, lang_dict.get("ru", []))
+        if pool:
+            return random.choice(pool)
+    return default_obj
 
 
 def random_n_words(topic: str, language: str = "ru", n: int = 3) -> List[str]:

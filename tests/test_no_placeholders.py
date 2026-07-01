@@ -17,12 +17,14 @@ def test_no_placeholders_hard_fail():
             "language": "ru",
             "pages": [{
                 "page_number": 1,
-                "tasks": [{
-                    "question": f"Найди {p} на картинке",
-                    "answer": "ответ"
-                }]
+                "tasks": [
+                    {"question": f"Найди {p} на картинке", "answer": "ответ"},
+                    {"question": f"Найди {p} на картинке 2", "answer": "ответ"},
+                    {"question": f"Найди {p} на картинке 3", "answer": "ответ"},
+                    {"question": f"Найди {p} на картинке 4", "answer": "ответ"}
+                ]
             }],
-            "answers": [{"page_number": 1, "answers": ["ответ"]}]
+            "answers": [{"page_number": 1, "answers": ["ответ", "ответ", "ответ", "ответ"]}]
         }
         passed, errors, warnings, comm_fails, score = run_quality_gate(data)
         assert not passed, f"Placeholder '{p}' did not trigger a hard fail!"

@@ -1,0 +1,426 @@
+{
+  "title": "Підготовка до школи: Тварини",
+  "subtitle": "Завдання для дітей 5 років",
+  "language": "uk",
+  "age": 5,
+  "grade": "Дошкільник",
+  "topic": "animals",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Лічба",
+      "instruction": "Порахуй та запиши кількість",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Порахуй зайці.",
+          "options": [],
+          "answer_space": true,
+          "answer": "3 зайці"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй лисиць.",
+          "options": [],
+          "answer_space": true,
+          "answer": "7 лисиць"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй зайці.",
+          "options": [],
+          "answer_space": true,
+          "answer": "3 зайці"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй зайців.",
+          "options": [],
+          "answer_space": true,
+          "answer": "7 зайців"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Фігури",
+      "instruction": "Обведи правильну фігуру",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Обведи квадрат:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "квадрат"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи коло: {{SHAPE:circle}}...",
+          "options": [],
+          "answer_space": true,
+          "answer": "коло"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи трикутник:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "трикутник"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи прямокутник:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "прямокутник"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Букви",
+      "instruction": "Обведи першу букву кожного слова",
+      "tasks": [
+        {
+          "type": "writing",
+          "question": "Обведи букву З у слові «звір»",
+          "options": [],
+          "answer_space": true,
+          "answer": "З"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву З у слові «заєць»",
+          "options": [],
+          "answer_space": true,
+          "answer": "З"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву С у слові «слід»",
+          "options": [],
+          "answer_space": true,
+          "answer": "С"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву Б у слові «білка»",
+          "options": [],
+          "answer_space": true,
+          "answer": "Б"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Знайди таку ж",
+      "instruction": "З'єднай однакові предмети",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "З'єднай однакові зайці:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "заєць"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові зайці:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "заєць"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові лисиці:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "лисиця"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові лисиці:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "лисиця"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Розфарбуй",
+      "instruction": "Розфарбуй малюнки за вказівками",
+      "tasks": [
+        {
+          "type": "creative",
+          "question": "Розфарбуй 4 зайці:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 4 їжаки:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 5 їжаків:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 4 їжаки:...",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Знайди зайве",
+      "instruction": "Знайди предмет, який не підходить до групи",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Що зайве.",
+          "options": [
+            "хвіст",
+            "лось",
+            "ручка",
+            "барліг"
+          ],
+          "answer_space": true,
+          "answer": "ручка"
+        },
+        {
+          "type": "logic",
+          "question": "Що зайве.",
+          "options": [
+            "вовк",
+            "ліс",
+            "білка",
+            "яблуко"
+          ],
+          "answer_space": true,
+          "answer": "яблуко"
+        },
+        {
+          "type": "logic",
+          "question": "Що зайве.",
+          "options": [
+            "ручка",
+            "лось",
+            "білка",
+            "зима"
+          ],
+          "answer_space": true,
+          "answer": "ручка"
+        },
+        {
+          "type": "logic",
+          "question": "Що зайве.",
+          "options": [
+            "звір",
+            "нора",
+            "груша",
+            "заєць"
+          ],
+          "answer_space": true,
+          "answer": "груша"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Лежало 3 горіхи. Зникло 1.",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "Лежало 3 горіхи. Зникло 1.",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 слід. Знайшли ще 1.",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 ягода. Знайшли ще 6.",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Читання: Тварини",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading_text",
+          "question": "Одного разу маленький...",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "reading_question",
+          "question": "Хто пішов на прогулянку?",
+          "options": [],
+          "answer_space": true,
+          "answer": "полювання"
+        },
+        {
+          "type": "reading_question",
+          "question": "Який був день?",
+          "options": [],
+          "answer_space": true,
+          "answer": "теплий і сонячний"
+        },
+        {
+          "type": "reading_question",
+          "question": "Кого зустрів полювання?",
+          "options": [],
+          "answer_space": true,
+          "answer": "лапа"
+        },
+        {
+          "type": "reading_question",
+          "question": "Що вони побачили в небі?",
+          "options": [],
+          "answer_space": true,
+          "answer": "вовк"
+        },
+        {
+          "type": "reading_question",
+          "question": "Правда чи неправда: День був...",
+          "options": [],
+          "answer_space": true,
+          "answer": "неправда"
+        },
+        {
+          "type": "reading_question",
+          "question": "Знайди в тексті слово, яке...",
+          "options": [],
+          "answer_space": true,
+          "answer": "хвіст"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "3 зайці",
+        "7 лисиць",
+        "3 зайці",
+        "7 зайців"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "квадрат",
+        "коло",
+        "трикутник",
+        "прямокутник"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "літера З",
+        "літера З",
+        "літера С",
+        "літера Б"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "заєць",
+        "заєць",
+        "лисиця",
+        "лисиця"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "Перевіряється дорослим",
+        "Перевіряється дорослим",
+        "Перевіряється дорослим",
+        "Перевіряється дорослим"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "ручка",
+        "яблуко",
+        "ручка",
+        "груша"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "2",
+        "2",
+        "2",
+        "7"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "полювання",
+        "теплий і сонячний",
+        "лапа",
+        "вовк",
+        "неправда",
+        "хвіст"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "commercial_score": 90,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

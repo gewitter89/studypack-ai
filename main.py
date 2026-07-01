@@ -8,9 +8,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app.cli import setup_argparser, run_cli
 try:
-    from app.premium_ui import PremiumStudyPackUI as GUI_CLASS
+    from app.gui_v2 import StudyPackGUI as GUI_CLASS
 except ImportError:
-    from app.gui import StudyPackGUI as GUI_CLASS
+    try:
+        from app.premium_ui import PremiumStudyPackUI as GUI_CLASS
+    except ImportError:
+        from app.gui import StudyPackGUI as GUI_CLASS
 
 
 def setup_logging():

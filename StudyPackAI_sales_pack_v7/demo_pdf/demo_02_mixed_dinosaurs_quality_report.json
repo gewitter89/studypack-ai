@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "hard_fails": [],
+  "warnings": [
+    "Topic 'dinosaurs' on only 4/7 pages (57%), target >= 70%"
+  ],
+  "commercial_fails": [],
+  "commercial_score": 87
+}

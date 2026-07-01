@@ -117,19 +117,7 @@ class StudyPackGUI:
         self.page_warn_label.pack(side="left", padx=5)
         self.pages_var.trace_add("write", self._on_pages_change)
 
-        diff_frame = Frame(main_frame)
-        diff_frame.pack(fill="x", pady=1)
-        Label(diff_frame, text="Сложность:", width=20, anchor="w").pack(side="left")
-        self.diff_var = StringVar(value="Подобрать автоматически по возрасту")
-        diffs = ["Лёгкая", "Средняя", "Сложная", "Подобрать автоматически по возрасту"]
-        OptionMenu(diff_frame, self.diff_var, *diffs).pack(side="left", fill="x", expand=True)
-
-        style_frame = Frame(main_frame)
-        style_frame.pack(fill="x", pady=1)
-        Label(style_frame, text="Стиль оформления:", width=20, anchor="w").pack(side="left")
-        self.style_var = StringVar(value="Чёрно-белый для печати")
-        styles = ["Минималистичный", "Весёлый", "Учебный", "Чёрно-белый для печати"]
-        OptionMenu(style_frame, self.style_var, *styles).pack(side="left", fill="x", expand=True)
+        # Removed difficulty and style to simplify UI. We will use defaults.
 
         self._add_section_title(main_frame, "Дополнительно")
 
@@ -139,9 +127,13 @@ class StudyPackGUI:
         self.instruction_var = IntVar(value=1)
         Checkbutton(main_frame, text="Добавить инструкцию для родителя",
                     variable=self.instruction_var).pack(anchor="w", pady=1)
-        self.offline_var = BooleanVar(value=True)
-        Checkbutton(main_frame, text="Офлайн-режим (без AI, шаблонные задания)",
-                    variable=self.offline_var).pack(anchor="w", pady=1)
+
+        mode_frame = Frame(main_frame)
+        mode_frame.pack(fill="x", pady=1)
+        Label(mode_frame, text="Режим работы:", width=25, anchor="w").pack(side="left")
+        self.ai_mode_var = StringVar(value="Офлайн (Быстро, шаблоны)")
+        modes = ["Офлайн (Быстро, шаблоны)", "DeepSeek", "Groq", "OpenRouter"]
+        OptionMenu(mode_frame, self.ai_mode_var, *modes).pack(side="left", fill="x", expand=True)
 
         name_frame = Frame(main_frame)
         name_frame.pack(fill="x", pady=1)
@@ -166,23 +158,9 @@ class StudyPackGUI:
                                    width=18, command=self._on_generate)
         self.generate_btn.pack(side="left", padx=2)
 
-        Button(btn_frame, text="HTML Preview", width=13,
-               command=self._on_html_preview).pack(side="left", padx=2)
-        Button(btn_frame, text="Редактор JSON", width=13,
-               command=self._on_edit_json).pack(side="left", padx=2)
-
-        btn_frame2 = Frame(main_frame)
-        btn_frame2.pack(fill="x", pady=2)
-
-        Button(btn_frame2, text="Собрать PDF из JSON", width=16,
-               command=self._on_build_from_json).pack(side="left", padx=2)
-        Button(btn_frame2, text="Открыть папку", width=11,
-               command=self._open_output).pack(side="left", padx=2)
-        Button(btn_frame2, text="Примеры", width=11,
-               command=self._open_examples).pack(side="left", padx=2)
-        Button(btn_frame2, text="Последний PDF", width=11,
+        Button(btn_frame, text="Открыть последний PDF", width=22,
                command=self._open_last_pdf).pack(side="left", padx=2)
-        Button(btn_frame2, text="Настройки API", width=11,
+        Button(btn_frame, text="Настройки API", width=15,
                command=self._show_api_settings).pack(side="left", padx=2)
 
         self.status_var = StringVar(value="Готов к работе")
@@ -250,26 +228,48 @@ class StudyPackGUI:
 
         Frame(win, padx=15, pady=15).pack(fill="both", expand=True)
 
-        Label(win, text="API ключ OpenRouter:").pack(anchor="w")
-        api_var = StringVar(value=os.getenv("OPENROUTER_API_KEY", ""))
-        Entry(win, textvariable=api_var, width=50, show="*").pack(fill="x", pady=5)
+        Label(win, text="API ключ DeepSeek:").pack(anchor="w")
+        ds_api_var = StringVar(value=os.getenv("DEEPSEEK_API_KEY", ""))
+        Entry(win, textvariable=ds_api_var, width=50, show="*").pack(fill="x", pady=2)
 
-        Label(win, text="Модель:").pack(anchor="w")
-        model_var = StringVar(value=os.getenv("OPENROUTER_MODEL", "openrouter/free"))
-        Entry(win, textvariable=model_var, width=50).pack(fill="x", pady=5)
+        Label(win, text="API ключ Groq:").pack(anchor="w")
+        groq_api_var = StringVar(value=os.getenv("GROQ_API_KEY", ""))
+        Entry(win, textvariable=groq_api_var, width=50, show="*").pack(fill="x", pady=2)
+
+        Label(win, text="API ключ OpenRouter (опционально):").pack(anchor="w", pady=(5, 0))
+        or_api_var = StringVar(value=os.getenv("OPENROUTER_API_KEY", ""))
+        Entry(win, textvariable=or_api_var, width=50, show="*").pack(fill="x", pady=2)
 
         def save():
             from core.paths import env_file_path
             env_path = env_file_path()
+            
+            ds_val = ds_api_var.get()
+            groq_val = groq_api_var.get()
+            or_val = or_api_var.get()
+            
             if set_key:
-                set_key(env_path, "OPENROUTER_API_KEY", api_var.get())
-                set_key(env_path, "OPENROUTER_MODEL", model_var.get())
+                set_key(env_path, "DEEPSEEK_API_KEY", ds_val)
+                set_key(env_path, "GROQ_API_KEY", groq_val)
+                set_key(env_path, "OPENROUTER_API_KEY", or_val)
             else:
+                lines = []
+                if os.path.exists(env_path):
+                    with open(env_path, "r") as f:
+                        lines = f.readlines()
+                # Basic rewrite for fallback
                 with open(env_path, "w") as f:
-                    f.write(f"OPENROUTER_API_KEY={api_var.get()}\n")
-                    f.write(f"OPENROUTER_MODEL={model_var.get()}\n")
-            os.environ["OPENROUTER_API_KEY"] = api_var.get()
-            os.environ["OPENROUTER_MODEL"] = model_var.get()
+                    for line in lines:
+                        if not any(line.startswith(k) for k in ["DEEPSEEK_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY"]):
+                            f.write(line)
+                    f.write(f"DEEPSEEK_API_KEY={ds_val}\n")
+                    f.write(f"GROQ_API_KEY={groq_val}\n")
+                    f.write(f"OPENROUTER_API_KEY={or_val}\n")
+                    
+            os.environ["DEEPSEEK_API_KEY"] = ds_val
+            os.environ["GROQ_API_KEY"] = groq_val
+            os.environ["OPENROUTER_API_KEY"] = or_val
+            
             messagebox.showinfo("StudyPack AI", "Настройки сохранены.")
             win.destroy()
 
@@ -398,17 +398,9 @@ class StudyPackGUI:
 
         pages_count = int(self.pages_var.get())
 
-        diff_map = {
-            "Лёгкая": "easy", "Средняя": "medium", "Сложная": "hard",
-            "Подобрать автоматически по возрасту": "auto",
-        }
-        difficulty = diff_map.get(self.diff_var.get(), "auto")
-
-        style_map = {
-            "Минималистичный": "minimal", "Весёлый": "fun",
-            "Учебный": "academic", "Чёрно-белый для печати": "print_bw",
-        }
-        style = style_map.get(self.style_var.get(), "print_bw")
+        # Hardcoded defaults for removed UI options
+        difficulty = "auto"
+        style = "print_bw"
 
         if pages_count > 20:
             if not messagebox.askyesno("Предупреждение",
@@ -437,7 +429,9 @@ class StudyPackGUI:
 
     def _generate_thread(self, request):
         try:
-            offline = self.offline_var.get()
+            ai_mode = getattr(self, 'ai_mode_var', None)
+            mode_val = ai_mode.get() if ai_mode else "Офлайн (Быстро, шаблоны)"
+            offline = mode_val.startswith("Офлайн")
 
             if offline:
                 self.root.after(0, lambda: self.status_var.set("Создание по шаблону (офлайн)..."))
@@ -462,8 +456,9 @@ class StudyPackGUI:
                 self.root.after(0, lambda: self.status_var.set("Готово! Офлайн-режим."))
                 return
 
-            generator = StudyPackGenerator()
-            self.root.after(0, lambda: self.status_var.set("Генерация заданий через AI..."))
+            provider_name = mode_val
+            generator = StudyPackGenerator(provider=provider_name)
+            self.root.after(0, lambda: self.status_var.set(f"Генерация заданий через {provider_name}..."))
             result = generator.generate(request)
 
             if result.success:

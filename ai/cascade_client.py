@@ -20,19 +20,24 @@ class CascadeClient:
         model: str = "llama3-70b-8192",
         temperature: float = 0.7,
         max_tokens: int = 8000,
+        provider: str = None,
     ):
         self.temperature = temperature
         self.max_tokens = max_tokens
         self._model = model
+        self.selected_provider = provider
         self._providers = self._init_providers()
 
     def _init_providers(self):
-        return [
-            _OpenRouterProvider(self.temperature, self.max_tokens),
-            _GroqProvider(self.temperature, self.max_tokens),
-            _DeepSeekProvider(self.temperature, self.max_tokens),
-            _GeminiProvider(self.temperature, self.max_tokens),
-        ]
+        all_provs = {
+            "OpenRouter": _OpenRouterProvider(self.temperature, self.max_tokens),
+            "Groq": _GroqProvider(self.temperature, self.max_tokens),
+            "DeepSeek": _DeepSeekProvider(self.temperature, self.max_tokens),
+            "Gemini": _GeminiProvider(self.temperature, self.max_tokens),
+        }
+        if self.selected_provider and self.selected_provider in all_provs:
+            return [all_provs[self.selected_provider]]
+        return list(all_provs.values())
 
     @property
     def model(self):

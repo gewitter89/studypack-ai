@@ -179,6 +179,10 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
     tasks_per_page = diff_params["tasks_per_page"]
 
     card_index = 0
+    
+    from core.instruction_variety import InstructionProvider
+    providers = {}
+    
     for page_num in range(1, pages_count + 1):
         tmpl = templates[card_index % len(templates)]
         card_index += 1
@@ -202,9 +206,10 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
             })
 
         page_title = f"{tmpl.title} - {page_num}"
-        from core.instruction_variety import InstructionProvider
-        ip = InstructionProvider(language, tmpl.card_type, age, topic)
-        instruction = ip.get()
+        
+        if tmpl.card_type not in providers:
+            providers[tmpl.card_type] = InstructionProvider(language, tmpl.card_type, age, topic)
+        instruction = providers[tmpl.card_type].get()
 
         pages.append({
             "page_number": page_num,
@@ -219,8 +224,20 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
         })
 
     ru = language in ("ru", "ru+en")
+    
+    title = preset_data.get("title", "StudyPack") if preset_data.get("title") else "StudyPack"
+    if ":" in title and topic and topic not in ("general", "custom", ""):
+        try:
+            from core.topic_lexicon import get_display_name
+            dt = get_display_name(topic, language).lower()
+            if dt:
+                prefix = title.split(":")[0]
+                title = f"{prefix}: {dt}"
+        except:
+            pass
+
     return {
-        "title": preset_data.get("title", "StudyPack") if preset_data.get("title") else "StudyPack",
+        "title": title,
         "subtitle": f"Задания для детей {age} лет" if ru else f"Завдання для дітей {age} років",
         "language": language,
         "age": age,

@@ -14,8 +14,13 @@ from core.quality_gate import (
 class TestQualityGate:
     def test_good_data_passes(self):
         data = {"title": "Test", "language": "ru",
-                "pages": [{"page_number": 1, "tasks": [{"question": "2+2", "answer": "4"}]}],
-                "answers": [{"page_number": 1, "answers": ["4"]}]}
+                "pages": [{"page_number": 1, "tasks": [
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"}
+                ]}],
+                "answers": [{"page_number": 1, "answers": ["4", "4", "4", "4"]}]}
         passed, errors, warnings, comm_fails, score = run_quality_gate(data)
         assert passed
         assert len(errors) == 0
@@ -120,9 +125,19 @@ class TestQualityGate:
 
     def test_full_pipeline_good(self):
         data = {"title": "Math", "language": "ru",
-                "pages": [{"page_number": 1, "tasks": [{"question": "2+2", "answer": "4"}]},
-                           {"page_number": 2, "tasks": [{"question": "3+3", "answer": "6"}]}],
-                "answers": [{"page_number": 1, "answers": ["4"]},
-                            {"page_number": 2, "answers": ["6"]}]}
+                "pages": [{"page_number": 1, "tasks": [
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"}
+                ]},
+                          {"page_number": 2, "tasks": [
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"}
+                ]}],
+                "answers": [{"page_number": 1, "answers": ["4", "4", "4", "4"]},
+                            {"page_number": 2, "answers": ["6", "6", "6", "6"]}]}
         passed, errors, warnings, comm_fails, score = run_quality_gate(data)
         assert passed

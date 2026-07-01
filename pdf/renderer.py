@@ -74,10 +74,58 @@ CONTENT_WIDTH = PAGE_WIDTH - 2 * MARGIN
 
 # ─── Topic emoji icons (Unicode safe — no images needed) ─────────────────────
 
-TOPIC_ICONS = {}
+TOPIC_ICONS = {
+    "dinosaurs": "🦕",
+    "dino": "🦕",
+    "space": "🚀",
+    "animals": "🐾",
+    "cats": "🐱",
+    "dogs": "🐶",
+    "farm": "🐄",
+    "underwater": "🐟",
+    "ocean": "🐠",
+    "sea": "🐙",
+    "pirates": "🏴‍☠️",
+    "superheroes": "🦸",
+    "superhero": "🦸",
+    "fairytale": "🧚",
+    "magic": "✨",
+    "robots": "🤖",
+    "robot": "🤖",
+    "transport": "🚗",
+    "cars": "🚗",
+    "princess": "👸",
+    "forest": "🌲",
+    "nature": "🌿",
+    "sports": "⚽",
+    "sport": "⚽",
+    "food": "🍎",
+    "pizza": "🍕",
+    "music": "🎵",
+    "winter": "❄️",
+    "summer": "☀️",
+    "spring": "🌸",
+    "autumn": "🍂",
+    "general": "📚",
+    "reading": "📖",
+    "math": "🔢",
+    "logic": "🧩",
+    "writing": "✏️",
+    "english": "🔤",
+    "alphabet": "🔤",
+}
+
+SUBJECT_THEMES = {
+    "math": "academic",
+    "reading": "minimal",
+    "logic": "fun",
+    "preschool": "fun",
+    "mixed_week": "print_bw",
+    "english": "minimal",
+    "ukrainian": "academic",
+}
 
 # ─── Motivational messages (per-page footer) ─────────────────────────────────
-
 MOTIVATIONAL_UK = [
     "Ти молодець! Продовжуй!",
     "Чудово! Так тримати!",
@@ -86,7 +134,7 @@ MOTIVATIONAL_UK = [
     "Старання — це вже успіх!",
     "Неймовірно! Ти впораєшся!",
     "Крок за кроком до знань!",
-    "Ти — справжня зірка! ★",
+    "Ти — справжній талант!",
 ]
 
 MOTIVATIONAL_RU = [
@@ -97,15 +145,21 @@ MOTIVATIONAL_RU = [
     "Стараться — это уже успех!",
     "Невероятно! У тебя получится!",
     "Шаг за шагом к знаниям!",
-    "Ты — настоящая звезда! ★",
+    "Ты — настоящий талант!",
 ]
 
-# ─── Difficulty stars ─────────────────────────────────────────────────────────
+# ─── Difficulty names ─────────────────────────────────────────────────────────
 
-DIFFICULTY_BADGES = {
-    "easy": "⭐",
-    "medium": "⭐⭐",
-    "hard": "⭐⭐⭐",
+DIFFICULTY_NAMES_UK = {
+    "easy": "легка",
+    "medium": "середня",
+    "hard": "складна",
+}
+
+DIFFICULTY_NAMES_RU = {
+    "easy": "легкая",
+    "medium": "средняя",
+    "hard": "сложная",
 }
 
 # ─── Themes ───────────────────────────────────────────────────────────────────
@@ -357,11 +411,15 @@ class _WatermarkCanvas:
             c.setFillColor(HexColor('#BBBBBB'))
             c.drawCentredString(PAGE_WIDTH / 2, 8 * mm, label)
 
-            # ── Brand footer (right side) ──
+                    # ── Brand footer (right side) ──
             if self.brand:
                 c.setFont(FONT, 6)
                 c.setFillColor(HexColor('#CCCCCC'))
                 c.drawRightString(PAGE_WIDTH - MARGIN, 8 * mm, self.brand)
+                # Brand in top-right corner too
+                c.setFont(FONT, 7)
+                c.setFillColor(HexColor('#DDDDDD'))
+                c.drawRightString(PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 10 * mm, self.brand)
 
             # ── Name + Date field (top of page) ──
             name_label = "Ім'я" if uk else "Имя"
@@ -373,10 +431,12 @@ class _WatermarkCanvas:
                          f"{name_label}: {name_val}     {date_label}: __________")
 
             # ── Difficulty badge (top right) ──
-            badge = DIFFICULTY_BADGES.get(self.difficulty, "")
+            diff_dict = DIFFICULTY_NAMES_UK if uk else DIFFICULTY_NAMES_RU
+            badge = diff_dict.get(self.difficulty, self.difficulty)
             if badge:
                 c.setFont(FONT, 10)
-                c.drawRightString(PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 14 * mm, badge)
+                diff_label = "Складність: " if uk else "Сложность: "
+                c.drawRightString(PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 14 * mm, diff_label + badge)
 
         c.restoreState()
 
@@ -423,114 +483,196 @@ def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand
     except ImportError:
         resolved_topic = topic
         display_topic = topic
-    icon = ""
+    icon = TOPIC_ICONS.get(topic.lower(), TOPIC_ICONS.get("general", "📚"))
+    icon_display = f"<font size='48'>{icon}</font>"
 
-    # Cover layout
-    elements.append(Spacer(1, 20 * mm))
+    # ── Top Color Banner ──
+    banner = Table([[""]], colWidths=[PAGE_WIDTH], rowHeights=[30 * mm])
+    banner.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["cover_stripe"])]))
+    elements.append(banner)
+    elements.append(Spacer(1, 15 * mm))
 
-    # Safe decoration instead of emoji
-    icon_style = ParagraphStyle(
-        'CoverIcon', fontName=FONT, fontSize=24, textColor=t["cover_stripe"],
-        leading=28, alignment=TA_CENTER, spaceAfter=8 * mm
-    )
-    elements.append(Paragraph("★ ★ ★", icon_style))
+    # ── Decorative Top ──
+    try:
+        from pdf.vector_drawings import draw_star
+        star_deco = draw_star(size=12*mm, color=t["accent"])
+        elements.append(star_deco)
+        elements.append(Spacer(1, 4*mm))
+    except ImportError:
+        pass
+
+    # Topic icon (centered emoji)
+    icon_style = ParagraphStyle('CoverIcon', fontName=FONT, fontSize=48, alignment=TA_CENTER, spaceAfter=4*mm)
+    elements.append(Paragraph(icon_display, icon_style))
+    elements.append(Spacer(1, 4 * mm))
 
     # Title
     elements.append(Paragraph(title, styles['CoverTitle']))
-    elements.append(Spacer(1, 2 * mm))
+    elements.append(Spacer(1, 5 * mm))
 
     if subtitle:
         elements.append(Paragraph(subtitle, styles['CoverSubtitle']))
-    elements.append(Spacer(1, 8 * mm))
+    elements.append(Spacer(1, 15 * mm))
 
-    # Colored stripe separator
-    stripe = Table([[""]], colWidths=[CONTENT_WIDTH], rowHeights=[3])
-    stripe.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["cover_stripe"])]))
-    elements.append(stripe)
-    elements.append(Spacer(1, 6 * mm))
-
-    # Cover info table (2 columns: label + value)
-    cover_rows = []
+    # Info Blocks (Rich Cards)
+    # Block 1: Для кого підходить
+    target_title = "Для кого підходить:" if uk else "Для кого подходит:"
+    target_style = ParagraphStyle(
+        'CoverInsideTitle', fontName=FONT_BOLD, fontSize=14,
+        leading=18, spaceAfter=4 * mm, textColor=t["dark_gray"]
+    )
+    elements.append(Paragraph(target_title, target_style))
+    
+    target_info = []
     if age:
-        label_a = "Вік" if uk else "Возраст"
-        val_a = f"{age} {'років' if uk else 'лет'}"
-        cover_rows.append([f"{label_a}:", val_a])
+        target_info.append(f"Вік: {age} років" if uk else f"Возраст: {age} лет")
     if grade:
-        label_g = "Клас" if uk else "Класс"
-        cover_rows.append([f"{label_g}:", grade])
-    if display_topic:
-        label_t = "Тема" if uk else "Тема"
-        cover_rows.append([f"{label_t}:", display_topic])
+        target_info.append(f"Клас: {grade}" if uk else f"Класс: {grade}")
     if difficulty:
-        label_d = "Складність" if uk else "Сложность"
-        badge = DIFFICULTY_BADGES.get(difficulty, difficulty)
-        cover_rows.append([f"{label_d}:", badge])
+        diff_dict = DIFFICULTY_NAMES_UK if uk else DIFFICULTY_NAMES_RU
+        target_info.append(f"Складність: {diff_dict.get(difficulty, difficulty)}" if uk else f"Сложность: {diff_dict.get(difficulty, difficulty)}")
+        
+    inside_style_item = ParagraphStyle(
+        'CoverInsideItem', fontName=FONT, fontSize=12,
+        leading=16, textColor=t["dark_gray"]
+    )
+        
+    target_str = " • ".join(target_info)
+    target_card = Table([[Paragraph(target_str, inside_style_item)]], colWidths=[CONTENT_WIDTH])
+    target_card.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), t.get("light_gray", "#f0f0f0")),
+        ('BOX', (0,0), (-1,-1), 1, t.get("accent", "#cccccc")),
+        ('TOPPADDING', (0,0), (-1,-1), 8),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 8),
+    ]))
+    elements.append(target_card)
+    elements.append(Spacer(1, 10 * mm))
 
-    exercise_count = len([p for p in pages_data if p.get("page_type") != "answers"])
-    label_p = "Сторінок" if uk else "Страниц"
-    cover_rows.append([f"{label_p}:", str(exercise_count)])
-
-    if cover_rows:
-        info_table = Table(cover_rows, colWidths=[50 * mm, 80 * mm])
-        info_table.setStyle(TableStyle([
-            ('FONTNAME', (0, 0), (0, -1), FONT_BOLD),
-            ('FONTNAME', (1, 0), (1, -1), FONT),
-            ('FONTSIZE', (0, 0), (-1, -1), 11),
-            ('TEXTCOLOR', (0, 0), (0, -1), t["dark_gray"]),
-            ('TEXTCOLOR', (1, 0), (1, -1), t["accent"]),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('TOPPADDING', (0, 0), (-1, -1), 2),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+    # Block 2: Що тренуємо (Тематика)
+    if display_topic:
+        topic_title = "Що тренуємо:" if uk else "Что тренируем:"
+        elements.append(Paragraph(topic_title, target_style))
+        topic_card = Table([[Paragraph(display_topic, inside_style_item)]], colWidths=[CONTENT_WIDTH])
+        topic_card.setStyle(TableStyle([
+            ('BACKGROUND', (0,0), (-1,-1), t.get("light_gray", "#f0f0f0")),
+            ('BOX', (0,0), (-1,-1), 1, t.get("accent", "#cccccc")),
+            ('TOPPADDING', (0,0), (-1,-1), 8),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 8),
         ]))
-        elements.append(info_table)
+        elements.append(topic_card)
+        elements.append(Spacer(1, 10 * mm))
 
     # ── What's Inside list ──
-    inside_items = []
-    seen_titles = set()
+    # Group by task types instead of raw page titles
+    category_counts = {}
     for page in pages_data:
         p_type = page.get("page_type", "exercise")
         if p_type in ("answers", "instruction"):
             continue
-        p_title = page.get("title", "")
-        if ":" in p_title:
-            p_title = p_title.split(":")[-1].strip()
-        p_title_lower = p_title.lower()
-        if p_title_lower and p_title_lower not in seen_titles:
-            seen_titles.add(p_title_lower)
-            inside_items.append(p_title)
-            
+        tasks = page.get("tasks", [])
+        for tsk in tasks:
+            t_type = tsk.get("type", "logic")
+            if "math" in t_type or "count" in t_type:
+                category_counts["math"] = category_counts.get("math", 0) + 1
+            elif "logic" in t_type or "maze" in t_type or "sudoku" in t_type:
+                category_counts["logic"] = category_counts.get("logic", 0) + 1
+            elif "reading" in t_type:
+                category_counts["reading"] = category_counts.get("reading", 0) + 1
+            elif "writing" in t_type:
+                category_counts["writing"] = category_counts.get("writing", 0) + 1
+            elif "creative" in t_type or "coloring" in t_type or "drawing" in t_type:
+                category_counts["creative"] = category_counts.get("creative", 0) + 1
+            else:
+                category_counts["logic"] = category_counts.get("logic", 0) + 1
+
+    inside_items = []
+    if category_counts.get("math"):
+        inside_items.append("Математика та лічба" if uk else "Математика и счет")
+    if category_counts.get("logic"):
+        inside_items.append("Логіка та мислення" if uk else "Логика и мышление")
+    if category_counts.get("reading"):
+        inside_items.append("Читання" if uk else "Чтение")
+    if category_counts.get("writing"):
+        inside_items.append("Письмо та граматика" if uk else "Письмо и грамматика")
+    if category_counts.get("creative"):
+        inside_items.append("Творчість (розмальовки)" if uk else "Творчество (раскраски)")
+
     if pack_data.get("include_answers", True) or pack_data.get("answers"):
-        inside_items.append("відповіді для дорослого" if uk else "ответы для взрослого")
+        inside_items.append("Відповіді для дорослого" if uk else "Ответы для взрослого")
+
+    # If it's still empty for some reason, fallback
+    if not inside_items:
+        inside_items = ["Цікаві завдання" if uk else "Интересные задания", "Відповіді" if uk else "Ответы"]
 
     if inside_items:
-        elements.append(Spacer(1, 4 * mm))
-        inside_title = "Усередині:" if uk else "Внутри:"
+        inside_title = "Що всередині:" if uk else "Что внутри:"
         inside_style_title = ParagraphStyle(
-            'CoverInsideTitle', fontName=FONT_BOLD, fontSize=11,
-            leading=14, spaceAfter=2 * mm, textColor=t["dark_gray"]
+            'CoverInsideTitle', fontName=FONT_BOLD, fontSize=14,
+            leading=18, spaceAfter=4 * mm, textColor=t["dark_gray"]
         )
         elements.append(Paragraph(inside_title, inside_style_title))
         
         inside_style_item = ParagraphStyle(
-            'CoverInsideItem', fontName=FONT, fontSize=10,
-            leading=13, textColor=t["accent"]
+            'CoverInsideItem', fontName=FONT, fontSize=12,
+            leading=16, textColor=t["accent"]
         )
-        for item in inside_items[:5]:  # limit to 5 items to avoid overflow
-            elements.append(Paragraph(f"✓ {item.lower()}", inside_style_item))
+        
+        try:
+            from pdf.vector_drawings import draw_checkbox
+            box_icon = draw_checkbox(size=6*mm, checked=True, color=t["accent"])
+        except ImportError:
+            box_icon = "✓"
+            
+        inside_rows = []
+        for item in inside_items:
+            inside_rows.append([box_icon, Paragraph(item, inside_style_item)])
+            
+        if inside_rows:
+            inside_t = Table(inside_rows, colWidths=[10*mm, CONTENT_WIDTH - 10*mm])
+            inside_t.setStyle([('VALIGN', (0,0), (-1,-1), 'MIDDLE')])
+            elements.append(inside_t)
 
-    elements.append(Spacer(1, 6 * mm))
+    elements.append(Spacer(1, 15 * mm))
 
-    desc = (
-        "Навчальний набір для домашніх занять"
-        if uk else "Учебный набор для домашних занятий"
-    )
-    elements.append(Paragraph(desc, styles['CoverDetail']))
+    # Format block
+    format_title = "Формат:" if uk else "Формат:"
+    elements.append(Paragraph(format_title, inside_style_title))
+    format_1 = "PDF для друку A4" if uk else "PDF для печати A4"
+    format_2 = "10-20 хвилин на день" if uk else "10-20 минут в день"
+    
+    format_rows = [
+        [box_icon, Paragraph(format_1, inside_style_item)],
+        [box_icon, Paragraph(format_2, inside_style_item)]
+    ]
+    format_t = Table(format_rows, colWidths=[10*mm, CONTENT_WIDTH - 10*mm])
+    format_t.setStyle([('VALIGN', (0,0), (-1,-1), 'MIDDLE')])
+    elements.append(format_t)
+    
+    elements.append(Spacer(1, 10 * mm))
 
     if brand:
+        # Brand box with colored background
+        brand_label = "Викладач:" if uk else "Преподаватель:"
+        brand_style = ParagraphStyle(
+            'CoverBrandLabel', fontName=FONT_BOLD, fontSize=11,
+            leading=15, alignment=TA_CENTER, textColor=t["accent"],
+            spaceAfter=2*mm
+        )
+        elements.append(Paragraph(brand_label, brand_style))
+        brand_card = Table([[Paragraph(brand, styles['CoverBrand'])]], colWidths=[CONTENT_WIDTH*0.7])
+        brand_card.setStyle(TableStyle([
+            ('BACKGROUND', (0,0), (-1,-1), t.get("light_gray", "#f0f0f0")),
+            ('BOX', (0,0), (-1,-1), 1.5, t.get("accent", "#cccccc")),
+            ('TOPPADDING', (0,0), (-1,-1), 6),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+            ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ]))
+        elements.append(brand_card)
         elements.append(Spacer(1, 5 * mm))
-        elements.append(Paragraph(brand, styles['CoverBrand']))
 
-    elements.append(Spacer(1, 6 * mm))
+    # Colored stripe separator at bottom
+    stripe = Table([[""]], colWidths=[CONTENT_WIDTH], rowHeights=[3])
+    stripe.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), t["cover_stripe"])]))
     elements.append(stripe)
 
     if not is_commercial and watermark:
@@ -602,25 +744,98 @@ def _build_exercise_pages(elements, pages_data, styles, t, lang, difficulty):
             q = task.get("question", "")
             opts = task.get("options") or []
             has_space = task.get("answer_space", True)
+            
+            import re
+            try:
+                from pdf import vector_drawings
+            except ImportError:
+                vector_drawings = None
 
-            elements.append(Paragraph(f"<b>{j + 1}. {q}</b>", styles['TaskQuestion']))
+            parts = re.split(r'(\{\{(?:DRAW|SHAPE):[^}]+\}\})', q)
+            
+            cell_flowables = []
+            
+            # Use KeepTogether to ensure the task doesn't split across pages
+            from reportlab.platypus import KeepTogether
+            
+            # Start the task block (we don't append "1. " anymore)
+            for part in parts:
+                if not part:
+                    continue
+                if part.startswith("{{") and part.endswith("}}"):
+                    content = part[2:-2]
+                    tokens = content.split(":")
+                    cmd = tokens[0]
+                    if vector_drawings:
+                        if cmd == "DRAW" and len(tokens) >= 3:
+                            icon_type = tokens[1]
+                            count = int(tokens[2])
+                            d = vector_drawings.draw_thematic_icon(icon_type, count)
+                            cell_flowables.append(Spacer(1, 4*mm))
+                            cell_flowables.append(d)
+                            cell_flowables.append(Spacer(1, 4*mm))
+                        elif cmd == "SHAPE" and len(tokens) >= 2:
+                            shape_type = tokens[1]
+                            d = vector_drawings.draw_shape(shape_type)
+                            cell_flowables.append(Spacer(1, 4*mm))
+                            cell_flowables.append(d)
+                            cell_flowables.append(Spacer(1, 4*mm))
+                    else:
+                        cell_flowables.append(Paragraph(f"[VECTOR_MISSING: {content}]", styles['TaskQuestion']))
+                else:
+                    if part.strip():
+                        cell_flowables.append(Paragraph(part.strip(), styles['TaskQuestion']))
+                        
             if opts:
+                cell_flowables.append(Spacer(1, 2*mm))
                 for i, opt in enumerate(opts):
                     letter = chr(65 + i) if i < 26 else str(i + 1)
-                    elements.append(Paragraph(
-                        f"&nbsp;&nbsp;&nbsp;{letter}) {opt}",
+                    cell_flowables.append(Paragraph(
+                        f"&nbsp;&nbsp;&nbsp;<b>{letter})</b> {opt}",
                         styles['TaskOption']
                     ))
+                    
             if has_space:
-                elements.append(Spacer(1, 5 * mm))
-                line_data = [["____________________________________________"]]
-                line_t = Table(line_data, colWidths=[CONTENT_WIDTH - 12 * mm])
-                line_t.setStyle(TableStyle([
-                    ('TEXTCOLOR', (0, 0), (-1, -1), t["line_color"]),
-                    ('FONTSIZE', (0, 0), (-1, -1), 10),
+                cell_flowables.append(Spacer(1, 6 * mm))
+                ans_box = Table([["Відповідь: " if uk else "Ответ: ", "__________________"]], colWidths=[25*mm, 50*mm])
+                ans_box.setStyle(TableStyle([
+                    ('FONTNAME', (0,0), (-1,-1), FONT_BOLD),
+                    ('FONTSIZE', (0,0), (-1,-1), 12),
+                    ('TEXTCOLOR', (0,0), (-1,-1), t["dark_gray"]),
+                    ('ALIGN', (0,0), (0,-1), 'RIGHT'),
+                    ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
+                    ('BOTTOMPADDING', (0,0), (-1,-1), 0),
                 ]))
-                elements.append(line_t)
-            elements.append(Spacer(1, 2 * mm))
+                cell_flowables.append(ans_box)
+            else:
+                cell_flowables.append(Spacer(1, 2 * mm))
+
+            # Wrap in a premium card Table (2 rows: Header, Content)
+            task_header_text = f"Завдання {j + 1}" if uk else f"Задание {j + 1}"
+            header_style = ParagraphStyle(
+                'CardHeader', fontName=FONT_BOLD, fontSize=11, textColor=white
+            )
+            header_flowable = Paragraph(task_header_text, header_style)
+            
+            card = Table([[header_flowable], [cell_flowables]], colWidths=[CONTENT_WIDTH])
+            card.setStyle(TableStyle([
+                # Header row styling
+                ('BACKGROUND', (0,0), (-1,0), t.get("brand", "#4A90E2")),
+                ('TOPPADDING', (0,0), (-1,0), 4),
+                ('BOTTOMPADDING', (0,0), (-1,0), 4),
+                ('LEFTPADDING', (0,0), (-1,0), 8),
+                # Content row styling
+                ('BACKGROUND', (0,1), (-1,1), "#fafafa"),
+                ('TOPPADDING', (0,1), (-1,1), 8*mm),
+                ('BOTTOMPADDING', (0,1), (-1,1), 8*mm),
+                ('LEFTPADDING', (0,1), (-1,1), 8*mm),
+                ('RIGHTPADDING', (0,1), (-1,1), 8*mm),
+                # Box around the whole card
+                ('BOX', (0,0), (-1,-1), 1.5, t.get("brand", "#4A90E2")),
+            ]))
+            
+            elements.append(KeepTogether(card))
+            elements.append(Spacer(1, 8 * mm))
 
         # ── Score box (bottom of page) ──
         score_label = "Результат" if uk else "Результат"
@@ -659,14 +874,21 @@ def _build_tracker_page(elements, pages_data, styles, t, lang):
 
     # Build tracker grid (rows of 7)
     day_label = "Завдання" if uk else "Задание"
-    done_label = "✓" if uk else "✓"
+    
+    try:
+        from pdf.vector_drawings import draw_star, draw_checkbox
+        star_icon = draw_star(size=12*mm)
+        box_icon = draw_checkbox(size=10*mm)
+    except ImportError:
+        star_icon = "Star"
+        box_icon = "Box"
 
-    header = [day_label, "☆"]
+    header = [day_label, star_icon]
     rows = [header]
     for i in range(num_exercises):
         page_title = exercise_pages[i].get("title", f"{day_label} {i+1}")
         short_title = page_title[:30] if len(page_title) > 30 else page_title
-        rows.append([short_title, "☐"])
+        rows.append([short_title, box_icon])
 
     col_widths = [CONTENT_WIDTH - 30 * mm, 25 * mm]
     tracker_table = Table(rows, colWidths=col_widths)
@@ -692,8 +914,22 @@ def _build_tracker_page(elements, pages_data, styles, t, lang):
 def _build_final_page(elements, styles, t, lang):
     uk = _is_uk(lang)
     elements.append(Spacer(1, 30 * mm))
-    msg = "Молодець! Ти чудово впорався! ★" if uk else "Молодец! Ты отлично справился! ★"
+    msg = "Молодець! Ти чудово впорався!" if uk else "Молодец! Ты отлично справился!"
     elements.append(Paragraph(msg, styles['FinalMessage']))
+    
+    try:
+        from pdf.vector_drawings import draw_star
+        elements.append(Spacer(1, 5 * mm))
+        
+        # We can draw 3 stars centered
+        from reportlab.platypus import Table
+        star = draw_star(size=15*mm)
+        t_stars = Table([[star, star, star]], colWidths=[20*mm]*3)
+        t_stars.setStyle([('ALIGN', (0,0), (-1,-1), 'CENTER')])
+        elements.append(t_stars)
+    except ImportError:
+        pass
+        
     elements.append(Spacer(1, 8 * mm))
     finish = (
         "Продовжуй займатися, і в тебе все вийде!"
@@ -751,13 +987,16 @@ def _build_certificate(elements, pack_data, styles, t, lang, child_name):
     )
     elements.append(Paragraph(pages_text, styles['CertBody']))
 
-    stars = "⭐ ⭐ ⭐ ⭐ ⭐"
-    star_style = ParagraphStyle(
-        'CertStars', fontName=FONT, fontSize=24,
-        leading=30, alignment=TA_CENTER, spaceAfter=8 * mm
-    )
-    elements.append(Spacer(1, 4 * mm))
-    elements.append(Paragraph(stars, star_style))
+    try:
+        from pdf.vector_drawings import draw_star
+        star_flowable = draw_star(size=15*mm)
+        stars_row = [star_flowable] * 5
+        stars_t = Table([stars_row], colWidths=[20*mm]*5)
+        stars_t.setStyle([('ALIGN', (0,0), (-1,-1), 'CENTER')])
+        elements.append(Spacer(1, 4 * mm))
+        elements.append(stars_t)
+    except ImportError:
+        pass
 
     date_str = datetime.now().strftime("%d.%m.%Y")
     date_text = f"{'Дата' if uk else 'Дата'}: {date_str}"
@@ -783,37 +1022,45 @@ def _build_answers(elements, answers_data, styles, t, lang):
         if uk else "Ответы предназначены только для проверки взрослым."
     )
     elements.append(Paragraph(disp, styles['Instruction']))
-    elements.append(Spacer(1, 2 * mm))
+    elements.append(Spacer(1, 4 * mm))
 
+    # Build a unified table
+    table_data = []
+    
+    # Header row
+    h1 = "Сторінка" if uk else "Страница"
+    h2 = "Завдання" if uk else "Задание"
+    h3 = "Відповідь" if uk else "Ответ"
+    table_data.append([h1, h2, h3])
+
+    has_rows = False
     for block in answers_data:
         an = block.get("page_number", "")
         answers_list = block.get("answers", [])
-        label_s = "Сторінка" if uk else "Страница"
-        elements.append(Paragraph(
-            f"<b>{label_s} {an}:</b>", styles['AnswerBlock']
-        ))
-
-        # Build answer rows as a small table (visual answer key)
         if answers_list:
-            ans_rows = []
             for k, a in enumerate(answers_list):
-                ans_rows.append([f"{k + 1}.", str(a) if a else "—"])
-            ans_table = Table(ans_rows, colWidths=[8 * mm, CONTENT_WIDTH - 20 * mm])
-            ans_table.setStyle(TableStyle([
-                ('FONTNAME', (0, 0), (0, -1), FONT_BOLD),
-                ('FONTNAME', (1, 0), (1, -1), FONT),
-                ('FONTSIZE', (0, 0), (-1, -1), 10),
-                ('TEXTCOLOR', (0, 0), (0, -1), t["accent"]),
-                ('TEXTCOLOR', (1, 0), (1, -1), t["dark_gray"]),
-                ('TOPPADDING', (0, 0), (-1, -1), 1),
-                ('BOTTOMPADDING', (0, 0), (-1, -1), 1),
-                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-            ]))
-            elements.append(ans_table)
+                has_rows = True
+                table_data.append([str(an), str(k + 1), str(a) if a else "—"])
 
-        elements.append(Spacer(1, 2 * mm))
+    if has_rows:
+        ans_table = Table(table_data, colWidths=[25 * mm, 25 * mm, CONTENT_WIDTH - 50 * mm])
+        ans_table.setStyle(TableStyle([
+            ('FONTNAME', (0, 0), (-1, 0), FONT_BOLD),
+            ('FONTNAME', (0, 1), (-1, -1), FONT),
+            ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ('TEXTCOLOR', (0, 0), (-1, 0), white),
+            ('BACKGROUND', (0, 0), (-1, 0), t["brand"]),
+            ('TEXTCOLOR', (0, 1), (-1, -1), t["dark_gray"]),
+            ('GRID', (0, 0), (-1, -1), 0.5, t["line_color"]),
+            ('ALIGN', (0, 0), (1, -1), 'CENTER'),
+            ('ALIGN', (2, 0), (2, -1), 'LEFT'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('TOPPADDING', (0, 0), (-1, -1), 3),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ]))
+        elements.append(ans_table)
 
-    elements.append(_separator(t))
+    elements.append(Spacer(1, 4 * mm))
     elements.append(Spacer(1, 2 * mm))
 
     disclaimer = DISCLAIMER_TEXT_UK if uk else DISCLAIMER_TEXT_RU
@@ -824,9 +1071,12 @@ def _build_answers(elements, answers_data, styles, t, lang):
 
 def render_pdf(pack_data: Dict[str, Any], output_path: str,
                watermark: str = "", is_commercial: bool = False,
-               brand: str = "", theme: str = "print_bw") -> str:
+               brand: str = "", theme: str = "") -> str:
     """Render a complete premium PDF workbook from pack_data dict."""
-    theme_id = theme or pack_data.get("style", "print_bw")
+    theme_id = theme or pack_data.get("style", "")
+    if not theme_id or theme_id not in THEMES:
+        pack_type = pack_data.get("pack_type", "")
+        theme_id = SUBJECT_THEMES.get(pack_type, "print_bw")
     if theme_id not in THEMES:
         theme_id = "print_bw"
     styles = _get_styles(theme_id)

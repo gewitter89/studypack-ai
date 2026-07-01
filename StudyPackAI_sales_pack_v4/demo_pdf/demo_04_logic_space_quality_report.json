@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "hard_fails": [
+    "HARD FAIL: Placeholder '★' in page 1 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+    "HARD FAIL: Placeholder '⭐' in page 3 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+    "HARD FAIL: Placeholder '★' in page 4 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+    "HARD FAIL: Placeholder '⭐' in page 6 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+    "HARD FAIL: Placeholder '★' in page 7 task 2: 'Что дальше? ★ ● ★ ● ★ ...'"
+  ],
+  "warnings": [
+    "WARNING: Same instruction on 3 pages",
+    "WARNING: Same instruction on 3 pages"
+  ],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+    "COMMERCIAL FAIL: score=72/100 (need 80+)"
+  ],
+  "commercial_score": 72
+}

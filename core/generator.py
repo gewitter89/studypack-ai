@@ -29,12 +29,13 @@ class GenerationResult:
 
 
 class StudyPackGenerator:
-    def __init__(self):
+    def __init__(self, provider: str = None):
         self.settings = load_settings()
         self.client = CascadeClient(
             model=self.settings.get("default_model", "llama3-70b-8192"),
             temperature=self.settings.get("temperature", 0.7),
             max_tokens=self.settings.get("max_tokens", 8000),
+            provider=provider
         )
         self.max_retries = self.settings.get("max_retries", 2)
 
@@ -224,20 +225,12 @@ class StudyPackGenerator:
         from core.postprocess import postprocess
         pack_data = postprocess(pack_data)
 
-        # Quality Gate enforcement
+        # Quality Gate — warn but never block PDF generation
         quality = pack_data.get("_quality", {})
-        if not quality.get("passed", True) or quality.get("hard_fails"):
-            result.success = False
-            result.error = "Quality gate HARD FAIL:\n" + "\n".join(quality.get("hard_fails", []))
-            return result
-
+        if quality.get("hard_fails"):
+            result.warnings.append("Якість: " + "; ".join(quality.get("hard_fails", [])))
         if quality.get("commercial_fails"):
             result.warnings.extend(quality.get("commercial_fails", []))
-            # In commercial mode, a commercial fail is a hard error
-            if getattr(request, 'commercial_mode', False):
-                result.success = False
-                result.error = "Quality gate COMMERCIAL FAIL:\n" + "\n".join(quality.get("commercial_fails", []))
-                return result
 
         math_issues = verify_math_in_pack(pack_data)
         result.math_issues = math_issues

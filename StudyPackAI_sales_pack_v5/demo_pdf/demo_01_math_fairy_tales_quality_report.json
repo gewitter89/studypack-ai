@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "hard_fails": [
+    "HARD FAIL: Page 1 has only 3 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 2 has only 3 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 4 has only 3 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 5 has only 3 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 7 has only 3 tasks. Minimum 4 required.",
+    "HARD FAIL: Page 8 has only 3 tasks. Minimum 4 required."
+  ],
+  "warnings": [
+    "Topic 'fairy_tales' on only 2/8 pages (25%), target >= 50%"
+  ],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: score=69/100 (need 80+)"
+  ],
+  "commercial_score": 69
+}

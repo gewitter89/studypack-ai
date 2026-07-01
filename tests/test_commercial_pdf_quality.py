@@ -13,12 +13,22 @@ def test_commercial_quality_gate_score_boundaries():
         "language": "ru",
         "pack_type": "math",
         "pages": [
-            {"page_number": 1, "tasks": [{"type": "math", "question": "Сколько тут тираннозавров?", "answer": "3 тираннозавра"}]},
-            {"page_number": 2, "tasks": [{"type": "math", "question": "Реши задачу с яйцами динозавров", "answer": "5 яиц"}]}
+            {"page_number": 1, "tasks": [
+                {"type": "math", "question": "Сколько тут тираннозавров?", "answer": "3 тираннозавра"},
+                {"type": "math", "question": "Сколько тут тираннозавров 2?", "answer": "3 тираннозавра"},
+                {"type": "math", "question": "Сколько тут тираннозавров 3?", "answer": "3 тираннозавра"},
+                {"type": "math", "question": "Сколько тут тираннозавров 4?", "answer": "3 тираннозавра"}
+            ]},
+            {"page_number": 2, "tasks": [
+                {"type": "math", "question": "Реши задачу с яйцами динозавров", "answer": "5 яиц"},
+                {"type": "math", "question": "Реши задачу с яйцами динозавров 2", "answer": "5 яиц"},
+                {"type": "math", "question": "Реши задачу с яйцами динозавров 3", "answer": "5 яиц"},
+                {"type": "math", "question": "Реши задачу с яйцами динозавров 4", "answer": "5 яиц"}
+            ]}
         ],
         "answers": [
-            {"page_number": 1, "answers": ["3 тираннозавра"]},
-            {"page_number": 2, "answers": ["5 яиц"]}
+            {"page_number": 1, "answers": ["3 тираннозавра", "3 тираннозавра", "3 тираннозавра", "3 тираннозавра"]},
+            {"page_number": 2, "answers": ["5 яиц", "5 яиц", "5 яиц", "5 яиц"]}
         ]
     }
     passed, errors, warnings, comm_fails, score = run_quality_gate(good_data)

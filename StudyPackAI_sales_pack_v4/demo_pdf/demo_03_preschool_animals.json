@@ -1,0 +1,362 @@
+{
+  "title": "Підготовка до школи: Тварини",
+  "subtitle": "Завдання для дітей 5 років",
+  "language": "uk",
+  "age": 5,
+  "grade": "Дошкільник",
+  "topic": "animals",
+  "pack_type": "preschool",
+  "difficulty": "easy",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Лічба",
+      "instruction": "Порахуй та запиши кількість",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Порахуй зайці: 🐰 🐰",
+          "options": [],
+          "answer_space": true,
+          "answer": "2 зайці"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй лисиці: 🦊 🦊",
+          "options": [],
+          "answer_space": true,
+          "answer": "2 лисиці"
+        },
+        {
+          "type": "math",
+          "question": "Порахуй їжаки: 🦔 🦔 🦔",
+          "options": [],
+          "answer_space": true,
+          "answer": "3 їжаки"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Фігури",
+      "instruction": "Обведи правильну фігуру",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Обведи квадрат: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "квадрат"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи коло: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "коло"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи трикутник: ○ □ △",
+          "options": [],
+          "answer_space": true,
+          "answer": "трикутник"
+        },
+        {
+          "type": "logic",
+          "question": "Обведи прямокутник: □ ○ △ ▭",
+          "options": [],
+          "answer_space": true,
+          "answer": "прямокутник"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Букви",
+      "instruction": "Обведи першу букву кожного слова",
+      "tasks": [
+        {
+          "type": "writing",
+          "question": "Обведи букву П у слові...",
+          "options": [],
+          "answer_space": true,
+          "answer": "П"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву Л у слові «ліс»",
+          "options": [],
+          "answer_space": true,
+          "answer": "Л"
+        },
+        {
+          "type": "writing",
+          "question": "Обведи букву З у слові «зима»",
+          "options": [],
+          "answer_space": true,
+          "answer": "З"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Знайди таку ж",
+      "instruction": "З'єднай однакові предмети",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "З'єднай однакові зайці: 🐰 — 🐰",
+          "options": [],
+          "answer_space": true,
+          "answer": "заєць"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові лисиці: 🦊 — 🦊",
+          "options": [],
+          "answer_space": true,
+          "answer": "лисиця"
+        },
+        {
+          "type": "logic",
+          "question": "З'єднай однакові їжаки: 🦔 — 🦔",
+          "options": [],
+          "answer_space": true,
+          "answer": "їжак"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Розфарбуй",
+      "instruction": "Розфарбуй малюнки за вказівками",
+      "tasks": [
+        {
+          "type": "creative",
+          "question": "Розфарбуй 4 зайці",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 2 лисиці",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        },
+        {
+          "type": "creative",
+          "question": "Розфарбуй 5 їжаків",
+          "options": [],
+          "answer_space": true,
+          "answer": "Перевіряється дорослим"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Знайди зайве",
+      "instruction": "Знайди предмет, який не підходить до групи",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Що зайве.",
+          "options": [
+            "стілець",
+            "ліс",
+            "зима",
+            "вовк"
+          ],
+          "answer_space": true,
+          "answer": "стілець"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Було 2 горіхи. Знайшли ще 4.",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 ягода. Знайшли ще 4.",
+          "options": [],
+          "answer_space": true,
+          "answer": "5"
+        },
+        {
+          "type": "math",
+          "question": "Було 3 ягоди. Знайшли ще 1.",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Читання: Тварини",
+      "instruction": "Прочитай текст та дай відповіді",
+      "tasks": [
+        {
+          "type": "reading_text",
+          "question": "Одного разу маленький слід...",
+          "options": [],
+          "answer_space": true,
+          "answer": ""
+        },
+        {
+          "type": "reading_question",
+          "question": "Хто пішов на прогулянку?",
+          "options": [],
+          "answer_space": true,
+          "answer": "слід"
+        },
+        {
+          "type": "reading_question",
+          "question": "Який був день?",
+          "options": [],
+          "answer_space": true,
+          "answer": "теплий і сонячний"
+        },
+        {
+          "type": "reading_question",
+          "question": "Кого зустрів слід?",
+          "options": [],
+          "answer_space": true,
+          "answer": "ведмідь"
+        },
+        {
+          "type": "reading_question",
+          "question": "Що вони побачили в небі?",
+          "options": [],
+          "answer_space": true,
+          "answer": "нора"
+        },
+        {
+          "type": "reading_question",
+          "question": "Правда чи неправда: День був...",
+          "options": [],
+          "answer_space": true,
+          "answer": "неправда"
+        },
+        {
+          "type": "reading_question",
+          "question": "Знайди в тексті слово, яке...",
+          "options": [],
+          "answer_space": true,
+          "answer": "лось"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "2 зайці",
+        "2 лисиці",
+        "3 їжаки"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "квадрат",
+        "коло",
+        "трикутник",
+        "прямокутник"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "літера П",
+        "літера Л",
+        "літера З"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "заєць",
+        "лисиця",
+        "їжак"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "Перевіряється дорослим",
+        "Перевіряється дорослим",
+        "Перевіряється дорослим"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "стілець"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "6",
+        "5",
+        "4"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "слід",
+        "теплий і сонячний",
+        "ведмідь",
+        "нора",
+        "неправда",
+        "лось"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": false,
+    "errors": [
+      "HARD FAIL: Placeholder '□' in page 2 task 1: 'Обведи квадрат: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 2: 'Обведи коло: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 3: 'Обведи трикутник: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 4: 'Обведи прямокутник: □ ○ △ ▭'",
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+      "COMMERCIAL FAIL: score=74/100 (need 80+)"
+    ],
+    "warnings": [],
+    "commercial_score": 74,
+    "hard_fails": [
+      "HARD FAIL: Placeholder '□' in page 2 task 1: 'Обведи квадрат: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 2: 'Обведи коло: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 3: 'Обведи трикутник: ○ □ △'",
+      "HARD FAIL: Placeholder '□' in page 2 task 4: 'Обведи прямокутник: □ ○ △ ▭'"
+    ],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+      "COMMERCIAL FAIL: score=74/100 (need 80+)"
+    ]
+  }
+}

@@ -38,7 +38,7 @@ AI_TONE_PHRASES = [
 # ─── HARD FAIL: placeholder words must never appear in task text ─────────────
 PLACEHOLDER_WORDS = [
     # English generic placeholders
-    r"\bword\b", r"\bline\b", r"\bshape\b", r"\bdigit\b",
+    r"\bword\b", r"\bline\b", r"\bdigit\b", r"\bshape\b",
     r"\bobject\b", r"\bpicture\b", r"\bnumber\b", r"\bsign\b",
     r"\btopic_word\b", r"\bplaceholder\b", r"\btodo\b",
     # Repeated-char garbage (3+ same chars)
@@ -46,6 +46,8 @@ PLACEHOLDER_WORDS = [
     r"gggg+", r"ffff+", r"zzzz+",
     # Template variable leakage
     r"\{topic_word\}", r"\{word\}", r"\{object\}", r"\{topic\}",
+    # Bad Grammar / Bad Symbols
+    r"У кошика", r"✓", r"★", r"⭐", r"□", r"○", r"△", r"у кошика"
 ]
 
 _TOPIC_THRESHOLDS: Dict[str, float] = {
@@ -78,9 +80,30 @@ def _get_topic_threshold(data: Dict[str, Any]) -> float:
 def check_placeholder_words(data: Dict[str, Any]) -> List[str]:
     """HARD FAIL if any placeholder/garbage word appears in task questions or answers."""
     issues = []
+    
+    # Check title and subtitle
+    for key in ["title", "subtitle"]:
+        text = str(data.get(key, "")).lower()
+        for pattern in PLACEHOLDER_WORDS:
+            if re.search(pattern, text, re.IGNORECASE):
+                issues.append(f"HARD FAIL: Placeholder '{pattern}' in {key}: '{text}'")
+                
     pages = data.get("pages", [])
     for i, page in enumerate(pages):
-        for j, task in enumerate(page.get("tasks", [])):
+        p_type = page.get("page_type", "exercise")
+        tasks = page.get("tasks", [])
+        
+        # Check if the page has large/complex tasks that justify fewer than 4 items
+        has_large_task = any(
+            t.get("type", "") in ["maze", "labyrinth", "sudoku", "reading_text", "coloring", "drawing", "creative"]
+            for t in tasks
+        )
+        
+        # Enforce minimum 4 tasks per exercise page (unless it has a large task)
+        if p_type == "exercise" and not has_large_task and len(tasks) < 4:
+            issues.append(f"HARD FAIL: Page {i+1} has only {len(tasks)} tasks. Minimum 4 required.")
+            
+        for j, task in enumerate(tasks):
             text_to_check = " ".join([
                 str(task.get("question", "")),
                 str(task.get("answer", "")),

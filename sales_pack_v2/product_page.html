@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyPack AI — Індивідуальні PDF-завдання для дітей</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 80px 0 60px; text-align: center; }
+  .hero h1 { font-size: 2.8em; margin-bottom: 16px; }
+  .hero p { font-size: 1.2em; opacity: 0.9; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .hero .btn { display: inline-block; background: #facc15; color: #1e293b; padding: 16px 40px; border-radius: 12px; font-size: 1.1em; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+  .hero .btn:hover { transform: scale(1.05); }
+
+  /* Features */
+  .features { padding: 60px 0; }
+  .features h2 { text-align: center; font-size: 2em; margin-bottom: 40px; color: #1e293b; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
+  .card .emoji { font-size: 2.5em; margin-bottom: 12px; }
+  .card h3 { font-size: 1.2em; margin-bottom: 8px; color: #2563eb; }
+  .card p { color: #64748b; font-size: 0.95em; }
+
+  /* Demo */
+  .demo { background: #f1f5f9; padding: 60px 0; text-align: center; }
+  .demo h2 { font-size: 2em; margin-bottom: 20px; }
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 30px; }
+  .demo-item { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; }
+  .demo-item img { width: 100%; border-radius: 8px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
+  .demo-item p { font-weight: 600; color: #1e293b; }
+
+  /* Pricing */
+  .pricing { padding: 60px 0; }
+  .pricing h2 { text-align: center; font-size: 2em; margin-bottom: 40px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .plan { background: white; border-radius: 16px; padding: 30px; border: 2px solid #e2e8f0; text-align: center; }
+  .plan.featured { border-color: #2563eb; box-shadow: 0 8px 24px rgba(37,99,235,0.15); }
+  .plan h3 { font-size: 1.4em; margin-bottom: 8px; }
+  .plan .price { font-size: 2.5em; font-weight: 800; color: #2563eb; margin: 16px 0; }
+  .plan ul { text-align: left; list-style: none; margin: 20px 0; }
+  .plan ul li { padding: 6px 0; color: #475569; }
+  .plan ul li::before { content: "✓ "; color: #22c55e; font-weight: 700; }
+  .plan .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; margin-top: 10px; }
+
+  /* FAQ */
+  .faq { padding: 60px 0; background: #f1f5f9; }
+  .faq h2 { text-align: center; font-size: 2em; margin-bottom: 30px; }
+  .faq-item { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+  .faq-item strong { display: block; margin-bottom: 6px; font-size: 1.05em; }
+  .faq-item p { color: #475569; }
+
+  .contacts { padding: 40px 0; text-align: center; }
+  .contacts .btn { display: inline-block; background: #22c55e; color: white; padding: 14px 36px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1em; margin: 8px; }
+  .contacts .btn.olx { background: #f97316; }
+  .contacts .btn.telegram { background: #2563eb; }
+
+  footer { background: #1e293b; color: white; text-align: center; padding: 30px 0; font-size: 0.9em; opacity: 0.8; }
+  @media (max-width: 600px) { .hero h1 { font-size: 2em; } }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>📚 Індивідуальні PDF-завдання для дітей 4–10 років</h1>
+    <p>Замість нудних зошитів — яскраві тематичні набори на улюблену тему дитини. Динозаври, космос, тварини, котики — що завгодно!</p>
+    <a class="btn" href="#pricing">Замовити набір →</a>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <h2>Чому це працює</h2>
+    <div class="grid">
+      <div class="card"><div class="emoji">🎯</div><h3>Індивідуально під дитину</h3><p>Вік, рівень, тема, мова — набір створюється саме для вашої дитини, а не "усереднений" з Інтернету.</p></div>
+      <div class="card"><div class="emoji">🖨️</div><h3>PDF для друку A4</h3><p>Завантажили — роздрукували — займаєтеся. Жодних додатків, реєстрацій, інтернету.</p></div>
+      <div class="card"><div class="emoji">⏱️</div><h3>15 хвилин на день</h3><p>Короткі, але регулярні заняття дають кращий результат, ніж довгі "марафони".</p></div>
+      <div class="card"><div class="emoji">🦕</div><h3>Улюблена тема</h3><p>Динозаври, космос, котики, пірати — дитина із задоволенням виконує завдання, бо вони про те, що вона любить.</p></div>
+      <div class="card"><div class="emoji">📊</div><h3>Математика + логіка + читання</h3><p>Комплексний розвиток в одному наборі: лічба, приклади, лабіринти, тексти, письмо.</p></div>
+      <div class="card"><div class="emoji">✅</div><h3>Відповіді для батьків</h3><p>Не ламайте голову — усі правильні відповіді в кінці. Перевірка займає 2 хвилини.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Demo -->
+<section class="demo">
+  <div class="container">
+    <h2>💡 Приклад набору "Динозаври: математика та логіка"</h2>
+    <p>Вік 6 років, українською, 12 сторінок + відповіді</p>
+    <div class="demo-grid">
+      <div class="demo-item"><img src="screenshots/01_preschool_fairy_tales_cover.png" alt="Обкладинка"><p>Обкладинка</p></div>
+      <div class="demo-item"><img src="screenshots/02_math_logic_dinosaurs_task.png" alt="Завдання"><p>Завдання з динозаврами</p></div>
+      <div class="demo-item"><img src="screenshots/02_math_logic_dinosaurs_answers.png" alt="Відповіді"><p>Сторінка відповідей</p></div>
+      <div class="demo-item"><img src="screenshots/03_preschool_animals_cover.png" alt="Тварини"><p>Набір "Тварини"</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2>💰 Тарифи</h2>
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>🦕 7-денний набір</h3>
+        <div class="price">400 ₴</div>
+        <ul>
+          <li>8–12 сторінок A4</li>
+          <li>Одна тема на вибір</li>
+          <li>Математика, логіка, читання</li>
+          <li>Відповіді + інструкція</li>
+          <li>PDF для друку</li>
+        </ul>
+        <a class="btn" href="https://www.olx.ua/uk/list/transport/">Замовити на OLX →</a>
+      </div>
+      <div class="plan featured">
+        <h3>🚀 МІСЯЧНИЙ НАБІР</h3>
+        <div class="price">800 ₴</div>
+        <ul>
+          <li>20–30 сторінок A4</li>
+          <li>4 теми або великий набір</li>
+          <li>Математика, логіка, читання, письмо</li>
+          <li>Англійські слова (за бажанням)</li>
+          <li>Відповіді + інструкція</li>
+          <li>Мотиваційна сторінка</li>
+        </ul>
+        <a class="btn" href="https://t.me/YOUR_TELEGRAM">Замовити в Telegram →</a>
+      </div>
+      <div class="plan">
+        <h3>👩‍🏫 ДЛЯ РЕПЕТИТОРА</h3>
+        <div class="price">від 1 500 ₴</div>
+        <ul>
+          <li>30–40 сторінок</li>
+          <li>Унікальна програма під учня</li>
+          <li>Бренд репетитора на сторінках</li>
+          <li>Редагування перед фіналом</li>
+          <li>Пакет на місяць</li>
+        </ul>
+        <a class="btn" href="https://t.me/YOUR_TELEGRAM">Написати →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2>❓ Часті запитання</h2>
+    <div class="faq-item"><strong>Як я отримаю набір?</strong><p>Після оплати я надсилаю PDF у Telegram або Viber. Ви можете роздрукувати вдома або займатися з екрану.</p></div>
+    <div class="faq-item"><strong>Скільки часу потрібно на створення?</strong><p>10–15 хвилин після узгодження теми та віку.</p></div>
+    <div class="faq-item"><strong>Які теми можна обрати?</strong><p>Динозаври, космос, тварини, коти, підводний світ, пірати, супергерої, принцеси, ферма, роботи, ліс, транспорт, спорт — або будь-яка інша тема на ваш запит.</p></div>
+    <div class="faq-item"><strong>Чи є знижки?</strong><p>При замовленні місячного набору — економія 50%. Для репетиторів — знижка при замовленні від 3 наборів.</p></div>
+    <div class="faq-item"><strong>Хто створює набори?</strong><p>Набори створюються індивідуально під кожну дитину. Ви отримуєте унікальний матеріал, який ніхто більше не використовує.</p></div>
+  </div>
+</section>
+
+<!-- Contacts -->
+<div class="contacts">
+  <div class="container">
+    <h2>📲 Замовити прямо зараз</h2>
+    <p style="margin-bottom: 20px; color: #64748b;">Натисни на зручний спосіб зв'язку:</p>
+    <a class="btn telegram" href="https://t.me/YOUR_TELEGRAM">✈ Написати в Telegram</a>
+    <a class="btn olx" href="https://www.olx.ua/uk/list/transport/">📢 Перейти на OLX</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>StudyPack AI — індивідуальні PDF-завдання для дітей 4–10 років</p>
+    <p style="margin-top: 8px;">Набори створюються вручну під кожне замовлення. Не є масовим продуктом.</p>
+  </div>
+</footer>
+
+</body>
+</html>

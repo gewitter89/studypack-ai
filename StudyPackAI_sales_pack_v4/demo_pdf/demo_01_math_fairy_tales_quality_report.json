@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "hard_fails": [],
+  "warnings": [],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Topic 'fairy_tales' on only 1/8 pages (12%), need >= 50%"
+  ],
+  "commercial_score": 86
+}

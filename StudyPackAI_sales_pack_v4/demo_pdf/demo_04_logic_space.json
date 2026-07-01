@@ -1,0 +1,282 @@
+{
+  "title": "Логика и внимание: Космос",
+  "subtitle": "Задания для детей 9 лет",
+  "language": "ru",
+  "age": 9,
+  "grade": "1 классс",
+  "topic": "space",
+  "pack_type": "logic",
+  "difficulty": "medium",
+  "parent_instruction": "Занимайтесь 10–20 минут в день. Хвалите ребёнка за старание. Ответы — только для проверки взрослым.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: звездопад, звезда, звездопад, звезда, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "звездопад"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? солнце, книга, сатурн, инопланетянин",
+          "options": [
+            "солнце",
+            "книга",
+            "сатурн",
+            "инопланетянин"
+          ],
+          "answer_space": true,
+          "answer": "книга"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: 🚀 — 🚀",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: 🪐 — 🪐",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: ⭐ — ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: галактика, юпитер, галактика, юпитер, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "галактика"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? яблоко, юпитер, луна, звезда",
+          "options": [
+            "яблоко",
+            "юпитер",
+            "луна",
+            "звезда"
+          ],
+          "answer_space": true,
+          "answer": "яблоко"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: 🚀 — 🚀",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: 🪐 — 🪐",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: ⭐ — ⭐",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Продолжи ряд: комета, галактика, комета, галактика, ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "комета"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? ★ ● ★ ● ★ ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "●"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? звезда, солнце, груша, юпитер",
+          "options": [
+            "звезда",
+            "солнце",
+            "груша",
+            "юпитер"
+          ],
+          "answer_space": true,
+          "answer": "груша"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "звездопад",
+        "●"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "книга"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "ракета",
+        "планета",
+        "звезда"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "галактика",
+        "●"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "яблоко"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "ракета",
+        "планета",
+        "звезда"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "комета",
+        "●"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "груша"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": false,
+    "errors": [
+      "HARD FAIL: Placeholder '★' in page 1 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+      "HARD FAIL: Placeholder '⭐' in page 3 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+      "HARD FAIL: Placeholder '★' in page 4 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+      "HARD FAIL: Placeholder '⭐' in page 6 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+      "HARD FAIL: Placeholder '★' in page 7 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+      "COMMERCIAL FAIL: score=72/100 (need 80+)"
+    ],
+    "warnings": [
+      "WARNING: Same instruction on 3 pages",
+      "WARNING: Same instruction on 3 pages"
+    ],
+    "commercial_score": 72,
+    "hard_fails": [
+      "HARD FAIL: Placeholder '★' in page 1 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+      "HARD FAIL: Placeholder '⭐' in page 3 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+      "HARD FAIL: Placeholder '★' in page 4 task 2: 'Что дальше? ★ ● ★ ● ★ ...'",
+      "HARD FAIL: Placeholder '⭐' in page 6 task 3: 'Соедини одинаковые звезды: ⭐ — ⭐'",
+      "HARD FAIL: Placeholder '★' in page 7 task 2: 'Что дальше? ★ ● ★ ● ★ ...'"
+    ],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)",
+      "COMMERCIAL FAIL: score=72/100 (need 80+)"
+    ]
+  }
+}

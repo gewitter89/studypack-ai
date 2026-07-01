@@ -226,23 +226,37 @@ def _page_lichba(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
             {"ru": ("яблоко", "яблока", "яблок"), "uk": ("яблуко", "яблука", "яблук"), "emoji": "🍎"},
         ]
         
+    # Map emojis to our new vector icon types
+    emoji_to_vector = {
+        "🐰": "rabbit_simple", "🦊": "fox_simple", "🦔": "hedgehog_simple",
+        "🏰": "castle_simple", "📘": "book", "⭐": "star",
+        "🐟": "fish", "🦴": "bone", "🪐": "planet", "🚀": "rocket_simple",
+        "🥚": "egg", "🐾": "footprint", "🫧": "bubble"
+    }
+        
     title = "Лічба" if uk else "Счёт"
     instruction = "Порахуй та запиши кількість" if uk else "Посчитай и запиши количество"
 
     tasks = []
     answers_list = []
-    for i, item in enumerate(items[:3]):
+    # Always guarantee 4 tasks
+    for i in range(4):
+        item = random.choice(items)
         count = random.randint(2, 7)
-        emoji = item["emoji"]
+        emoji = item.get("emoji", "⭐")
+        
+        # Use vector fallback if not matched
+        vector_type = emoji_to_vector.get(emoji, random.choice(["circle", "square", "star"]))
+        
         lang_key = "uk" if uk else "ru"
         forms = item[lang_key]
         noun = _pluralize(count, forms)
         
-        icons_str = " ".join([emoji] * count)
+        draw_token = f"{{{{DRAW:{vector_type}:{count}}}}}"
         if uk:
-            q = f"Порахуй {noun}: {icons_str}"
+            q = f"Порахуй {noun}. {draw_token}"
         else:
-            q = f"Посчитай {noun}: {icons_str}"
+            q = f"Посчитай {noun}. {draw_token}"
         tasks.append(_make_task("math", q, f"{count} {noun}"))
         answers_list.append(f"{count} {noun}")
 
@@ -253,10 +267,17 @@ def _page_lichba(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
 def _page_figury(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
     """Фігури / Фигуры — shape recognition."""
     uk = lang in ("uk", "uk+en")
+    
     shapes = (
-        [("квадрат", "○ □ △"), ("коло", "○ □ △"), ("трикутник", "○ □ △"), ("прямокутник", "□ ○ △ ▭")]
+        [("квадрат", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("коло", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("трикутник", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("прямокутник", "{{SHAPE:square}} {{SHAPE:circle}} {{SHAPE:triangle}}")]
         if uk else
-        [("квадрат", "○ □ △"), ("круг", "○ □ △"), ("треугольник", "○ □ △"), ("прямоугольник", "□ ○ △ ▭")]
+        [("квадрат", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("круг", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("треугольник", "{{SHAPE:circle}} {{SHAPE:square}} {{SHAPE:triangle}}"), 
+         ("прямоугольник", "{{SHAPE:square}} {{SHAPE:circle}} {{SHAPE:triangle}}")]
     )
 
     title = "Фігури" if uk else "Фигуры"
@@ -279,11 +300,12 @@ def _page_figury(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
 def _page_bukvy(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
     """Букви / Буквы — letter recognition using topic words."""
     uk = lang in ("uk", "uk+en")
-    words = _topic_words_safe(topic, lang, 4)
+    words = _topic_words_safe(topic, lang, 8)
     # Filter: use words with at least 2 chars
-    words = [w for w in words if len(w) >= 2][:3]
-    if not words:
-        words = ["зірка", "книга", "лис"] if uk else ["звезда", "книга", "лиса"]
+    words = [w for w in words if len(w) >= 2][:4]
+    if len(words) < 4:
+        fallback = ["зірка", "книга", "лис", "дерево"] if uk else ["звезда", "книга", "лиса", "дерево"]
+        words += fallback[:4 - len(words)]
 
     title = "Букви" if uk else "Буквы"
     instruction = "Обведи першу букву кожного слова" if uk else "Обведи первую букву каждого слова"
@@ -315,21 +337,35 @@ def _page_znajdy(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
             {"ru": ("шарик", "шарика", "шариков"), "uk": ("кулька", "кульки", "кульок"), "emoji": "🎈"},
         ]
 
+    emoji_to_vector = {
+        "🐰": "rabbit_simple", "🦊": "fox_simple", "🦔": "hedgehog_simple",
+        "🏰": "castle_simple", "📘": "book", "⭐": "star",
+        "🐟": "fish", "🦴": "bone", "🪐": "planet", "🚀": "rocket_simple",
+        "🥚": "egg", "🐾": "footprint", "🫧": "bubble"
+    }
+
     title = "Знайди таку ж" if uk else "Найди такую же"
     instruction = "З'єднай однакові предмети" if uk else "Соедини одинаковые предметы"
 
     tasks = []
     answers_list = []
-    for i, item in enumerate(items[:3]):
-        emoji = item["emoji"]
+    
+    # Force 4 tasks
+    for i in range(4):
+        item = random.choice(items)
+        emoji = item.get("emoji", "⭐")
+        vector_type = emoji_to_vector.get(emoji, random.choice(["circle", "square", "star"]))
+        
         lang_key = "uk" if uk else "ru"
         noun_singular = item[lang_key][0]
         noun_plural = item[lang_key][1]
         
+        draw_token = f"{{{{DRAW:{vector_type}:1}}}}"
+        
         if uk:
-            q = f"З'єднай однакові {noun_plural}: {emoji} — {emoji}"
+            q = f"З'єднай однакові {noun_plural}: {draw_token} — {draw_token}"
         else:
-            q = f"Соедини одинаковые {noun_plural}: {emoji} — {emoji}"
+            q = f"Соедини одинаковые {noun_plural}: {draw_token} — {draw_token}"
         tasks.append(_make_task("logic", q, noun_singular))
         answers_list.append(noun_singular)
 
@@ -348,83 +384,39 @@ def _page_rozfarbuy(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
             {"ru": ("цветок", "цветка", "цветов"), "uk": ("квітка", "квітки", "квіток"), "emoji": "🌸"},
             {"ru": ("шарик", "шарика", "шариков"), "uk": ("кулька", "кульки", "кульок"), "emoji": "🎈"},
         ]
+        
+    emoji_to_vector = {
+        "🐰": "rabbit_simple", "🦊": "fox_simple", "🦔": "hedgehog_simple",
+        "🏰": "castle_simple", "📘": "book", "⭐": "star",
+        "🐟": "fish", "🦴": "bone", "🪐": "planet", "🚀": "rocket_simple",
+        "🥚": "egg", "🐾": "footprint", "🫧": "bubble"
+    }
 
     title = "Розфарбуй" if uk else "Раскрась"
     instruction = "Розфарбуй малюнки за вказівками" if uk else "Раскрась рисунки по указанию"
 
     tasks = []
     answers_list = []
-    for i, item in enumerate(items[:3]):
+    
+    # Force 4 tasks
+    for i in range(4):
+        item = random.choice(items)
         count = random.randint(2, 5)
         lang_key = "uk" if uk else "ru"
         forms = item[lang_key]
         noun = _pluralize(count, forms)
+        
+        emoji = item.get("emoji", "⭐")
+        vector_type = emoji_to_vector.get(emoji, random.choice(["circle", "square", "star"]))
+        draw_token = f"{{{{DRAW:{vector_type}:{count}}}}}"
+        
         if uk:
-            q = f"Розфарбуй {count} {noun}"
+            q = f"Розфарбуй {count} {noun}: {draw_token}"
         else:
-            q = f"Раскрась {count} {noun}"
+            q = f"Раскрась {count} {noun}: {draw_token}"
+            
         tasks.append(_make_task("creative", q, _creative_answer(lang)))
         answers_list.append(_creative_answer(lang))
-
-    page = _make_page(page_num, title, instruction, tasks)
-    return page, {"page_number": page_num, "answers": answers_list}
-
-
-def _page_znaidy_zaive(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
-    """Знайди зайве / Найди лишнее — odd one out."""
-    uk = lang in ("uk", "uk+en")
-    topic_words = _topic_words_safe(topic, lang, 3)
-    generic_words = get_generic(lang.split("+")[0])
-    intruder = random.choice(generic_words) if generic_words else ("стіл" if uk else "стол")
-
-    # Build sets of 4: 3 topic + 1 generic intruder
-    items = topic_words[:3] + [intruder]
-    random.shuffle(items)
-    items_str = ", ".join(items)
-
-    title = "Знайди зайве" if uk else "Найди лишнее"
-    instruction = "Знайди предмет, який не підходить до групи" if uk else "Найди предмет, не подходящий к группе"
-
-    if uk:
-        q = f"Що зайве? {items_str}"
-    else:
-        q = f"Что лишнее? {items_str}"
-
-    tasks = [_make_task("logic", q, intruder, items)]
-    page = _make_page(page_num, title, instruction, tasks)
-    return page, {"page_number": page_num, "answers": [intruder]}
-
-
-def _page_math_topical(page_num: int, topic: str, lang: str, age: int) -> Tuple[dict, dict]:
-    """Тематична математика / Тематическая математика — word math problems."""
-    uk = lang in ("uk", "uk+en")
-    words = _topic_words_safe(topic, lang, 3)
-    max_num = min(age + 2, 10)
-
-    title = "Задачки" if uk else "Задачи"
-    instruction = "Розв'яжи задачки" if uk else "Реши задачи"
-
-    tasks = []
-    answers_list = []
-    for word in words:
-        a = random.randint(1, max_num // 2)
-        b = random.randint(1, max_num - a)
-        operation = random.choice(["+", "-"]) if a > b else "+"
-        if operation == "-":
-            a, b = max(a, b), min(a, b)
-        answer = a + b if operation == "+" else a - b
-        if uk:
-            if operation == "+":
-                q = f"У кошика {a} {word}. Поклали ще {b}. Скільки всього?"
-            else:
-                q = f"Було {a} {word}. Взяли {b}. Скільки залишилося?"
-        else:
-            if operation == "+":
-                q = f"В корзине {a} {word}. Положили ещё {b}. Сколько всего?"
-            else:
-                q = f"Было {a} {word}. Взяли {b}. Сколько осталось?"
-        tasks.append(_make_task("math", q, str(answer)))
-        answers_list.append(str(answer))
 
     page = _make_page(page_num, title, instruction, tasks)
     return page, {"page_number": page_num, "answers": answers_list}
@@ -438,65 +430,190 @@ def _page_reading_topic(page_num: int, topic: str, lang: str) -> Tuple[dict, dic
 
     if uk:
         text = (
-            f"Жив собі маленький {words[0]}. "
-            f"Одного разу він знайшов {words[1] if len(words) > 1 else 'скарб'}. "
-            f"Поряд стояв великий {words[2] if len(words) > 2 else 'замок'}. "
-            f"Всі були дуже раді!"
+            f"Одного разу маленький {words[0]} вирішив піти на прогулянку. "
+            f"День був дуже теплий і сонячний. "
+            f"На своєму шляху він побачив великий {words[1] if len(words) > 1 else 'камінь'}. "
+            f"Потім він зустрів свого друга, якого звали {words[2] if len(words) > 2 else 'Боб'}. "
+            f"Вони разом почали гратися біля води. "
+            f"Раптом вони побачили, як летить {words[3] if len(words) > 3 else 'пташка'}. "
+            f"Це був чудовий день, повний нових відкриттів!"
         )
-        q1 = f"Кого описується в тексті?"
-        q2 = f"Що знайшов {words[0]}?"
+        q1 = f"Хто пішов на прогулянку?"
         a1 = words[0]
-        a2 = words[1] if len(words) > 1 else "скарб"
+        q2 = f"Який був день?"
+        a2 = "теплий і сонячний"
+        q3 = f"Кого зустрів {words[0]}?"
+        a3 = words[2] if len(words) > 2 else 'Боб'
+        q4 = f"Що вони побачили в небі?"
+        a4 = words[3] if len(words) > 3 else 'пташку'
+        q5 = f"Правда чи неправда: День був холодний і дощовий?"
+        a5 = "неправда"
+        q6 = f"Знайди в тексті слово, яке означає великий предмет, який вони побачили на шляху."
+        a6 = words[1] if len(words) > 1 else 'камінь'
     else:
         text = (
-            f"Жил-был маленький {words[0]}. "
-            f"Однажды он нашёл {words[1] if len(words) > 1 else 'сокровище'}. "
-            f"Рядом стоял большой {words[2] if len(words) > 2 else 'замок'}. "
-            f"Все были очень рады!"
+            f"Однажды маленький {words[0]} решил пойти на прогулку. "
+            f"День был очень теплый и солнечный. "
+            f"На своем пути он увидел большой {words[1] if len(words) > 1 else 'камень'}. "
+            f"Потом он встретил своего друга по имени {words[2] if len(words) > 2 else 'Боб'}. "
+            f"Они вместе начали играть у воды. "
+            f"Вдруг они увидели, как летит {words[3] if len(words) > 3 else 'птичка'}. "
+            f"Это был чудесный день, полный новых открытий!"
         )
-        q1 = f"Кто описывается в тексте?"
-        q2 = f"Что нашёл {words[0]}?"
+        q1 = f"Кто пошел на прогулку?"
         a1 = words[0]
-        a2 = words[1] if len(words) > 1 else "сокровище"
+        q2 = f"Какой был день?"
+        a2 = "теплый и солнечный"
+        q3 = f"Кого встретил {words[0]}?"
+        a3 = words[2] if len(words) > 2 else 'Боб'
+        q4 = f"Что они увидели в небе?"
+        a4 = words[3] if len(words) > 3 else 'птичку'
+        q5 = f"Правда или ложь: День был холодный и дождливый?"
+        a5 = "ложь"
+        q6 = f"Найди в тексте слово, которое означает большой предмет, увиденный ими на пути."
+        a6 = words[1] if len(words) > 1 else 'камень'
 
     title = f"Читання: {display}" if uk else f"Чтение: {display}"
     instruction = "Прочитай текст та дай відповіді" if uk else "Прочитай текст и ответь на вопросы"
 
     tasks = [
-        _make_task("reading", f"{text}\n\n{q1}", a1),
-        _make_task("reading", q2, a2),
+        _make_task("reading_text", text, ""),
+        _make_task("reading_question", q1, a1),
+        _make_task("reading_question", q2, a2),
+        _make_task("reading_question", q3, a3),
+        _make_task("reading_question", q4, a4),
+        _make_task("reading_question", q5, a5),
+        _make_task("reading_question", q6, a6),
     ]
+    answers_list = [a1, a2, a3, a4, a5, a6]
+
     page = _make_page(page_num, title, instruction, tasks)
-    return page, {"page_number": page_num, "answers": [a1, a2]}
+    return page, {"page_number": page_num, "answers": answers_list}
+
+
+def _page_znaidy_zaive(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
+    """Знайди зайве / Найди лишнее — odd one out."""
+    uk = lang in ("uk", "uk+en")
+    
+    title = "Знайди зайве" if uk else "Найди лишнее"
+    instruction = "Знайди предмет, який не підходить до групи" if uk else "Найди предмет, не подходящий к группе"
+    
+    tasks = []
+    answers_list = []
+    
+    for i in range(4):
+        topic_words = _topic_words_safe(topic, lang, 6)
+        random.shuffle(topic_words)
+        subset = topic_words[:3]
+        
+        generic_words = get_generic(lang.split("+")[0])
+        intruder = random.choice(generic_words) if generic_words else ("стіл" if uk else "стол")
+
+        items = subset + [intruder]
+        random.shuffle(items)
+        items_str = ", ".join(items)
+
+        if uk:
+            q = f"Що зайве? {items_str}"
+        else:
+            q = f"Что лишнее? {items_str}"
+
+        tasks.append(_make_task("logic", q, intruder, items))
+        answers_list.append(intruder)
+
+    page = _make_page(page_num, title, instruction, tasks)
+    return page, {"page_number": page_num, "answers": answers_list}
+
+
+def get_plural(n: int, obj: dict) -> str:
+    n = abs(n) % 100
+    n1 = n % 10
+    if 10 < n < 20: return obj["gen_plur"]
+    if 1 < n1 < 5: return obj["plur_nom"]
+    if n1 == 1: return obj["nom"]
+    return obj["gen_plur"]
+
+def _page_math_topical(page_num: int, topic: str, lang: str, age: int) -> Tuple[dict, dict]:
+    """Тематична математика / Тематическая математика — word math problems."""
+    uk = lang in ("uk", "uk+en")
+    
+    from core.topic_lexicon import random_object
+    objects = [random_object(topic, lang) for _ in range(4)]
+    
+    emoji_to_vector = {
+        "🐰": "rabbit_simple", "🦊": "fox_simple", "🦔": "hedgehog_simple",
+        "🏰": "castle_simple", "📘": "book", "⭐": "star",
+        "🐟": "fish", "🦴": "bone", "🪐": "planet", "🚀": "rocket_simple",
+        "🥚": "egg", "🐾": "footprint", "🫧": "bubble"
+    }
+    
+    max_num = min(age + 2, 10)
+
+    title = "Задачки" if uk else "Задачи"
+    instruction = "Розв'яжи задачки" if uk else "Реши задачи"
+
+    tasks = []
+    answers_list = []
+    for obj in objects:
+        a = random.randint(1, max_num // 2)
+        b = random.randint(1, max_num - a)
+        operation = random.choice(["+", "-"]) if a > b else "+"
+        if operation == "-":
+            a, b = max(a, b), min(a, b)
+        answer = a + b if operation == "+" else a - b
+        
+        word_a = get_plural(a, obj)
+        word_b = get_plural(b, obj)
+        
+        emoji = obj.get("emoji", "⭐")
+        vector_type = emoji_to_vector.get(emoji, random.choice(["circle", "square", "star"]))
+        draw_token = f"{{{{DRAW:{vector_type}:3}}}}"
+        
+        if uk:
+            if operation == "+":
+                q = f"Було {a} {word_a}. Знайшли ще {b}. Скільки стало? {draw_token}"
+            else:
+                q = f"Лежало {a} {word_a}. Зникло {b}. Скільки залишилося? {draw_token}"
+        else:
+            if operation == "+":
+                q = f"Было {a} {word_a}. Нашли ещё {b}. Сколько стало? {draw_token}"
+            else:
+                q = f"Лежало {a} {word_a}. Пропало {b}. Сколько осталось? {draw_token}"
+        tasks.append(_make_task("math", q, str(answer)))
+        answers_list.append(str(answer))
+
+    page = _make_page(page_num, title, instruction, tasks)
+    return page, {"page_number": page_num, "answers": answers_list}
+
 
 
 def _page_logic_pattern(page_num: int, topic: str, lang: str) -> Tuple[dict, dict]:
     """Pattern/sequence logic task."""
     uk = lang in ("uk", "uk+en")
-    words = _topic_words_safe(topic, lang, 2)
-    a, b = words[0], words[1] if len(words) > 1 else words[0]
-    icons = ["★", "●", "★", "●", "★", "?"]
-    pattern_str = " ".join(icons)
-
+    
     title = "Закономірність" if uk else "Закономерность"
     instruction = "Знайди закономірність та продовж ряд" if uk else "Найди закономерность и продолжи ряд"
 
-    if uk:
-        q1 = f"Продовж ряд: {a}, {b}, {a}, {b}, ..."
-    else:
-        q1 = f"Продолжи ряд: {a}, {b}, {a}, {b}, ..."
-
-    if uk:
-        q2 = f"Що йде далі? ★ ● ★ ● ★ ..."
-    else:
-        q2 = f"Что дальше? ★ ● ★ ● ★ ..."
-
-    tasks = [
-        _make_task("logic", q1, a),
-        _make_task("logic", q2, "●"),
+    tasks = []
+    answers_list = []
+    
+    patterns = [
+        ("{{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} ...", "коло" if uk else "круг"),
+        ("{{SHAPE:square}} {{SHAPE:square}} {{SHAPE:triangle}} {{SHAPE:square}} {{SHAPE:square}} ...", "трикутник" if uk else "треугольник"),
+        ("{{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} ...", "трикутник" if uk else "треугольник"),
+        ("{{SHAPE:star}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:star}} ...", "коло" if uk else "круг"),
     ]
+    
+    for pat, ans in patterns:
+        if uk:
+            q = f"Що йде далі? {pat}"
+        else:
+            q = f"Что дальше? {pat}"
+        tasks.append(_make_task("logic", q, ans))
+        answers_list.append(ans)
+
     page = _make_page(page_num, title, instruction, tasks)
-    return page, {"page_number": page_num, "answers": [a, "●"]}
+    return page, {"page_number": page_num, "answers": answers_list}
 
 
 # ─── Main template functions ──────────────────────────────────────────────────
@@ -568,7 +685,6 @@ def template_math(request: PackRequest) -> Dict[str, Any]:
     pages = []
     answers = []
 
-    # Diversified instructions to avoid repetition hard fail
     math_instructions_uk = [
         "Розв'яжи приклади", "Порахуй і запиши", "Знайди відповідь",
         "Обчисли", "Запиши правильну відповідь",
@@ -579,21 +695,40 @@ def template_math(request: PackRequest) -> Dict[str, Any]:
     ]
     math_insts = math_instructions_uk if uk else math_instructions_ru
 
+    math_titles_uk = [
+        "Додавання і віднімання", "Порахуй і запиши", "Цікаві задачки", 
+        "Математичні пригоди", "Логіка чисел"
+    ]
+    math_titles_ru = [
+        "Сложение и вычитание", "Посчитай и запиши", "Интересные задачки",
+        "Математические приключения", "Логика чисел"
+    ]
+    math_titles = math_titles_uk if uk else math_titles_ru
+
     for i in range(pages_count):
-        # Alternate: 2 standard examples + 1 word problem
-        if i % 3 == 2 and topic not in ("general", ""):
-            page, ans = _page_math_topical(i + 1, topic, lang, age)
+        # Alternate page types for math
+        # Even pages: Count objects (_page_lichba)
+        # Odd pages: Word problems (_page_math_topical)
+        if i % 2 == 0:
+            page, ans = _page_lichba(i + 1, topic, lang)
+            page["title"] = math_titles[i % len(math_titles)]
         else:
-            examples = generate_math_examples(3, request.difficulty, age, topic)
-            tasks = [_make_task("math", e["question"], e["answer"]) for e in examples]
-            ans_list = [e["answer"] for e in examples]
-            page = _make_page(
-                i + 1,
-                f"Приклади {i + 1}" if uk else f"Примеры {i + 1}",
-                math_insts[i % len(math_insts)],
-                tasks
-            )
-            ans = {"page_number": i + 1, "answers": ans_list}
+            if topic not in ("general", ""):
+                page, ans = _page_math_topical(i + 1, topic, lang, age)
+                page["title"] = math_titles[i % len(math_titles)]
+            else:
+                # If no topic, fallback to standard equations but wrapped neatly
+                examples = generate_math_examples(4, request.difficulty, age, topic)
+                tasks = [_make_task("math", f"{e['question']} {{{{DRAW:star:1}}}}", e["answer"]) for e in examples]
+                ans_list = [e["answer"] for e in examples]
+                page = _make_page(
+                    i + 1,
+                    math_titles[i % len(math_titles)],
+                    math_insts[i % len(math_insts)],
+                    tasks
+                )
+                ans = {"page_number": i + 1, "answers": ans_list}
+                
         pages.append(page)
         answers.append(ans)
 
@@ -623,6 +758,16 @@ def template_logic(request: PackRequest) -> Dict[str, Any]:
     pages = []
     answers = []
 
+    logic_titles_uk = [
+        "Логічні задачі", "Знайди закономірність", "Що тут зайве?",
+        "Порахуй і порівняй", "Уважність і логіка"
+    ]
+    logic_titles_ru = [
+        "Логические задачи", "Найди закономерность", "Что здесь лишнее?",
+        "Посчитай и сравни", "Внимательность и логика"
+    ]
+    logic_titles = logic_titles_uk if uk else logic_titles_ru
+
     _logic_gens = [_page_logic_pattern, _page_znaidy_zaive, _page_znajdy]
 
     for i in range(pages_count):
@@ -632,6 +777,8 @@ def template_logic(request: PackRequest) -> Dict[str, Any]:
         except Exception as e:
             logger.warning(f"Logic gen failed: {e}")
             page, ans = _page_logic_pattern(i + 1, topic, lang)
+            
+        page["title"] = logic_titles[i % len(logic_titles)]
         pages.append(page)
         answers.append(ans)
 

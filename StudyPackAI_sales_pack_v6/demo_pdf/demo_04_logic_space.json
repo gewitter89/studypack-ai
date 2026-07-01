@@ -1,0 +1,446 @@
+{
+  "title": "Логика и внимание: Космос",
+  "subtitle": "Задания для детей 9 лет",
+  "language": "ru",
+  "age": 9,
+  "grade": "1 классс",
+  "topic": "space",
+  "pack_type": "logic",
+  "difficulty": "medium",
+  "parent_instruction": "Занимайтесь 10–20 минут в день. Хвалите ребёнка за старание. Ответы — только для проверки взрослым.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:square}} {{SHAPE:square}} {{SHAPE:triangle}} {{SHAPE:square}} {{SHAPE:square}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? звезда, солнце, ракета, книга",
+          "options": [
+            "звезда",
+            "солнце",
+            "ракета",
+            "книга"
+          ],
+          "answer_space": true,
+          "answer": "книга"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? яблоко, орбита, астероид, марс",
+          "options": [
+            "яблоко",
+            "орбита",
+            "астероид",
+            "марс"
+          ],
+          "answer_space": true,
+          "answer": "яблоко"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? звездопад, марс, груша, метеорит",
+          "options": [
+            "звездопад",
+            "марс",
+            "груша",
+            "метеорит"
+          ],
+          "answer_space": true,
+          "answer": "груша"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? стул, юпитер, метеорит, солнце",
+          "options": [
+            "стул",
+            "юпитер",
+            "метеорит",
+            "солнце"
+          ],
+          "answer_space": true,
+          "answer": "стул"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: {{DRAW:rocket_simple:1}} — {{DRAW:rocket_simple:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: {{DRAW:rocket_simple:1}} — {{DRAW:rocket_simple:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: {{DRAW:star:1}} — {{DRAW:star:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: {{DRAW:star:1}} — {{DRAW:star:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:square}} {{SHAPE:square}} {{SHAPE:triangle}} {{SHAPE:square}} {{SHAPE:square}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? марс, стол, метеорит, юпитер",
+          "options": [
+            "марс",
+            "стол",
+            "метеорит",
+            "юпитер"
+          ],
+          "answer_space": true,
+          "answer": "стол"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? звездопад, ракета, комета, яблоко",
+          "options": [
+            "звездопад",
+            "ракета",
+            "комета",
+            "яблоко"
+          ],
+          "answer_space": true,
+          "answer": "яблоко"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? галактика, ручка, солнце, звездопад",
+          "options": [
+            "галактика",
+            "ручка",
+            "солнце",
+            "звездопад"
+          ],
+          "answer_space": true,
+          "answer": "ручка"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? спутник, астероид, звезда, груша",
+          "options": [
+            "спутник",
+            "астероид",
+            "звезда",
+            "груша"
+          ],
+          "answer_space": true,
+          "answer": "груша"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Найди такую же",
+      "instruction": "Соедини одинаковые предметы",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: {{DRAW:planet:1}} — {{DRAW:planet:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые ракеты: {{DRAW:rocket_simple:1}} — {{DRAW:rocket_simple:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "ракета"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые звезды: {{DRAW:star:1}} — {{DRAW:star:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "звезда"
+        },
+        {
+          "type": "logic",
+          "question": "Соедини одинаковые планеты: {{DRAW:planet:1}} — {{DRAW:planet:1}}",
+          "options": [],
+          "answer_space": true,
+          "answer": "планета"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Закономерность",
+      "instruction": "Найди закономерность и продолжи ряд",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:square}} {{SHAPE:square}} {{SHAPE:triangle}} {{SHAPE:square}} {{SHAPE:square}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} {{SHAPE:triangle}} {{SHAPE:circle}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "треугольник"
+        },
+        {
+          "type": "logic",
+          "question": "Что дальше? {{SHAPE:star}} {{SHAPE:star}} {{SHAPE:circle}} {{SHAPE:star}} {{SHAPE:star}} ...",
+          "options": [],
+          "answer_space": true,
+          "answer": "круг"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Найди лишнее",
+      "instruction": "Найди предмет, не подходящий к группе",
+      "tasks": [
+        {
+          "type": "logic",
+          "question": "Что лишнее? юпитер, яблоко, звездопад, марс",
+          "options": [
+            "юпитер",
+            "яблоко",
+            "звездопад",
+            "марс"
+          ],
+          "answer_space": true,
+          "answer": "яблоко"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? космонавт, стол, астероид, комета",
+          "options": [
+            "космонавт",
+            "стол",
+            "астероид",
+            "комета"
+          ],
+          "answer_space": true,
+          "answer": "стол"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? сатурн, юпитер, стул, марс",
+          "options": [
+            "сатурн",
+            "юпитер",
+            "стул",
+            "марс"
+          ],
+          "answer_space": true,
+          "answer": "стул"
+        },
+        {
+          "type": "logic",
+          "question": "Что лишнее? космонавт, банан, звездопад, солнце",
+          "options": [
+            "космонавт",
+            "банан",
+            "звездопад",
+            "солнце"
+          ],
+          "answer_space": true,
+          "answer": "банан"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "круг",
+        "треугольник",
+        "треугольник",
+        "круг"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "книга",
+        "яблоко",
+        "груша",
+        "стул"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "ракета",
+        "ракета",
+        "звезда",
+        "звезда"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "круг",
+        "треугольник",
+        "треугольник",
+        "круг"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "стол",
+        "яблоко",
+        "ручка",
+        "груша"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "планета",
+        "ракета",
+        "звезда",
+        "планета"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "круг",
+        "треугольник",
+        "треугольник",
+        "круг"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "яблоко",
+        "стол",
+        "стул",
+        "банан"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "WARNING: Same instruction on 3 pages",
+      "WARNING: Same instruction on 3 pages"
+    ],
+    "commercial_score": 90,
+    "hard_fails": [],
+    "commercial_fails": []
+  }
+}

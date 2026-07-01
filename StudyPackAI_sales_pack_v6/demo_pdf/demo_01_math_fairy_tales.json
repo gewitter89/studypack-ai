@@ -1,0 +1,354 @@
+{
+  "title": "Математика: Казкові пригоди",
+  "subtitle": "Приклади для дітей 6 років",
+  "language": "uk",
+  "age": 6,
+  "grade": "Дошкільник",
+  "topic": "fairy_tales",
+  "pack_type": "math",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Приклади 1",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "1 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "12 - 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math",
+          "question": "17 - 6 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Приклади 2",
+      "instruction": "Порахуй і запиши",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "6 - 5 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "1"
+        },
+        {
+          "type": "math",
+          "question": "17 + 16 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "33"
+        },
+        {
+          "type": "math",
+          "question": "4 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Було 1 замок. Знайшли ще 3. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math",
+          "question": "Було 2 замки. Знайшли ще 2. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 книга. Знайшли ще 7. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math",
+          "question": "Лежало 4 зірки. Зникло 2. Скільки залишилося.",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Приклади 4",
+      "instruction": "Обчисли",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "8 - 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "8 + 14 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        },
+        {
+          "type": "math",
+          "question": "6 - 6 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Приклади 5",
+      "instruction": "Запиши правильну відповідь",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "19 - 5 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "14"
+        },
+        {
+          "type": "math",
+          "question": "4 + 19 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "23"
+        },
+        {
+          "type": "math",
+          "question": "8 + 14 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "22"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Було 1 книга. Знайшли ще 6. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 зірка. Знайшли ще 7. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 зірка. Знайшли ще 5. Скільки стало.",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "math",
+          "question": "Лежало 3 книги. Зникло 1. Скільки залишилося.",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Приклади 7",
+      "instruction": "Порахуй і запиши",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "19 + 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "26"
+        },
+        {
+          "type": "math",
+          "question": "13 + 16 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "29"
+        },
+        {
+          "type": "math",
+          "question": "9 - 6 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Приклади 8",
+      "instruction": "Знайди відповідь",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "4 + 4 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math",
+          "question": "1 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "20 + 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "27"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "0",
+        "4",
+        "11"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "1",
+        "33",
+        "3"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "4",
+        "4",
+        "8",
+        "2"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "0",
+        "22",
+        "0"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "14",
+        "23",
+        "22"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "7",
+        "8",
+        "6",
+        "2"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "26",
+        "29",
+        "3"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "8",
+        "0",
+        "27"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": false,
+    "errors": [
+      "HARD FAIL: Page 1 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 2 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 4 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 5 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 7 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 8 has only 3 tasks. Minimum 4 required.",
+      "COMMERCIAL FAIL: score=69/100 (need 80+)"
+    ],
+    "warnings": [
+      "Topic 'fairy_tales' on only 2/8 pages (25%), target >= 50%"
+    ],
+    "commercial_score": 69,
+    "hard_fails": [
+      "HARD FAIL: Page 1 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 2 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 4 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 5 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 7 has only 3 tasks. Minimum 4 required.",
+      "HARD FAIL: Page 8 has only 3 tasks. Minimum 4 required."
+    ],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: score=69/100 (need 80+)"
+    ]
+  }
+}

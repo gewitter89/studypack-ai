@@ -1,9 +1,0 @@
-{
-  "passed": true,
-  "hard_fails": [],
-  "warnings": [],
-  "commercial_fails": [
-    "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
-  ],
-  "commercial_score": 100
-}

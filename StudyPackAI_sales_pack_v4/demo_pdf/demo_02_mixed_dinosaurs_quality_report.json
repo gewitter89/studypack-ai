@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "hard_fails": [
+    "HARD FAIL: Placeholder '★' in page 3 task 2: 'Що йде далі? ★ ● ★ ● ★ ...'"
+  ],
+  "warnings": [],
+  "commercial_fails": [
+    "COMMERCIAL FAIL: Unsupported emojis found in data (will cause black squares in PDF)"
+  ],
+  "commercial_score": 86
+}

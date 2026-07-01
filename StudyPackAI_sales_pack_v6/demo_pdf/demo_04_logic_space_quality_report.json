@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "hard_fails": [],
+  "warnings": [
+    "WARNING: Same instruction on 3 pages",
+    "WARNING: Same instruction on 3 pages"
+  ],
+  "commercial_fails": [],
+  "commercial_score": 90
+}

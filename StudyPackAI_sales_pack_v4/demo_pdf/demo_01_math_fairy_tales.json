@@ -1,0 +1,323 @@
+{
+  "title": "Математика: Казкові пригоди",
+  "subtitle": "Приклади для дітей 6 років",
+  "language": "uk",
+  "age": 6,
+  "grade": "Дошкільник",
+  "topic": "fairy_tales",
+  "pack_type": "math",
+  "difficulty": "medium",
+  "parent_instruction": "Займайтеся 10–20 хвилин на день. Хваліть дитину за старання.",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "exercise",
+      "title": "Приклади 1",
+      "instruction": "Розв'яжи приклади",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "10 - 10 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "13 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        },
+        {
+          "type": "math",
+          "question": "12 - 6 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "6"
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "page_type": "exercise",
+      "title": "Приклади 2",
+      "instruction": "Порахуй і запиши",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "15 - 8 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math",
+          "question": "13 + 15 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "28"
+        },
+        {
+          "type": "math",
+          "question": "5 + 14 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "19"
+        }
+      ]
+    },
+    {
+      "page_number": 3,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Було 2 замки. Знайшли ще 2. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "4"
+        },
+        {
+          "type": "math",
+          "question": "Було 4 замки. Знайшли ще 4. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        },
+        {
+          "type": "math",
+          "question": "Було 4 зірки. Знайшли ще 3. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        }
+      ]
+    },
+    {
+      "page_number": 4,
+      "page_type": "exercise",
+      "title": "Приклади 4",
+      "instruction": "Обчисли",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "7 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "8 + 11 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "19"
+        },
+        {
+          "type": "math",
+          "question": "17 + 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "24"
+        }
+      ]
+    },
+    {
+      "page_number": 5,
+      "page_type": "exercise",
+      "title": "Приклади 5",
+      "instruction": "Запиши правильну відповідь",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "3 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "2"
+        },
+        {
+          "type": "math",
+          "question": "1 + 18 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "19"
+        },
+        {
+          "type": "math",
+          "question": "3 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        }
+      ]
+    },
+    {
+      "page_number": 6,
+      "page_type": "exercise",
+      "title": "Задачки",
+      "instruction": "Розв'яжи задачки",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "Було 4 книги. Знайшли ще 3. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "7"
+        },
+        {
+          "type": "math",
+          "question": "Було 2 зірки. Знайшли ще 1. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math",
+          "question": "Було 1 зірка. Знайшли ще 7. Скільки стало?",
+          "options": [],
+          "answer_space": true,
+          "answer": "8"
+        }
+      ]
+    },
+    {
+      "page_number": 7,
+      "page_type": "exercise",
+      "title": "Приклади 7",
+      "instruction": "Порахуй і запиши",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "1 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "0"
+        },
+        {
+          "type": "math",
+          "question": "10 + 17 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "27"
+        },
+        {
+          "type": "math",
+          "question": "19 - 7 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "12"
+        }
+      ]
+    },
+    {
+      "page_number": 8,
+      "page_type": "exercise",
+      "title": "Приклади 8",
+      "instruction": "Знайди відповідь",
+      "tasks": [
+        {
+          "type": "math",
+          "question": "14 - 3 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "11"
+        },
+        {
+          "type": "math",
+          "question": "5 - 2 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "3"
+        },
+        {
+          "type": "math",
+          "question": "11 - 1 = ?",
+          "options": [],
+          "answer_space": true,
+          "answer": "10"
+        }
+      ]
+    }
+  ],
+  "answers": [
+    {
+      "page_number": 1,
+      "answers": [
+        "0",
+        "6",
+        "6"
+      ]
+    },
+    {
+      "page_number": 2,
+      "answers": [
+        "7",
+        "28",
+        "19"
+      ]
+    },
+    {
+      "page_number": 3,
+      "answers": [
+        "4",
+        "8",
+        "7"
+      ]
+    },
+    {
+      "page_number": 4,
+      "answers": [
+        "0",
+        "19",
+        "24"
+      ]
+    },
+    {
+      "page_number": 5,
+      "answers": [
+        "2",
+        "19",
+        "0"
+      ]
+    },
+    {
+      "page_number": 6,
+      "answers": [
+        "7",
+        "3",
+        "8"
+      ]
+    },
+    {
+      "page_number": 7,
+      "answers": [
+        "0",
+        "27",
+        "12"
+      ]
+    },
+    {
+      "page_number": 8,
+      "answers": [
+        "11",
+        "3",
+        "10"
+      ]
+    }
+  ],
+  "_quality": {
+    "passed": true,
+    "errors": [
+      "COMMERCIAL FAIL: Topic 'fairy_tales' on only 1/8 pages (12%), need >= 50%"
+    ],
+    "warnings": [],
+    "commercial_score": 86,
+    "hard_fails": [],
+    "commercial_fails": [
+      "COMMERCIAL FAIL: Topic 'fairy_tales' on only 1/8 pages (12%), need >= 50%"
+    ]
+  }
+}

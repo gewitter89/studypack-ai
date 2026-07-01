@@ -1,12 +1,47 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-.env
-*.spec
-dist/
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
-release_package/
+dist/
 *.egg-info/
-logs/app.log
-output/
+*.egg
+.pytest_cache/
 
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Generated outputs
+output/
+*.log
+logs/
+
+# Windows
+*.exe
+*.bat
+*.cmd
+*.com
+
+# Keep dist/web for Netlify but ignore dist/StudyPack AI.exe
+dist/*.exe

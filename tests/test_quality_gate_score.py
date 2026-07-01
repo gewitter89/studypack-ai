@@ -13,10 +13,20 @@ class TestQualityGateScore:
         data = {
             "title": "Математика", "language": "uk",
             "pages": [
-                {"page_number": 1, "instruction": "Розв'яжи приклади", "tasks": [{"question": "2+2", "answer": "4"}]},
-                {"page_number": 2, "instruction": "Знайди правильну відповідь", "tasks": [{"question": "3+3", "answer": "6"}]},
+                {"page_number": 1, "instruction": "Розв'яжи приклади", "tasks": [
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"},
+                    {"question": "2+2", "answer": "4"}
+                ]},
+                {"page_number": 2, "instruction": "Знайди правильну відповідь", "tasks": [
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"},
+                    {"question": "3+3", "answer": "6"}
+                ]},
             ],
-            "answers": [{"page_number": 1, "answers": ["4"]}, {"page_number": 2, "answers": ["6"]}],
+            "answers": [{"page_number": 1, "answers": ["4", "4", "4", "4"]}, {"page_number": 2, "answers": ["6", "6", "6", "6"]}],
             "age": 7, "topic": "general",
         }
         passed, errors, warnings, comm_fails, score = run_quality_gate(data)
