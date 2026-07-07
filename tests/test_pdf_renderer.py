@@ -70,3 +70,36 @@ def test_pdf_contains_title():
             content = f.read()
         assert b"PDF" in content
         assert content.startswith(b"%PDF-")
+
+
+def test_pdf_with_gamification():
+    """Test that PDF renders correctly when gamification data is present."""
+    from core.gamification import XPProgress, Achievement, StarReward
+
+    pack_with_gamification = dict(SAMPLE_PACK)
+    xp = XPProgress(current_xp=50, level=2, xp_to_next=130)
+    achievement = Achievement(
+        id="first_pack",
+        title={"uk": "Перший пакунок", "ru": "Первый пакунок", "en": "First Pack"},
+        icon="🏅",
+        description={"uk": "Розпочав", "ru": "Начал", "en": "Started"},
+        unlocked=True,
+    )
+    stars = [StarReward(page_number=1, earned=True), StarReward(page_number=2, earned=False)]
+
+    pack_with_gamification["_gamification"] = {
+        "xp": xp,
+        "achievements": [achievement],
+        "stars": stars,
+        "motivational_quote": "Ти молодець!",
+    }
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        output = os.path.join(tmpdir, "test_gamification.pdf")
+        result = render_pdf(pack_with_gamification, output)
+        assert os.path.exists(result)
+        size = os.path.getsize(result)
+        assert size > 5000
+        with open(result, "rb") as f:
+            content = f.read()
+        assert content.startswith(b"%PDF-")

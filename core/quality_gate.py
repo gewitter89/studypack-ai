@@ -181,11 +181,13 @@ def check_structure(data: Dict[str, Any]) -> List[str]:
     pages = data.get("pages", [])
     if not pages:
         issues.append("No pages")
+    _VISUAL_TYPES = {"color_by_number", "sudoku", "connect_dots", "graphic_dictation",
+                     "find_differences", "maze", "crossword"}
     for i, page in enumerate(pages):
         if not page.get("tasks"):
             issues.append(f"Page {i + 1} has no tasks")
         for j, task in enumerate(page.get("tasks", [])):
-            if not task.get("question"):
+            if not task.get("question") and not task.get("visual_aid") and task.get("type") not in _VISUAL_TYPES:
                 issues.append(f"Page {i + 1}, task {j + 1} has no question")
     return issues
 

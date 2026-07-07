@@ -482,3 +482,63 @@ def inject_topic(
 
 
 INJECTABLE_TYPES = list(_SUBJECT_MAP.keys())
+
+
+def inject_child_name(question: str, child_name: str, language: str = "uk") -> str:
+    if not child_name:
+        return question
+    question = question.replace("{child_name}", child_name)
+    return question
+
+
+_CHILD_NAME_TEMPLATES = {
+    "math": {
+        "uk": [
+            "{name}, скільки буде {a} + {b}?",
+            "{name}, порахуй: {a} + {b} = ?",
+            "{name}, у тебе є {a} цукерок. Мама дала ще {b}. Скільки всього?",
+        ],
+        "ru": [
+            "{name}, сколько будет {a} + {b}?",
+            "{name}, посчитай: {a} + {b} = ?",
+            "{name}, у тебя есть {a} конфет. Мама дала ещё {b}. Сколько всего?",
+        ],
+    },
+    "preschool": {
+        "uk": [
+            "{name}, порахуй предмети на малюнку.",
+            "{name}, знайди букву, яка починається на цей звук.",
+        ],
+        "ru": [
+            "{name}, посчитай предметы на картинке.",
+            "{name}, найди букву, которая начинается на этот звук.",
+        ],
+    },
+    "logic": {
+        "uk": [
+            "{name}, знайди, що зайве!",
+            "{name}, продовж послідовність.",
+        ],
+        "ru": [
+            "{name}, найди, что лишнее!",
+            "{name}, продолжи последовательность.",
+        ],
+    },
+}
+
+
+def inject_child_name_personalized(
+    question: str, child_name: str, language: str, subject: str, seed: int
+) -> str:
+    if not child_name:
+        return question
+    templates = _CHILD_NAME_TEMPLATES.get(subject, {}).get(
+        language if language in ("uk", "ru") else "uk", []
+    )
+    if not templates:
+        return question
+    rng = random.Random(seed + hash(child_name) % 1000)
+    if rng.random() < 0.3:
+        template = rng.choice(templates)
+        return template.format(name=child_name, a=rng.randint(2, 15), b=rng.randint(1, 9))
+    return question

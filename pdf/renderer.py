@@ -475,7 +475,6 @@ def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand
     pages_data = pack_data.get("pages", [])
     difficulty = pack_data.get("difficulty", "easy")
 
-    # Topic icon (big centered emoji)
     try:
         from core.topic_lexicon import resolve_topic, get_display_name
         resolved_topic = resolve_topic(topic, lang)
@@ -485,6 +484,9 @@ def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand
         display_topic = topic
     icon = TOPIC_ICONS.get(topic.lower(), TOPIC_ICONS.get("general", "📚"))
     icon_display = f"<font size='48'>{icon}</font>"
+
+    mascot = pack_data.get("_mascot")
+    mascot_greeting = pack_data.get("_mascot_greeting", "")
 
     # ── Top Color Banner ──
     banner = Table([[""]], colWidths=[PAGE_WIDTH], rowHeights=[30 * mm])
@@ -501,12 +503,30 @@ def _build_cover(elements, pack_data, styles, t, is_commercial, watermark, brand
     except ImportError:
         pass
 
-    # Topic icon (centered emoji)
     icon_style = ParagraphStyle('CoverIcon', fontName=FONT, fontSize=48, alignment=TA_CENTER, spaceAfter=4*mm)
     elements.append(Paragraph(icon_display, icon_style))
     elements.append(Spacer(1, 4 * mm))
 
-    # Title
+    if mascot:
+        mascot_emoji = mascot.get("emoji", "")
+        mascot_name_uk = mascot.get("name_uk", "")
+        mascot_name_ru = mascot.get("name_ru", "")
+        mascot_display = mascot_name_uk if uk else mascot_name_ru
+        mascot_style = ParagraphStyle(
+            'CoverMascot', fontName=FONT_BOLD, fontSize=14,
+            leading=20, alignment=TA_CENTER, textColor=t["dark_gray"]
+        )
+        elements.append(Paragraph(f"{mascot_emoji} {mascot_display}", mascot_style))
+        elements.append(Spacer(1, 2 * mm))
+
+    if mascot_greeting:
+        greet_style = ParagraphStyle(
+            'CoverGreeting', fontName=FONT_ITALIC, fontSize=12,
+            leading=17, alignment=TA_CENTER, textColor=t["accent"]
+        )
+        elements.append(Paragraph(mascot_greeting, greet_style))
+        elements.append(Spacer(1, 4 * mm))
+
     elements.append(Paragraph(title, styles['CoverTitle']))
     elements.append(Spacer(1, 5 * mm))
 
@@ -751,40 +771,52 @@ def _build_exercise_pages(elements, pages_data, styles, t, lang, difficulty):
             except ImportError:
                 vector_drawings = None
 
-            parts = re.split(r'(\{\{(?:DRAW|SHAPE):[^}]+\}\})', q)
+            try:
+                from pdf import visual_renderers
+            except ImportError:
+                visual_renderers = None
             
             cell_flowables = []
             
-            # Use KeepTogether to ensure the task doesn't split across pages
             from reportlab.platypus import KeepTogether
             
-            # Start the task block (we don't append "1. " anymore)
-            for part in parts:
-                if not part:
-                    continue
-                if part.startswith("{{") and part.endswith("}}"):
-                    content = part[2:-2]
-                    tokens = content.split(":")
-                    cmd = tokens[0]
-                    if vector_drawings:
-                        if cmd == "DRAW" and len(tokens) >= 3:
-                            icon_type = tokens[1]
-                            count = int(tokens[2])
-                            d = vector_drawings.draw_thematic_icon(icon_type, count)
-                            cell_flowables.append(Spacer(1, 4*mm))
-                            cell_flowables.append(d)
-                            cell_flowables.append(Spacer(1, 4*mm))
-                        elif cmd == "SHAPE" and len(tokens) >= 2:
-                            shape_type = tokens[1]
-                            d = vector_drawings.draw_shape(shape_type)
-                            cell_flowables.append(Spacer(1, 4*mm))
-                            cell_flowables.append(d)
-                            cell_flowables.append(Spacer(1, 4*mm))
+            task_visual = task.get("visual_aid", "")
+            if task_visual and visual_renderers:
+                accent = t.get("brand", "#4A90E2")
+                if q.strip():
+                    cell_flowables.append(Paragraph(q.strip(), styles['TaskQuestion']))
+                draw = visual_renderers.render_visual(task, lang, accent, CONTENT_WIDTH)
+                cell_flowables.append(Spacer(1, 4*mm))
+                cell_flowables.append(draw)
+                cell_flowables.append(Spacer(1, 4*mm))
+            else:
+                parts = re.split(r'(\{\{(?:DRAW|SHAPE):[^}]+\}\})', q)
+                for part in parts:
+                    if not part:
+                        continue
+                    if part.startswith("{{") and part.endswith("}}"):
+                        content = part[2:-2]
+                        tokens = content.split(":")
+                        cmd = tokens[0]
+                        if vector_drawings:
+                            if cmd == "DRAW" and len(tokens) >= 3:
+                                icon_type = tokens[1]
+                                count = int(tokens[2])
+                                d = vector_drawings.draw_thematic_icon(icon_type, count)
+                                cell_flowables.append(Spacer(1, 4*mm))
+                                cell_flowables.append(d)
+                                cell_flowables.append(Spacer(1, 4*mm))
+                            elif cmd == "SHAPE" and len(tokens) >= 2:
+                                shape_type = tokens[1]
+                                d = vector_drawings.draw_shape(shape_type)
+                                cell_flowables.append(Spacer(1, 4*mm))
+                                cell_flowables.append(d)
+                                cell_flowables.append(Spacer(1, 4*mm))
+                        else:
+                            cell_flowables.append(Paragraph(f"[VECTOR_MISSING: {content}]", styles['TaskQuestion']))
                     else:
-                        cell_flowables.append(Paragraph(f"[VECTOR_MISSING: {content}]", styles['TaskQuestion']))
-                else:
-                    if part.strip():
-                        cell_flowables.append(Paragraph(part.strip(), styles['TaskQuestion']))
+                        if part.strip():
+                            cell_flowables.append(Paragraph(part.strip(), styles['TaskQuestion']))
                         
             if opts:
                 cell_flowables.append(Spacer(1, 2*mm))
@@ -1007,12 +1039,291 @@ def _build_certificate(elements, pack_data, styles, t, lang, child_name):
     elements.append(PageBreak())
 
 
-# ─── Answers section ─────────────────────────────────────────────────────────
+def _build_achievements_page(elements, pack_data, styles, t, lang):
+    """Render a page showing XP progress, achievements earned, and stars collected."""
+    uk = _is_uk(lang)
+    gamification = pack_data.get("_gamification", {})
+    if not gamification:
+        return
 
-def _build_answers(elements, answers_data, styles, t, lang):
+    xp = gamification.get("xp")
+    achievements = gamification.get("achievements", [])
+    stars = gamification.get("stars", [])
+    quote = gamification.get("motivational_quote", "")
+
+    elements.append(Spacer(1, 4 * mm))
+    
+    title = "Твої досягнення" if uk else "Твои достижения"
+    elements.append(Paragraph(title, styles['PageTitle']))
+    elements.append(_thin_separator(t, CONTENT_WIDTH - 6 * mm))
+    elements.append(Spacer(1, 3 * mm))
+
+    if xp:
+        level_label = "Рівень" if uk else "Уровень"
+        xp_text = f"{level_label} {xp.level} • {xp.current_xp} / {xp.xp_to_next} XP"
+        elements.append(Paragraph(xp_text, ParagraphStyle(
+            'XPLevel', fontName=FONT_BOLD, fontSize=16, leading=20,
+            spaceAfter=4 * mm, textColor=t["accent"], alignment=TA_CENTER
+        )))
+        xp_filled = int((xp.current_xp / max(xp.xp_to_next, 1)) * 20)
+        progress_bar = "█" * xp_filled + "░" * (20 - xp_filled)
+        elements.append(Paragraph(progress_bar, ParagraphStyle(
+            'XPBar', fontName=FONT, fontSize=14, leading=18,
+            spaceAfter=5 * mm, alignment=TA_CENTER, textColor=t["dark_gray"]
+        )))
+
+    if stars:
+        earned = sum(1 for s in stars if s.earned)
+        total = len(stars)
+        star_label = "Зірки" if uk else "Звёзды"
+        star_text = f"{star_label}: ⭐ {earned} / {total}"
+        elements.append(Paragraph(star_text, ParagraphStyle(
+            'StarsText', fontName=FONT, fontSize=14, leading=18,
+            spaceAfter=5 * mm, alignment=TA_CENTER, textColor=t["dark_gray"]
+        )))
+
+    if achievements:
+        ach_title = "Відзнаки" if uk else "Награды"
+        elements.append(Paragraph(ach_title, ParagraphStyle(
+            'AchTitle', fontName=FONT_BOLD, fontSize=13, leading=16,
+            spaceAfter=3 * mm, textColor=t["dark_gray"]
+        )))
+        
+        cols = 2
+        ach_rows = []
+        row = []
+        for a in achievements:
+            a_title = a.title.get(lang, a.title.get("uk", a.title.get("en", "")))
+            cell_text = f"{a.icon} {a_title}"
+            cell = Table(
+                [[cell_text]],
+                colWidths=[(CONTENT_WIDTH - 4 * mm) / cols],
+                rowHeights=[12 * mm],
+            )
+            cell.setStyle(TableStyle([
+                ('FONTNAME', (0, 0), (-1, -1), FONT),
+                ('FONTSIZE', (0, 0), (-1, -1), 11),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('BACKGROUND', (0, 0), (-1, -1), HexColor("#f0f8ff")),
+                ('BOX', (0, 0), (-1, -1), 0.5, t["line_color"]),
+                ('LEFTPADDING', (0, 0), (-1, -1), 4),
+            ]))
+            row.append(cell)
+            if len(row) == cols:
+                ach_rows.append(row)
+                row = []
+        if row:
+            while len(row) < cols:
+                row.append(Table([[""]], colWidths=[(CONTENT_WIDTH - 4 * mm) / cols], rowHeights=[12 * mm]))
+            ach_rows.append(row)
+        
+        if ach_rows:
+            ach_table = Table(ach_rows, colWidths=[(CONTENT_WIDTH - 4 * mm) / cols] * cols)
+            ach_table.setStyle(TableStyle([
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('TOPPADDING', (0, 0), (-1, -1), 2 * mm),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 2 * mm),
+            ]))
+            elements.append(ach_table)
+        elements.append(Spacer(1, 4 * mm))
+
+    if quote:
+        elements.append(Paragraph(f"«{quote}»", ParagraphStyle(
+            'Quote', fontName=FONT_ITALIC, fontSize=12, leading=16,
+            spaceBefore=3 * mm, spaceAfter=3 * mm, textColor=t["accent"],
+            alignment=TA_CENTER
+        )))
+    
+    elements.append(PageBreak())
+
+
+def _build_parent_report_page(elements, pack_data, styles, t, lang):
+    """Render parent analytics report page with category breakdown and recommendations."""
+    uk = _is_uk(lang)
+    
+    try:
+        from core.analytics import generate_report, format_report_text
+    except ImportError:
+        return
+    
+    pages_data = pack_data.get("pages", [])
+    if not pages_data:
+        return
+    
+    report = generate_report(pages_data, lang)
+    if report.total_tasks == 0:
+        return
+    
+    report_lines = format_report_text(report, lang)
+    
+    elements.append(Spacer(1, 4 * mm))
+    
+    title = "Звіт для батьків" if uk else "Отчёт для родителей"
+    elements.append(Paragraph(title, styles['PageTitle']))
+    elements.append(_thin_separator(t, CONTENT_WIDTH - 6 * mm))
+    elements.append(Spacer(1, 3 * mm))
+    
+    series_info = pack_data.get("_series", {})
+    if series_info:
+        idx = series_info.get("pack_index", 1)
+        total = series_info.get("total_packs", 1)
+        series_name = series_info.get("name", "")
+        series_text = f"{series_name} #{idx}/{total}" if uk else f"{series_name} №{idx}/{total}"
+        elements.append(Paragraph(series_text, ParagraphStyle(
+            'SeriesInfo', fontName=FONT_ITALIC, fontSize=10, leading=14,
+            spaceAfter=2 * mm, textColor=t["dark_gray"], alignment=TA_RIGHT
+        )))
+    
+    line_style = ParagraphStyle(
+        'ReportLine', fontName=FONT, fontSize=11, leading=15,
+        spaceAfter=2 * mm, textColor=t["dark_gray"]
+    )
+    line_bold = ParagraphStyle(
+        'ReportLineBold', fontName=FONT_BOLD, fontSize=11, leading=15,
+        spaceAfter=2 * mm, textColor=t["dark_gray"]
+    )
+    
+    for line in report_lines:
+        if not line:
+            elements.append(Spacer(1, 2 * mm))
+            continue
+        style = line_bold if line.strip().startswith(("Сильні", "Сильные", "Підтягнути", "Подтянуть", "Розподіл", "Распределение", "Рекомендації", "Рекомендации")) else line_style
+        elements.append(Paragraph(line, style))
+    
+    if report.category_breakdown:
+        elements.append(Spacer(1, 3 * mm))
+        
+        bar_data = [["Категорія" if uk else "Категория", "%"]]
+        total = max(report.total_tasks, 1)
+        for cat, count in sorted(report.category_breakdown.items(), key=lambda x: -x[1]):
+            from core.analytics import TYPE_LABELS
+            cat_label = TYPE_LABELS.get(lang, TYPE_LABELS["uk"]).get(cat, cat)
+            pct = int(count / total * 100)
+            bar_data.append([cat_label, f"{pct}%"])
+        
+        if len(bar_data) > 1:
+            cat_table = Table(bar_data, colWidths=[80 * mm, 20 * mm])
+            cat_table.setStyle(TableStyle([
+                ('FONTNAME', (0, 0), (-1, 0), FONT_BOLD),
+                ('FONTNAME', (0, 1), (-1, -1), FONT),
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+                ('TEXTCOLOR', (0, 0), (-1, 0), white),
+                ('BACKGROUND', (0, 0), (-1, 0), t["brand"]),
+                ('GRID', (0, 0), (-1, -1), 0.5, t["line_color"]),
+                ('ALIGN', (1, 0), (1, -1), 'CENTER'),
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('TOPPADDING', (0, 0), (-1, -1), 3),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+            ]))
+            elements.append(cat_table)
+    
+    elements.append(PageBreak())
+
+
+
+
+
+
+
+# ─── Bonus pages (stickers, coloring, etc) ─────────────────────────────────
+
+def _build_bonus_pages(elements, pack_data, styles, t, lang):
+    uk = _is_uk(lang)
+    bonus_pages = pack_data.get("_bonus_pages", [])
+    if not bonus_pages:
+        return
+
+    for bp in bonus_pages:
+        bp_type = bp.get("page_type", "")
+        bp_title = bp.get("title", "")
+        bp_instruction = bp.get("instruction", "")
+        bp_tasks = bp.get("tasks", [])
+
+        elements.append(Spacer(1, 4 * mm))
+        elements.append(Paragraph(bp_title, styles['PageTitle']))
+        if bp_instruction:
+            elements.append(Paragraph(bp_instruction, styles['Instruction']))
+        elements.append(_thin_separator(t, CONTENT_WIDTH - 6 * mm))
+        elements.append(Spacer(1, 2 * mm))
+
+        if bp_type == "sticker_rewards":
+            grid_cols = 4
+            cells = []
+            row = []
+            for i in range(len(bp_tasks)):
+                cell = Table(
+                    [[f"⭐ {i + 1}"]],
+                    colWidths=[(CONTENT_WIDTH - 4 * mm) / grid_cols],
+                    rowHeights=[25 * mm],
+                )
+                cell.setStyle(TableStyle([
+                    ('FONTNAME', (0, 0), (-1, -1), FONT),
+                    ('FONTSIZE', (0, 0), (-1, -1), 16),
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                    ('BOX', (0, 0), (-1, -1), 1, t["line_color"]),
+                    ('BACKGROUND', (0, 0), (-1, -1), t["light_gray"]),
+                ]))
+                row.append(cell)
+                if len(row) == grid_cols:
+                    cells.append(row)
+                    row = []
+            if row:
+                while len(row) < grid_cols:
+                    row.append("")
+                cells.append(row)
+            if cells:
+                sticker_table = Table(cells, colWidths=[(CONTENT_WIDTH - 4 * mm) / grid_cols] * grid_cols)
+                sticker_table.setStyle(TableStyle([
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                    ('GRID', (0, 0), (-1, -1), 0.5, t["line_color"]),
+                    ('TOPPADDING', (0, 0), (-1, -1), 2 * mm),
+                    ('BOTTOMPADDING', (0, 0), (-1, -1), 2 * mm),
+                ]))
+                elements.append(sticker_table)
+        else:
+            for j, task in enumerate(bp_tasks):
+                q = task.get("question", "")
+                answer_style = ParagraphStyle(
+                    'BonusTask', fontName=FONT, fontSize=12,
+                    leading=17, spaceAfter=8 * mm, leftIndent=6 * mm,
+                    textColor=black
+                )
+                elements.append(Paragraph(q, answer_style))
+                if task.get("answer_space"):
+                    ans_box = Table([[""]], colWidths=[CONTENT_WIDTH * 0.8], rowHeights=[20 * mm])
+                    ans_box.setStyle(TableStyle([
+                        ('BOX', (0, 0), (-1, -1), 1, t["line_color"]),
+                        ('BACKGROUND', (0, 0), (-1, -1), "#fafafa"),
+                    ]))
+                    elements.append(ans_box)
+                elements.append(Spacer(1, 6 * mm))
+
+        elements.append(PageBreak())
+
+
+def _build_answers(elements, answers_data, styles, t, lang, pack_data=None):
     uk = _is_uk(lang)
     if not answers_data:
         return
+
+    mascot = (pack_data or {}).get("_mascot")
+    child_name = (pack_data or {}).get("child_name", "")
+
+    if mascot:
+        try:
+            from core.mascot import get_answers_heading
+            heading = get_answers_heading(mascot, child_name, lang)
+            heading_style = ParagraphStyle(
+                'MascotAnswerHeading', fontName=FONT_BOLD, fontSize=13,
+                leading=18, spaceAfter=3 * mm, textColor=t["accent"]
+            )
+            elements.append(Paragraph(heading, heading_style))
+        except ImportError:
+            pass
 
     ans_title = "Відповіді" if uk else "Ответы"
     elements.append(Paragraph(ans_title, styles['PageTitle']))
@@ -1096,11 +1407,14 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
     answers_data = pack_data.get("answers", [])
     parent_instruction = pack_data.get("parent_instruction", "")
 
-    # Estimate total pages for "page X of N" footer
+    bonus_pages_list = pack_data.get("_bonus_pages", [])
+    gamification = pack_data.get("_gamification", {})
     total_pages = (
         1  # cover
         + (1 if parent_instruction else 0)  # parent instruction
         + len([p for p in pages_data if p.get("page_type") != "answers"])  # exercises
+        + len(bonus_pages_list)  # bonus pages
+        + (1 if gamification else 0)  # achievements page
         + 1  # tracker
         + 1  # final / well done
         + 1  # certificate
@@ -1151,17 +1465,26 @@ def render_pdf(pack_data: Dict[str, Any], output_path: str,
     # 3. Exercise pages
     _build_exercise_pages(elements, pages_data, styles, t, lang, difficulty)
 
-    # 4. Progress tracker
+    # 4. Bonus pages (sticker rewards, coloring, maze, secret code)
+    _build_bonus_pages(elements, pack_data, styles, t, lang)
+    
+    # 5. Achievements page (XP, stars, badges)
+    _build_achievements_page(elements, pack_data, styles, t, lang)
+
+    # 6. Progress tracker
     _build_tracker_page(elements, pages_data, styles, t, lang)
 
-    # 5. Final "well done" page
+    # 7. Final "well done" page
     _build_final_page(elements, styles, t, lang)
 
-    # 6. Certificate of completion
+    # 8. Certificate of completion
     _build_certificate(elements, pack_data, styles, t, lang, child_name)
 
-    # 7. Answers
-    _build_answers(elements, answers_data, styles, t, lang)
+    # 9. Answers
+    _build_answers(elements, answers_data, styles, t, lang, pack_data)
+
+    # 10. Parent analytics report
+    _build_parent_report_page(elements, pack_data, styles, t, lang)
 
     doc.build(elements)
     logger.info(f"PDF saved: {output_path} ({os.path.getsize(output_path)} bytes)")

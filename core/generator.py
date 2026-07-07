@@ -225,6 +225,36 @@ class StudyPackGenerator:
         from core.postprocess import postprocess
         pack_data = postprocess(pack_data)
 
+        from core.mascot import get_mascot, format_cover_greeting
+        subject = pack_data.get("pack_type", "mixed_week")
+        topic = pack_data.get("topic", "")
+        lang = pack_data.get("language", "uk")
+        child_name = getattr(request, "child_name", "") or ""
+        mascot = get_mascot(subject, topic)
+        pack_data["_mascot"] = mascot
+        pack_data["_mascot_greeting"] = format_cover_greeting(child_name, topic, subject, lang)
+        pack_data["child_name"] = child_name
+
+        from core.bonus_pages import sticker_reward_page, surprise_bonus_page, secret_code_page
+        bonus_pages = []
+        bonus_pages.append(sticker_reward_page(pack_data))
+        bonus_pages.append(surprise_bonus_page(pack_data, "random"))
+        bonus_pages.append(secret_code_page(pack_data))
+        pack_data["_bonus_pages"] = bonus_pages
+
+        from core.gamification import compute_achievements, compute_stars, compute_xp, get_quote
+        lang = pack_data.get("language", "uk")
+        pages_data = pack_data.get("pages", [])
+        xp_progress = compute_xp(pages_data)
+        achievements = compute_achievements(pages_data, lang)
+        stars = compute_stars(pages_data)
+        pack_data["_gamification"] = {
+            "xp": xp_progress,
+            "achievements": [a for a in achievements if a.unlocked],
+            "stars": stars,
+            "motivational_quote": get_quote(lang, len(pages_data)),
+        }
+
         # Quality Gate — warn but never block PDF generation
         quality = pack_data.get("_quality", {})
         if quality.get("hard_fails"):

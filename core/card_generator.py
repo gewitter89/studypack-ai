@@ -24,6 +24,32 @@ try:
 except ImportError:
     logger.warning("Card generator classes not available")
 
+try:
+    from core.cards.new_card_types import (
+        ColorByNumberCard, SudokuCard,
+        ConnectDotsCard, GraphicDictationCard,
+    )
+    GENERATOR_CLASSES.update({
+        "color_by_number": ColorByNumberCard,
+        "sudoku": SudokuCard,
+        "connect_dots": ConnectDotsCard,
+        "graphic_dictation": GraphicDictationCard,
+    })
+except ImportError:
+    logger.warning("New card types not available")
+
+try:
+    from core.cards.new_card_types import (
+        FindDiffCard, MazeCard, CrosswordCard,
+    )
+    GENERATOR_CLASSES.update({
+        "find_differences": FindDiffCard,
+        "maze": MazeCard,
+        "crossword": CrosswordCard,
+    })
+except ImportError:
+    logger.warning("Visual visual cards (find_diff/maze/crossword) not available")
+
 
 def _make_template_for_id(cid: str, difficulty: str, age: int, language: str = "ru") -> CardTemplate:
     from core.cards.base import CardTemplate
@@ -57,6 +83,11 @@ def _make_template_for_id(cid: str, difficulty: str, age: int, language: str = "
         "crossword": ("Кроссворд", "logic", 6, 10, "medium"),
         "detective": ("Детектив", "logic", 8, 10, "hard"),
         "deduction": ("Дедукция", "logic", 8, 10, "hard"),
+        "color_by_number": ("Раскрась по номерам", "math", 5, 10, "easy"),
+        "connect_dots": ("Соедини точки", "logic", 4, 8, "easy"),
+        "graphic_dictation": ("Графический диктант", "logic", 5, 8, "easy"),
+        "find_differences": ("Найди отличия", "logic", 5, 10, "easy"),
+        "word_search": ("Найди слова", "reading", 6, 10, "medium"),
     }
     _TITLES_UK = {
         "math_addition": "Додавання",
@@ -88,6 +119,11 @@ def _make_template_for_id(cid: str, difficulty: str, age: int, language: str = "
         "crossword": "Кросворд",
         "detective": "Детектив",
         "deduction": "Дедукція",
+        "color_by_number": "Розфарбуй за номерами",
+        "connect_dots": "З'єднай крапки",
+        "graphic_dictation": "Графічний диктант",
+        "find_differences": "Знайди відмінності",
+        "word_search": "Знайди слова",
     }
     title, subject, amin, amax, default_diff = defaults.get(cid, (cid, "math", 5, 10, "easy"))
     if language.startswith("uk"):
@@ -96,7 +132,7 @@ def _make_template_for_id(cid: str, difficulty: str, age: int, language: str = "
         id=cid, title=title, subject=subject,
         age_min=amin, age_max=amax,
         grade=[], difficulty=difficulty or default_diff,
-        language=["ru", "uk"], card_type=cid,
+        language=[language], card_type=cid,
         theme_tags=[], layout="basic",
         requires_ai=(cid not in GENERATOR_CLASSES),
         has_answer_key=True,
@@ -159,16 +195,31 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
     card_ids = preset_data.get("cards", [])
     include_answers = preset_data.get("include_answers", True)
     include_instruction = preset_data.get("include_parent_instruction", True)
+    child_name = preset_data.get("child_name", "")
 
+    from core.adaptive_difficulty import recommended_card_mix, adaptive_math_range
     if not card_ids:
-        logger.warning("No cards in preset, using default")
-        card_ids = ["math_addition", "math_subtraction", "math_compare"]
+        logger.info(f"No cards in preset, using adaptive mix for age {age}")
+        card_ids = recommended_card_mix(age, pages_count)
 
     diff_params = get_params(difficulty)
     seed = random.randint(0, 999999)
 
-    templates = [_make_template_for_id(cid, difficulty, age, language) for cid in card_ids]
-    templates = [t for t in templates if t is not None]
+    adaptive_add = adaptive_math_range(age, "add")
+    adaptive_sub = adaptive_math_range(age, "subtract")
+    adaptive_mult = adaptive_math_range(age, "multiply")
+
+    templates = []
+    for cid in card_ids:
+        tmpl = _make_template_for_id(cid, difficulty, age, language)
+        if tmpl is not None:
+            if "addition" in cid:
+                tmpl.params = {"min_number": adaptive_add[0], "max_number": adaptive_add[1]}
+            elif "subtraction" in cid:
+                tmpl.params = {"min_number": adaptive_sub[0], "max_number": adaptive_sub[1]}
+            elif "multiplication" in cid:
+                tmpl.params = {"min_number": adaptive_mult[0], "max_number": adaptive_mult[1]}
+            templates.append(tmpl)
 
     if not templates:
         logger.error("No card templates resolved, using fallback")
@@ -197,19 +248,35 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
 
         tasks = []
         for c in cards:
-            tasks.append({
+            q = c.question
+            if child_name:
+                from core.topic_injector import inject_child_name
+                q = inject_child_name(q, child_name, language)
+            task = {
                 "type": tmpl.card_type,
-                "question": c.question,
+                "question": q,
                 "options": c.options or [],
-                "answer_space": True,
+                "answer_space": c.has_answer_space if c.has_answer_space is not None else True,
                 "answer": str(c.answer) if c.answer is not None else "",
-            })
+            }
+            if c.visual_aid:
+                task["visual_aid"] = c.visual_aid
+                if c.instruction:
+                    task["instruction"] = c.instruction
+            tasks.append(task)
 
         page_title = f"{tmpl.title} - {page_num}"
         
-        if tmpl.card_type not in providers:
-            providers[tmpl.card_type] = InstructionProvider(language, tmpl.card_type, age, topic)
-        instruction = providers[tmpl.card_type].get()
+        visual_first_instr = ""
+        is_visual_page = bool(tasks) and any(t.get("visual_aid") for t in tasks)
+        if is_visual_page:
+            visual_first_instr = tasks[0].get("instruction", "") if tasks else ""
+        if visual_first_instr:
+            instruction = visual_first_instr
+        else:
+            if tmpl.card_type not in providers:
+                providers[tmpl.card_type] = InstructionProvider(language, tmpl.card_type, age, topic)
+            instruction = providers[tmpl.card_type].get()
 
         pages.append({
             "page_number": page_num,
@@ -245,9 +312,11 @@ def generate_from_preset(preset_data: Dict[str, Any]) -> Dict[str, Any]:
         "topic": topic,
         "pack_type": preset_data.get("pack_type", "mixed_week"),
         "difficulty": difficulty,
+        "child_name": child_name,
         "parent_instruction": _parent_instruction(language) if include_instruction else "",
         "pages": pages,
         "answers": answers if include_answers else [],
+        "story_opening": _get_story_opening(child_name, topic, language) if child_name else "",
     }
 
 
@@ -326,3 +395,11 @@ def _fallback_generate(preset_data: Dict[str, Any]) -> Dict[str, Any]:
         "parent_instruction": _parent_instruction(lang),
         "pages": pages, "answers": answers,
     }
+
+
+def _get_story_opening(child_name: str, topic: str, language: str) -> str:
+    try:
+        from core.adaptive_difficulty import generate_story_opening
+        return generate_story_opening(child_name, topic, language)
+    except ImportError:
+        return ""

@@ -141,3 +141,71 @@ class TestCardGenerator:
             data = generate_from_preset(preset)
             for p in data["pages"]:
                 assert len(p["tasks"]) > 0, f"Empty page {p['page_number']}"
+
+    def test_generate_color_by_number(self):
+        tmpl = _make_template_for_id("color_by_number", "easy", 6, "uk")
+        results = _generate_cards(tmpl, 2, "animals", 42, "uk")
+        assert len(results) == 2
+        assert all(r.card_type == "color_by_number" for r in results)
+        assert all(r.instruction for r in results)
+        assert all(r.visual_aid for r in results)
+
+    def test_generate_sudoku(self):
+        tmpl = _make_template_for_id("sudoku", "easy", 7, "uk")
+        results = _generate_cards(tmpl, 1, "general", 42, "uk")
+        assert len(results) == 1
+        assert results[0].card_type == "sudoku"
+        assert "1–" in results[0].instruction
+
+    def test_generate_connect_dots(self):
+        tmpl = _make_template_for_id("connect_dots", "easy", 5, "uk")
+        results = _generate_cards(tmpl, 2, "general", 42, "uk")
+        assert len(results) == 2
+        assert all(r.card_type == "connect_dots" for r in results)
+
+    def test_generate_graphic_dictation(self):
+        tmpl = _make_template_for_id("graphic_dictation", "easy", 6, "uk")
+        results = _generate_cards(tmpl, 1, "general", 42, "uk")
+        assert len(results) == 1
+        assert results[0].card_type == "graphic_dictation"
+        assert "клітинці" in results[0].instruction or "клеточке" in results[0].instruction
+
+    def test_new_card_types_multilang(self):
+        for lang in ["uk", "ru", "en"]:
+            for cid in ["color_by_number", "sudoku", "connect_dots", "graphic_dictation"]:
+                tmpl = _make_template_for_id(cid, "easy", 6, lang)
+                results = _generate_cards(tmpl, 1, "test", 42, lang)
+                assert len(results) >= 1, f"No results for {cid} in {lang}"
+                assert len(results[0].instruction) > 5, f"Empty instruction for {cid} in {lang}"
+
+    def test_generate_find_differences(self):
+        tmpl = _make_template_for_id("find_differences", "easy", 6, "uk")
+        results = _generate_cards(tmpl, 2, "general", 42, "uk")
+        assert len(results) == 2
+        assert all(r.card_type == "find_differences" for r in results)
+        assert all(r.visual_aid for r in results)
+        assert results[0].answer
+
+    def test_generate_maze(self):
+        tmpl = _make_template_for_id("maze", "easy", 6, "uk")
+        results = _generate_cards(tmpl, 1, "general", 42, "uk")
+        assert len(results) == 1
+        assert results[0].card_type == "maze"
+        assert results[0].visual_aid
+        assert "кроків" in results[0].answer or "шаг" in results[0].answer
+
+    def test_generate_crossword(self):
+        tmpl = _make_template_for_id("crossword", "medium", 7, "uk")
+        results = _generate_cards(tmpl, 1, "animals", 42, "uk")
+        assert len(results) == 1
+        assert results[0].card_type == "crossword"
+        assert results[0].visual_aid
+        assert len(results[0].answer) > 5
+
+    def test_phase2_multilang(self):
+        for lang in ["uk", "ru", "en"]:
+            for cid in ["find_differences", "maze", "crossword"]:
+                tmpl = _make_template_for_id(cid, "easy", 6, lang)
+                results = _generate_cards(tmpl, 1, "general", 42, lang)
+                assert len(results) >= 1, f"No results for {cid} in {lang}"
+                assert len(results[0].instruction) > 5, f"Empty instruction for {cid} in {lang}"
